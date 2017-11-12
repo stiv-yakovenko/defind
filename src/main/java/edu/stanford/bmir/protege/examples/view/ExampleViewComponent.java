@@ -40,8 +40,7 @@ public class ExampleViewComponent extends AbstractOWLViewComponent {
     protected void initialiseOWLView() throws Exception {
         OWLModelManager owlModelManager = this.getOWLModelManager();
         setLayout(new BorderLayout());
-        ProofServiceManager proofServiceManager = ProofServiceManager.get(this.getOWLEditorKit());
-        JPanel panel = GridLayoutDemo.addComponentsToPane( owlModelManager.getOWLOntologyManager(), owlModelManager.getActiveOntology(),proofServiceManager);
+        JPanel panel = GridLayoutDemo.addComponentsToPane( owlModelManager.getOWLOntologyManager(), owlModelManager.getActiveOntology(),this.getOWLEditorKit());
         add(panel, BorderLayout.CENTER);
         log.info("Example View Component initialized");
     }

@@ -25,6 +25,7 @@ package edu.stanford.bmir.protege.examples.defind;
 
 import net.miginfocom.swing.MigLayout;
 import org.liveontologies.protege.explanation.proof.ProofServiceManager;
+import org.protege.editor.owl.OWLEditorKit;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 
@@ -75,7 +76,7 @@ public class GridLayoutDemo extends JFrame {
         }
     }
 
-    public static JPanel addComponentsToPane(OWLOntologyManager manager, OWLOntology ont, ProofServiceManager proofServiceManager) {
+    public static JPanel addComponentsToPane(OWLOntologyManager manager, OWLOntology ont, OWLEditorKit owlEditorKit) {
         String url  = ont.getOntologyID().getDefaultDocumentIRI().get().toString();
         Calc.url=url;
         Set<OWLNamedObject> allClasses = new HashSet<>();
@@ -207,6 +208,7 @@ public class GridLayoutDemo extends JFrame {
                     JOptionPane.showMessageDialog(mainPanel, "C is null, select something");
                     return;
                 }
+                ProofServiceManager proofServiceManager = ProofServiceManager.get(owlEditorKit);
                 OWLClassExpression sol = Calc.solve(manager, ont, delta, c[0],proofServiceManager);
                 List<String> results = new ArrayList<>();
                 if (sol instanceof OWLObjectUnionOf) {
@@ -219,7 +221,7 @@ public class GridLayoutDemo extends JFrame {
                     results.add(sol.toString().replace(url,""));
                 }
                 updateList(res, results);
-            } catch (OWLOntologyCreationException e1) {
+            } catch (Exception e1) {
                 e1.printStackTrace();
             }
         });

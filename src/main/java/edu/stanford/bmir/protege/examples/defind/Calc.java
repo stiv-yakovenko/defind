@@ -133,7 +133,7 @@ public class Calc {
         for (OWLObjectProperty oop : ont1.getObjectPropertiesInSignature()) {
             if (delta.contains(oop)) continue;
             IRI iri = oop.getIRI();
-            IRI iri1 = IRI.create(iri.getNamespace(), iri.getRemainder().get() + "_");
+            IRI iri1 = IRI.create(iri.getNamespace(), (iri.getRemainder()).get() + "_");
             map.put(iri, iri1);
         }
         for (OWLClass cls : ont1.getClassesInSignature()) {

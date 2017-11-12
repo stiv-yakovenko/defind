@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>protege-proof-explanation</artifactId>
 	<groupId>org.liveontologies</groupId>
@@ -25,55 +25,13 @@
 		</license>
 	</licenses>
 
+	<organization>
+		<name>Some Organisation</name>
+		<url>https://github.com/stiv-yakovenko/defind</url>
+	</organization>
 
 
 	<inceptionYear>2014</inceptionYear>
-
-	<developers>
-		<developer>
-			<id>yevgeny</id>
-			<name>Yevgeny Kazakov</name>
-			<email>yevgeny.kazakov@uni-ulm.de</email>
-			<organization>Institute of Artificial Intelligence, University of Ulm</organization>
-			<organizationUrl>http://www.uni-ulm.de/en/in/ki.html</organizationUrl>
-			<roles>
-				<role>developer</role>
-			</roles>
-			<timezone>1</timezone>
-		</developer>
-		<developer>
-			<id>pavel</id>
-			<name>Pavel Klinov</name>
-			<email>pavel.klinov@uni-ulm.de</email>
-			<organization>Institute of Artificial Intelligence, University of Ulm</organization>
-			<organizationUrl>http://www.uni-ulm.de/en/in/ki.html</organizationUrl>
-			<roles>
-				<role>developer</role>
-			</roles>
-			<timezone>1</timezone>
-		</developer>
-		<developer>
-			<id>petesko</id>
-			<name>Peter Skocovsky</name>
-			<email>peter.skocovsky@uni-ulm.de</email>
-			<organization>Institute of Artificial Intelligence, University of Ulm</organization>
-			<organizationUrl>http://www.uni-ulm.de/en/in/ki.html</organizationUrl>
-			<roles>
-				<role>developer</role>
-			</roles>
-			<timezone>1</timezone>
-		</developer>
-		<developer>
-			<id>saa</id>
-			<name>Alexander Stupnikov</name>
-			<email>saarus72@gmail.com</email>
-			<organization>Tyumen State University, Russia</organization>
-			<roles>
-				<role>developer</role>
-			</roles>
-			<timezone>5</timezone>
-		</developer>
-	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -156,7 +114,7 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-    </dependencies>
+	</dependencies>
 
 	<distributionManagement>
 		<snapshotRepository>
