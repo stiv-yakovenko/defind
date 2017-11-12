@@ -1,0 +1,81 @@
+<!--
+This file is to record the changes in the project that will be reported
+in the release history and release announcements. It is reasonable to keep
+changes relatively high level to be understandable by the users but still
+reflect the main changes made in the project.
+Please refer to the following link regarding the format of this file:
+http://maven.apache.org/plugins/maven-changes-plugin/changes.html
+Please avoid making line breaks and tabulation in the description as those 
+will appear in the produced result. 
+-->
+<document xmlns="http://maven.apache.org/changes/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+	<properties>
+		<title>${project.name}</title>
+	</properties>
+	<body>
+	    <release version="${release.version}" date="${buildDate}" description="Changes since the last release">
+	    	<action dev="pavel" type="add">
+				Use Protege OWL Frame List to display proofs; axioms can be edited and deleted; proofs are expanded upon triggering the explain button.
+			</action>
+			<action dev="pavel" type="add">
+				Highlight premises if an inference is selected in the list.
+			</action>
+			<action dev="pavel" type="add">
+				Eliminate cycles in proofs: a proof for an axiom will not use this axioms as one of the premises.
+			</action>
+			<action dev="pavel" type="add">
+				Update proof after changes in the ontologies without recomputing the proof: if an axiom is changed or removed it is removed from the asserted axioms of the proof.
+			</action>	    	
+			<action dev="yevgeny" type="add">
+				Simplify cycle elimination using the PULi library.
+			</action>
+			<action dev="yevgeny" type="add">
+				Define an extension point for proof services; add management of proof services in the UI.
+			</action>
+			<action dev="yevgeny" type="add">
+				Add a manager to keep track of the import closure to quickly check if an axiom is asserted.
+			</action>
+			<action dev="yevgeny" type="add">
+				Support axioms from import ontologies in proofs, including management of duplicate axioms (with different annotations).
+			</action>
+			<action dev="yevgeny" type="add">
+				Reuse the display setting (e.g., row expansion state, selection) for proof parts remained after proof changes.
+			</action>			
+			<action dev="yevgeny" type="add">
+				Add tree-like navigation elements to the proofs UI; kept in synch with the current UI look and feel.
+			</action>
+			<action dev="yevgeny" type="add">
+				Support the standard Protege buttons for explaining, annotating, removing, and editing of axioms in proofs.
+			</action>
+			<action dev="yevgeny" type="add">
+				Distinguish between entailed (yeallow) and stated axioms in proofs; show this information in tooltips when placing the mouse pointer over the axioms.
+			</action>
+			<action dev="yevgeny" type="add">
+				Expand and collapse rows recursively after long mouse press or ALT + click; a recursive expansion limit is used to avoid UI lockup in cases with huge proofs.
+			</action>	
+			<action dev="yevgeny" type="update">
+				Highlight the conclusion of the selected inference in the proof.
+			</action>		
+			<action dev="yevgeny" type="add">
+				Optimize rendering of proofs after expansion/collapse/resize by caching row heights values for list width values.
+			</action>
+			<action dev="yevgeny" type="add">
+				Display examples of inferences used in the proofs as tooltips when the mouse pointer is held over the inferences.
+			</action>
+			<action dev="yevgeny" type="add">
+				A new option to remove unnecessary inferences in proofs using the PULi library.
+			</action>
+			<action dev="yevgeny" type="add">
+				Use Protege keyboard shortcuts (e.g., undo, redo) when the explanation window is active
+			</action>			
+			<action dev="sea" type="add">
+				Define an extension point for proof preferences.
+			</action>
+			<action dev="sea" type="add">
+				Improve proof preferences panel by listing installed proof services and displaying their preferences in separate tabs.
+			</action>
+		</release>		
+	</body>
+</document>

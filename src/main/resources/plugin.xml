@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<plugin>
+    <extension-point id="service" name="Proof Service" schema="schema/${extensionId}.exsd"/>
+    <extension-point id="preferences" name="Proof Preferences" schema="schema/${extensionPreferencesId}.exsd"/>
+    <extension id="ProofBasedInconsistencyExplanation"
+               point="org.protege.editor.owl.inconsistentOntologyExplanation">
+        <name value="Proof Based Inconsistent Ontology Explanation"/>
+        <class value="${pluginId}.ProofBasedInconsistencyExplanationPlugin"/>
+    </extension>
+    <extension id="ProofBasedExplanationPreferences"
+               point="org.protege.editor.core.application.explanationpreferencespanel">
+        <label value="Proofs"/>
+        <class value="${pluginId}.preferences.ProofPrefPanel"/>
+    </extension>
+    <extension id="ProofGeneralPreferences"
+               point="org.liveontologies.protege.explanation.proof.preferences">
+        <label value="General"/>
+        <class value="${pluginId}.preferences.ProofBasedExplanationPreferencesGeneralPanel"/>
+    </extension>
+    <extension id="ExampleViewComponent" point="org.protege.editor.core.application.ViewComponent">
+        <label value="DeFind"/>
+        <class value="edu.stanford.bmir.protege.examples.view.ExampleViewComponent"/>
+        <headerColor value="@org.protege.ontologycolor"/>
+        <category value="@org.protege.ontologycategory"/>
+    </extension>
+
+    <extension id="ExampleWorkspaceTab" point="org.protege.editor.core.application.WorkspaceTab">
+        <label value="DeFind"/>
+        <class value="org.protege.editor.owl.ui.OWLWorkspaceViewsTab"/>
+        <index value="X"/>
+        <editorKitId value="OWLEditorKit"/>
+        <defaultViewConfigFileName value="viewconfig-exampletab.xml"/>
+    </extension>
+</plugin>
