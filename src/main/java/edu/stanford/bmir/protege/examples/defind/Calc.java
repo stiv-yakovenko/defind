@@ -96,6 +96,11 @@ public class Calc {
         OWLAxiom cIsLessC_ = addClassAsterix(manager, c, delta);
         System.out.println("cIsLessC_=" + cIsLessC_.toString().replaceAll(url, ""));
         ProofService proofService = proofServiceManager.getProofServices().iterator().next();
+        try {
+            proofService.initialise();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Proof inferences = proofService.getProof(cIsLessC_);
         OWLClassExpression res = handle(cIsLessC_, inferences, delta, null);
         OWLClassExpression res1 = DNFConverter.toDNF(res);
