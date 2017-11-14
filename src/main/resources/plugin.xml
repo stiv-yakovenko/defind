@@ -1,21 +1,21 @@
 <?xml version="1.0" ?>
 <plugin>
-    <extension-point id="service" name="Proof Service" schema="schema/${extensionId}.exsd"/>
-    <extension-point id="preferences" name="Proof Preferences" schema="schema/${extensionPreferencesId}.exsd"/>
+    <extension-point id="service" name="Proof Service" schema="schema/org.liveontologies.protege.explanation.proof.service.exsd"/>
+    <extension-point id="preferences" name="Proof Preferences" schema="schema/org.liveontologies.protege.explanation.proof.preferences.exsd"/>
     <extension id="ProofBasedInconsistencyExplanation"
                point="org.protege.editor.owl.inconsistentOntologyExplanation">
         <name value="Proof Based Inconsistent Ontology Explanation"/>
-        <class value="${pluginId}.ProofBasedInconsistencyExplanationPlugin"/>
+        <class value="org.liveontologies.ProofBasedInconsistencyExplanationPlugin"/>
     </extension>
     <extension id="ProofBasedExplanationPreferences"
                point="org.protege.editor.core.application.explanationpreferencespanel">
         <label value="Proofs"/>
-        <class value="${pluginId}.preferences.ProofPrefPanel"/>
+        <class value="org.liveontologies.preferences.ProofPrefPanel"/>
     </extension>
     <extension id="ProofGeneralPreferences"
                point="org.liveontologies.protege.explanation.proof.preferences">
         <label value="General"/>
-        <class value="${pluginId}.preferences.ProofBasedExplanationPreferencesGeneralPanel"/>
+        <class value="org.liveontologies.preferences.ProofBasedExplanationPreferencesGeneralPanel"/>
     </extension>
     <extension id="ExampleViewComponent" point="org.protege.editor.core.application.ViewComponent">
         <label value="DeFind"/>
