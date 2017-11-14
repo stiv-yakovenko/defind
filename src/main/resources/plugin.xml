@@ -24,11 +24,11 @@
         <category value="@org.protege.ontologycategory"/>
     </extension>
 
-    <extension id="ExampleWorkspaceTab" point="org.protege.editor.core.application.WorkspaceTab">
-        <label value="DeFind"/>
-        <class value="org.protege.editor.owl.ui.OWLWorkspaceViewsTab"/>
-        <index value="X"/>
-        <editorKitId value="OWLEditorKit"/>
-        <defaultViewConfigFileName value="viewconfig-exampletab.xml"/>
-    </extension>
+    <!--<extension id="ExampleWorkspaceTab" point="org.protege.editor.core.application.WorkspaceTab">-->
+        <!--<label value="DeFind"/>-->
+        <!--<class value="org.protege.editor.owl.ui.OWLWorkspaceViewsTab"/>-->
+        <!--<index value="X"/>-->
+        <!--<editorKitId value="OWLEditorKit"/>-->
+        <!--<defaultViewConfigFileName value="viewconfig-exampletab.xml"/>-->
+    <!--</extension>-->
 </plugin>

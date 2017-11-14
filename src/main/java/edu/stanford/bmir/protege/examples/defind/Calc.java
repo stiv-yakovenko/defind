@@ -88,20 +88,28 @@ public class Calc {
         }
     }
 
-    static OWLClassExpression solve(OWLOntologyManager manager, OWLOntology ont, Set<OWLNamedObject> delta, OWLClass c, ProofServiceManager proofServiceManager) throws OWLOntologyCreationException {
+    static OWLClassExpression solve(OWLOntologyManager manager, OWLOntology srcOnt, Set<OWLNamedObject> delta, OWLClass c, ProofServiceManager proofServiceManager) throws OWLOntologyCreationException {
+        OWLOntology ont = manager.createOntology();
+        manager.addAxioms(ont, srcOnt.getAxioms());
         OWLOntology ont1 = cloneWithAsterisk(manager, ont, delta);
         manager.addAxioms(ont, ont1.getAxioms());
         saveOnt(ont);
         printOntology(ont);
         OWLAxiom cIsLessC_ = addClassAsterix(manager, c, delta);
         System.out.println("cIsLessC_=" + cIsLessC_.toString().replaceAll(url, ""));
-        ProofService proofService = proofServiceManager.getProofServices().iterator().next();
+        Collection<ProofService> proofServices = proofServiceManager.getProofServices();
+        if (proofServices.size()==0) {
+            System.out.println("No proof service");
+            return null;
+        }
+        ProofService proofService = proofServices.iterator().next();
         try {
             proofService.initialise();
         } catch (Exception e) {
             e.printStackTrace();
         }
         Proof inferences = proofService.getProof(cIsLessC_);
+        System.out.println("inferences = "+inferences);
         OWLClassExpression res = handle(cIsLessC_, inferences, delta, null);
         OWLClassExpression res1 = DNFConverter.toDNF(res);
         System.out.println("res=" + res.toString().replace(url, ""));
