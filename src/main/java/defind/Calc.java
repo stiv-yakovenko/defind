@@ -1,12 +1,12 @@
-package edu.stanford.bmir.protege.examples.defind;
+package defind;
 
 /*-
  * #%L
- * Protege Proof-Based Explanation
+ * DeFind
  * $Id:$
  * $HeadURL:$
  * %%
- * Copyright (C) 2014 - 2017 Live Ontologies Project
+ * Copyright (C) 2014 - 2017 Some Organisation
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,12 +23,20 @@ package edu.stanford.bmir.protege.examples.defind;
  */
 
 
+
+
 import org.liveontologies.protege.explanation.proof.ProofServiceManager;
 import org.liveontologies.protege.explanation.proof.service.ProofService;
 import org.liveontologies.puli.Inference;
 import org.liveontologies.puli.Proof;
+import org.protege.editor.owl.OWLEditorKit;
+import org.protege.editor.owl.model.OWLModelManager;
+import org.protege.editor.owl.model.inference.OWLReasonerManager;
+import org.protege.editor.owl.model.inference.ReasonerStatus;
+import org.protege.editor.owl.ui.view.AbstractOWLViewComponent;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.reasoner.ConsoleProgressMonitor;
 import org.semanticweb.owlapi.util.OWLEntityRenamer;
 import uk.ac.manchester.cs.owl.owlapi.*;
 
@@ -37,9 +45,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.function.Consumer;
 
 public class Calc {
-    public static String url = "XXX";
 
     public static void main(String[] args) throws OWLOntologyCreationException {
         OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -47,16 +56,12 @@ public class Calc {
         Set<OWLNamedObject> delta = new HashSet<>();
 
         OWLOntology ont = manager.loadOntologyFromOntologyDocument(new File("C:\\Users\\steve\\Dropbox\\Projects\\git\\protege_workspace\\protege-master\\omit_cyclic_inferences.owl"));
-        Calc.url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();//"http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#";
-//        delta.add(new OWLObjectPropertyImpl(IRI.create("http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#r")));
-//        delta.add(new OWLObjectPropertyImpl(IRI.create("http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#s")));
-//        delta.add(new OWLClassImpl(IRI.create("http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#D1")));
-//        delta.add(new OWLClassImpl(IRI.create("http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#D2")));
-        delta.add(new OWLClassImpl(IRI.create(Calc.url + "#", "C")));
-        delta.add(new OWLClassImpl(IRI.create(Calc.url + "#", "D")));
+        String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();//"http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#";
+        delta.add(new OWLClassImpl(IRI.create(url + "#", "C")));
+        delta.add(new OWLClassImpl(IRI.create(url + "#", "D")));
         OWLClassImpl D1 = new OWLClassImpl(IRI.create(url + "#", "A"));
-        System.out.println("D=" + delta.toString().replaceAll(url, ""));
-        solve(manager, ont, delta, D1, null);
+        System.out.println("D=" + delta.toString().replaceAll(url+"X", ""));
+//        solve(manager, ont, delta, D1, null);
         // System.exit(0);
 
         // Create an instance of ELK
@@ -69,57 +74,105 @@ public class Calc {
         // System.out.println(null);
     }
 
-    static OWLAxiom addClassAsterix(OWLOntologyManager manager, OWLClass c, Set<OWLNamedObject> delta) throws OWLOntologyCreationException {
-        OWLOntology ont = manager.createOntology();
+    static OWLAxiom addClassAsterix(OWLOntologyManager manager, OWLClass c, Set<OWLNamedObject> delta,OWLOntology ont[]) throws OWLOntologyCreationException {
+        ont[0] = manager.createOntology();
         OWLDataFactory fucktory = manager.getOWLDataFactory();
         OWLSubClassOfAxiom axiom = fucktory.getOWLSubClassOfAxiom(c, c);
-        manager.addAxiom(ont, axiom);
-        performRename(manager, ont, delta);
-        OWLAxiom cls = ont.getAxioms().iterator().next();
+        manager.addAxiom(ont[0], axiom);
+        performRename(manager, ont[0], delta);
+        OWLAxiom cls = ont[0].getAxioms().iterator().next();
         OWLClass c_ = (OWLClass) ((OWLSubClassOfAxiomImpl) cls).getSubClass();
         return fucktory.getOWLSubClassOfAxiom(c, c_);
     }
 
     static void printOntology(OWLOntology ont) {
         int i = 0;
+        //String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();//"http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#";
         for (OWLAxiom a : ont.getAxioms()) {
-            System.out.println(i + ":" + a.toString().replaceAll(url, ""));
+            System.out.println(i + ":" + a.toString());
             i++;
         }
     }
+    public static OWLClassExpression solve(OWLOntology srcOnt, Set<OWLNamedObject> delta, OWLClass c,
+                                           AbstractOWLViewComponent aoc) throws OWLOntologyCreationException {
+        Set<OWLAxiom> srcAxioms = srcOnt.getAxioms();
+        System.out.println("srcAxioms = "+srcAxioms.size());
+        OWLEditorKit owlEditorKit = aoc.getOWLEditorKit();
+        OWLOntologyManager manager = owlEditorKit.getOWLModelManager().getOWLOntologyManager();
 
-    static OWLClassExpression solve(OWLOntologyManager manager, OWLOntology srcOnt, Set<OWLNamedObject> delta, OWLClass c, ProofServiceManager proofServiceManager) throws OWLOntologyCreationException {
         OWLOntology ont = manager.createOntology();
         manager.addAxioms(ont, srcOnt.getAxioms());
         OWLOntology ont1 = cloneWithAsterisk(manager, ont, delta);
         manager.addAxioms(ont, ont1.getAxioms());
         saveOnt(ont);
         printOntology(ont);
-        OWLAxiom cIsLessC_ = addClassAsterix(manager, c, delta);
-        System.out.println("cIsLessC_=" + cIsLessC_.toString().replaceAll(url, ""));
+        OWLOntology ont2[] = new OWLOntology[1];
+        OWLAxiom cIsLessC_ = addClassAsterix(manager, c, delta,ont2);
+
+        System.out.println("cIsLessC_=" + cIsLessC_.toString());
+        OWLModelManager modelManager = owlEditorKit.getModelManager();
+        manager.removeAxioms(srcOnt, srcAxioms);
+        manager.addAxioms(srcOnt,ont.getAxioms());
+        OWLReasonerManager owlReasonerManager = modelManager.getOWLReasonerManager();
+        owlReasonerManager.classifyAsynchronously(owlReasonerManager.getReasonerPreferences().getPrecomputedInferences());
+        Thread parent = Thread.currentThread();
+        new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                }
+                if (owlReasonerManager.getReasonerStatus()== ReasonerStatus.INITIALIZED){
+                    synchronized (parent) {
+                        parent.notify();
+                    }
+                    break;
+                }
+            }
+        }).start();
+        try {
+            synchronized (parent) {
+                parent.wait();
+            }
+        } catch (InterruptedException e) {
+        }
+        ProofServiceManager proofServiceManager;
+        try {
+            proofServiceManager  = ProofServiceManager.get(owlEditorKit);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Can't create ProofServiceManager.");
+            return null;
+        }
         Collection<ProofService> proofServices = proofServiceManager.getProofServices();
         if (proofServices.size()==0) {
             System.out.println("No proof service");
-            return null;
         }
         ProofService proofService = proofServices.iterator().next();
         try {
             proofService.initialise();
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Can't init ProofService.");
+            return null;
         }
         Proof inferences = proofService.getProof(cIsLessC_);
-        System.out.println("inferences = "+inferences);
+        System.out.println("inferences = "+inferences.getInferences(cIsLessC_).size());
         OWLClassExpression res = handle(cIsLessC_, inferences, delta, null);
         OWLClassExpression res1 = DNFConverter.toDNF(res);
-        System.out.println("res=" + res.toString().replace(url, ""));
-        System.out.println("res1=" + res1.toString().replace(url, ""));
+        manager.removeAxioms(srcOnt,ont.getAxioms());
+        manager.addAxioms(srcOnt,srcAxioms);
+        manager.removeOntology(ont);
+        manager.removeOntology(ont1);
+        manager.removeOntology(ont2[0]);
+        System.out.println("getClassesInSignature="+srcOnt.getClassesInSignature().size());
+        System.out.println("imports="+srcOnt.getImports().size());
         return res1;
     }
 
     private static void saveOnt(OWLOntology ont) {
         try {
-            FileOutputStream outputStream = new FileOutputStream("ont.xml");
+            FileOutputStream outputStream = new FileOutputStream("ont-"+new Date().getTime()+".xml");
             ont.saveOntology(outputStream);
             try {
                 outputStream.close();
@@ -190,6 +243,7 @@ public class Calc {
         Collection<? extends Inference<OWLAxiom>> inferences = proof.getInferences(root);
         Set<OWLClassExpression> union = new HashSet();
         if (inferences.size() == 0) {
+            System.out.println("inferences.size() == 0");
             if (root instanceof OWLSubClassOfAxiomImpl) {
                 OWLClassExpression superClass = ((OWLSubClassOfAxiomImpl) root).getSuperClass();
                 Set<OWLEntity> signature = superClass.getSignature();
@@ -288,7 +342,6 @@ public class Calc {
                     break;
             }
         }
-        System.out.println();
         Set<OWLClassExpression> union2 = new HashSet();
         for (OWLClassExpression elem : union) {
             if (!isEmpty(elem)) {
@@ -299,18 +352,12 @@ public class Calc {
         if (union2.size() == 1) {
             ret = union2.iterator().next();
         }
-        System.out.println("return " + ret.toString().replaceAll(url, "") + " for " + root.toString().replaceAll(url, ""));
+//        String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();//"http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#";
+//        System.out.println("return " + ret.toString().replaceAll(url, "") + " for " + root.toString().replaceAll(url, ""));
         circles.put(root, ret);
         return ret;
     }
 
-    private static org.semanticweb.owlapi.model.OWLAxiom getEntailment() {
-        // Let's pick some class subsumption we want to explain
-        OWLDataFactory factory = OWLManager.getOWLDataFactory();
-        OWLClass subsumee = factory.getOWLClass(IRI.create("http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#A2"));
-        OWLClass subsumer = factory.getOWLClass(IRI.create("http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#B2"));
-        return factory.getOWLSubClassOfAxiom(subsumee, subsumer);
-    }
 
 }
 /*

@@ -1,12 +1,12 @@
-package edu.stanford.bmir.protege.examples.defind;
+package defind;
 
 /*-
  * #%L
- * Protege Proof-Based Explanation
+ * DeFind
  * $Id:$
  * $HeadURL:$
  * %%
- * Copyright (C) 2014 - 2017 Live Ontologies Project
+ * Copyright (C) 2014 - 2017 Some Organisation
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,10 @@ package edu.stanford.bmir.protege.examples.defind;
  */
 
 
+
 import net.miginfocom.swing.MigLayout;
-import org.liveontologies.protege.explanation.proof.ProofServiceManager;
-import org.protege.editor.owl.OWLEditorKit;
-import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.protege.editor.owl.model.OWLModelManager;
+import org.protege.editor.owl.ui.view.AbstractOWLViewComponent;
 import org.semanticweb.owlapi.model.*;
 
 import javax.swing.*;
@@ -36,7 +36,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 import java.util.*;
 import java.util.List;
 
@@ -76,9 +75,8 @@ public class GridLayoutDemo extends JFrame {
         }
     }
 
-    public static JPanel addComponentsToPane(OWLOntologyManager manager, OWLOntology ont, OWLEditorKit owlEditorKit) {
-        String url  = ont.getOntologyID().getDefaultDocumentIRI().get().toString();
-        Calc.url=url;
+    public static JPanel addComponentsToPane(AbstractOWLViewComponent aoc) {
+        OWLOntology ont = aoc.getOWLModelManager().getActiveOntology();
         Set<OWLNamedObject> allClasses = new HashSet<>();
         allClasses.addAll(ont.getClassesInSignature());
         allClasses.addAll(ont.getObjectPropertiesInSignature());
@@ -95,14 +93,17 @@ public class GridLayoutDemo extends JFrame {
             public void insertUpdate(DocumentEvent e) {
                 upd();
             }
+
             @Override
             public void removeUpdate(DocumentEvent e) {
                 upd();
             }
+
             @Override
             public void changedUpdate(DocumentEvent e) {
                 upd();
             }
+
             void upd() {
                 String txt = filter.getText();
                 java.util.List<String> arr = new ArrayList<>();
@@ -208,19 +209,23 @@ public class GridLayoutDemo extends JFrame {
                     JOptionPane.showMessageDialog(mainPanel, "C is null, select something");
                     return;
                 }
-                ProofServiceManager proofServiceManager = ProofServiceManager.get(owlEditorKit);
-                OWLClassExpression sol = Calc.solve(manager, ont, delta, c[0],proofServiceManager);
+                aoc.getOWLEditorKit().getModelManager();
+                OWLModelManager manager = aoc.getOWLModelManager();
+                OWLOntology ontology = manager.getActiveOntology();
+                String url = ontology.getOntologyID().getDefaultDocumentIRI().get().toString();
+                OWLClassExpression sol = Calc.solve(ontology, delta, c[0], aoc);
                 List<String> results = new ArrayList<>();
                 if (sol instanceof OWLObjectUnionOf) {
                     OWLObjectUnionOf ouo = (OWLObjectUnionOf) sol;
                     Set<OWLClassExpression> operands = ouo.getOperands();
                     operands.forEach(owlClassExpression -> {
-                        results.add(owlClassExpression.toString().replace(url,""));
+                        results.add(owlClassExpression.toString().replace(url, ""));
                     });
                 } else {
-                    results.add(sol.toString().replace(url,""));
+                    results.add(sol.toString().replace(url, ""));
                 }
                 updateList(res, results);
+
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -236,14 +241,22 @@ public class GridLayoutDemo extends JFrame {
         //pane.add(mainPanel);
     }
 
-/*    private static void createAndShowGUI() throws OWLOntologyCreationException {
+
+
+    /*private static void createAndShowGUI() throws OWLOntologyCreationException {
         OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-        OWLOntology ont = manager.loadOntologyFromOntologyDocument(new File("C:\\Users\\steve\\Dropbox\\Projects\\git\\protege_workspace\\protege-master\\omit_cyclic_inferences.owl"));
-        GridLayoutDemo frame = new GridLayoutDemo("GridLayoutDemo");
+        OWLOntology ont = manager.loadOntologyFromOntologyDocument(new File("C:\\Users\\steve\\Dropbox\\Projects\\git\\protege_workspace\\protege-master\\concept_simplification.owl"));
+        GridLayoutDemo frame = new GridLayoutDemo("DeFind");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.addComponentsToPane(frame.getContentPane(), manager, ont, proofServiceManager);
+        ProofServiceManager proofServiceManager = CalcConsoleTest.getProofServiceManager(ont);
+        JPanel panel = frame.addComponentsToPane(manager, ont, proofServiceManager);
+        frame.add(panel);
         frame.setSize(700, 600);
         frame.setVisible(true);
+    }
+
+    public static void main(String[] args) throws OWLOntologyCreationException {
+        createAndShowGUI();
     }*/
 
 

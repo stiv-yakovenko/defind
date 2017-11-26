@@ -1,12 +1,12 @@
-package edu.stanford.bmir.protege.examples.defind;
+package defind;
 
 /*-
  * #%L
- * Protege Proof-Based Explanation
+ * DeFind
  * $Id:$
  * $HeadURL:$
  * %%
- * Copyright (C) 2014 - 2017 Live Ontologies Project
+ * Copyright (C) 2014 - 2017 Some Organisation
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -119,7 +119,7 @@ public class DNFConverter {
 
     //OIO(OUO(A1,A2),OUO(B1,B2)) => OUO ( OIO(A_i,B_j) )
     static OWLClassExpression handleRecursively(OWLClassExpression exp) {
-        System.out.println("handleRecursively " + exp.toString().replace(Calc.url,""));
+        //System.out.println("handleRecursively " + exp.toString().replace(Calc.url,""));
         if (exp instanceof OWLObjectIntersectionOf) {
             OWLObjectIntersectionOf oio = (OWLObjectIntersectionOf) exp;
             Set<OWLClassExpression> ops = oio.getOperands();
@@ -132,16 +132,17 @@ public class DNFConverter {
                     newOps.add(owlClassExpression);
                 }
             });
+            if (newOps.size()==0) {
+                return new OWLObjectUnionOfImpl(newOps);
+            }
             OWLClassExpression res = process(new OWLObjectIntersectionOfImpl(newOps));
-            System.out.println("for " + exp.toString().replace(Calc.url,"") + " returns " + res.toString().replace(Calc.url,""));
             return res;
-        } else if (exp instanceof OWLObjectSomeValuesFrom) {//OSVF(r,OUO(A1..An)) => OUO(OSVF(r,A1),OSVF(r,A2),OSVF(r,An))
+        } else if (exp instanceof OWLObjectSomeValuesFrom) {// OSVF(r,OUO(A1..An)) => OUO(OSVF(r,A1),OSVF(r,A2) ... OSVF(r,An))
             OWLObjectSomeValuesFrom osvf = (OWLObjectSomeValuesFrom) exp;
             OWLClassExpression child = osvf.getFiller();
             OWLClassExpression updChild = handleRecursively(child);
             OWLObjectSomeValuesFromImpl osvf1 = new OWLObjectSomeValuesFromImpl(osvf.getProperty(), updChild);
             OWLClassExpression res = process(osvf1);
-            System.out.println("for " + exp.toString().replace(Calc.url,"") + " returns " + res.toString().replace(Calc.url,""));
             return res;
         } else if (exp instanceof OWLObjectUnionOf) {
             OWLObjectUnionOf ouo = (OWLObjectUnionOf) exp;
@@ -160,7 +161,7 @@ public class DNFConverter {
                 return newOps.iterator().next();
             }
             OWLObjectUnionOfImpl ouo1 = new OWLObjectUnionOfImpl(newOps);
-            System.out.println("for " + exp.toString().replace(Calc.url,"") + " returns " + ouo1.toString().replace(Calc.url,""));
+            //System.out.println("for " + exp.toString().replace(Calc.url,"") + " returns " + ouo1.toString().replace(Calc.url,""));
             return ouo1;
         }
         return exp;

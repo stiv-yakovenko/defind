@@ -45,8 +45,11 @@ public class ProofServiceManager implements Disposable {
 	private final OWLEditorKit kit_;
 
 	private final Collection<ProofService> services_;
-
-	private ProofServiceManager(OWLEditorKit kit) throws Exception {
+	public ProofServiceManager(){
+		kit_=null;
+		services_=null;
+	}
+	public ProofServiceManager(OWLEditorKit kit) throws Exception {
 		this.kit_ = kit;
 		this.services_ = new ArrayList<ProofService>();
 		ProofPluginLoader loader = new ProofPluginLoader(kit_);

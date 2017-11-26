@@ -2,11 +2,11 @@ package edu.stanford.bmir.protege.examples.view;
 
 /*-
  * #%L
- * Protege Proof-Based Explanation
+ * DeFind
  * $Id:$
  * $HeadURL:$
  * %%
- * Copyright (C) 2014 - 2017 Live Ontologies Project
+ * Copyright (C) 2014 - 2017 Some Organisation
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,9 +22,11 @@ package edu.stanford.bmir.protege.examples.view;
  * #L%
  */
 
+
 import java.awt.BorderLayout;
 
-import edu.stanford.bmir.protege.examples.defind.GridLayoutDemo;
+
+import defind.GridLayoutDemo;
 import org.liveontologies.protege.explanation.proof.ProofServiceManager;
 import org.protege.editor.owl.model.OWLModelManager;
 import org.protege.editor.owl.ui.view.AbstractOWLViewComponent;
@@ -38,9 +40,8 @@ public class ExampleViewComponent extends AbstractOWLViewComponent {
 
     @Override
     protected void initialiseOWLView() throws Exception {
-        OWLModelManager owlModelManager = this.getOWLModelManager();
         setLayout(new BorderLayout());
-        JPanel panel = GridLayoutDemo.addComponentsToPane( owlModelManager.getOWLOntologyManager(), owlModelManager.getActiveOntology(),this.getOWLEditorKit());
+        JPanel panel = GridLayoutDemo.addComponentsToPane(this);
         add(panel, BorderLayout.CENTER);
         log.info("Example View Component initialized");
     }
