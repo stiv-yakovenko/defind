@@ -1,30 +1,7 @@
 package defind;
 
-/*-
- * #%L
- * DeFind
- * $Id:$
- * $HeadURL:$
- * %%
- * Copyright (C) 2014 - 2017 Some Organisation
- * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * #L%
- */
-
-
-
 import net.miginfocom.swing.MigLayout;
+import org.protege.editor.owl.OWLEditorKit;
 import org.protege.editor.owl.model.OWLModelManager;
 import org.protege.editor.owl.ui.view.AbstractOWLViewComponent;
 import org.semanticweb.owlapi.model.*;
@@ -201,19 +178,22 @@ public class GridLayoutDemo extends JFrame {
         });
         mainPanel.add(setCButton, "");
         mainPanel.add(cLabel, "");
-        JButton calc = new JButton("calculate");
+        JButton calcButton = new JButton("calculate");
         JList<Object> res = new JList<>();
-        calc.addActionListener(e -> {
+        calcButton.addActionListener(e -> {
             try {
                 if (c[0] == null) {
                     JOptionPane.showMessageDialog(mainPanel, "C is null, select something");
                     return;
                 }
+                OWLEditorKit owlEditorKit = aoc.getOWLEditorKit();
                 aoc.getOWLEditorKit().getModelManager();
                 OWLModelManager manager = aoc.getOWLModelManager();
                 OWLOntology ontology = manager.getActiveOntology();
                 String url = ontology.getOntologyID().getDefaultDocumentIRI().get().toString();
-                OWLClassExpression sol = Calc.solve(ontology, delta, c[0], aoc);
+                Calc calc = new Calc();
+                OWLOntologyManager mgr = aoc.getOWLEditorKit().getOWLModelManager().getOWLOntologyManager();
+                OWLClassExpression sol = (OWLClassExpression) calc.solve(ontology, delta, c[0], owlEditorKit,mgr,manager);
                 List<String> results = new ArrayList<>();
                 if (sol instanceof OWLObjectUnionOf) {
                     OWLObjectUnionOf ouo = (OWLObjectUnionOf) sol;
@@ -230,7 +210,7 @@ public class GridLayoutDemo extends JFrame {
                 e1.printStackTrace();
             }
         });
-        mainPanel.add(calc, "wrap");
+        mainPanel.add(calcButton, "wrap");
         List<String> strs = Arrays.asList(new String[]{});
         updateList(res, strs);
         mainPanel.add(new JLabel(""), "");

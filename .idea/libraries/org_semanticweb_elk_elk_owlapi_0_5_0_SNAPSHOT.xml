@@ -1,0 +1,68 @@
+<component name="libraryTable">
+  <library name="org.semanticweb.elk:elk-owlapi:0.5.0-SNAPSHOT" type="repository">
+    <properties maven-id="org.semanticweb.elk:elk-owlapi:0.5.0-SNAPSHOT" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/elk-owlapi-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-apibinding-4.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-parsers-4.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-oboformat-4.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-tools-4.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-fixers-4.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-rio-4.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-model-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-util-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-api-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-languages-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-datatypes-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-binary-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-n3-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-nquads-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-ntriples-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-rdfjson-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-rdfxml-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-trix-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-turtle-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sesame-rio-trig-2.7.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsonld-java-sesame-0.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsonld-java-0.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpclient-cache-4.2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpclient-4.2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpcore-4.2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/semargl-sesame-0.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/semargl-core-0.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/semargl-rdfa-0.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/semargl-rdf-0.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/trove4j-3.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-18.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guice-4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.inject-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/aopalliance-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guice-assistedinject-4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guice-multibindings-4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsr305-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-io-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-api-4.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xz-1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-impl-4.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/puli-0.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-proof-0.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-owl-model-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-owl-implementation-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-reasoner-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-proofs-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-common-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-concurrent-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-hashing-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-io-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-collections-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-logging-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
