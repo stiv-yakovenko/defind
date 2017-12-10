@@ -39,15 +39,16 @@ public class ConsoleTest {
     static void testEq( OWLClassExpression res, String s) {
         String url = "http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-";
         String s1 = res.toString().replaceAll(url, "");
-        System.out.println("s1="+s1);
+        //System.out.println("s1="+s1);
         if (!s1.equals(s)) throw new RuntimeException("");
     }
     public static void main(String[] args) throws OWLOntologyCreationException {
-        OWLClassExpression res = loadAndSolve("./test/concept_simplification.owl", new String[]{"A"}, "C");
+        OWLClassExpression res;
+        res = loadAndSolve("./test/concept_simplification.owl", new String[]{"A"}, "C");
         testEq(res,"<259#A>");
         res = loadAndSolve("./test/omit_cyclic_inferences.owl", new String[]{"C","D"}, "A");
         testEq(res,"ObjectIntersectionOf(<257#C> <257#D>)");
         res = loadAndSolve("./test/combofDeltaconcepts.owl", new String[]{"D1","D2"}, "A");
-        testEq(res,"ObjectIntersectionOf(<257#C> <257#D>)");
+        testEq(res,"ObjectUnionOf(<260#D1> <260#D2> ObjectIntersectionOf(<260#D1> <260#D2>))");
     }
 }

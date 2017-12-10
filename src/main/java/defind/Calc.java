@@ -117,8 +117,6 @@ public class Calc {
                                              OWLEditorKit owlEditorKit,OWLOntologyManager manager,OWLModelManager modelManager) throws OWLOntologyCreationException {
         Set<OWLAxiom> srcAxioms = srcOnt.getAxioms();
         System.out.println("srcAxioms = "+srcAxioms.size());
-
-
         OWLOntology ont = manager.createOntology();
         manager.addAxioms(ont, srcOnt.getAxioms());
         OWLOntology ont1 = cloneWithAsterisk(manager, ont, delta);
@@ -133,7 +131,7 @@ public class Calc {
         Proof inferences = (Proof) invoke(modelManager,owlEditorKit,cIsLessC_);
         if (inferences==null) return null;
         System.out.println("inferences = "+inferences.getInferences(cIsLessC_).size());
-        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null);
+        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null,srcOnt);
         OWLClassExpression res1 = DNFConverter.toDNF(res);
         manager.removeAxioms(srcOnt,ont.getAxioms());
         manager.addAxioms(srcOnt,srcAxioms);
@@ -209,10 +207,11 @@ public class Calc {
         return null;
     }
 
-    static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta, Map<OWLAxiom, OWLClassExpression> circles) {
+    static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta, Map<OWLAxiom, OWLClassExpression> circles,OWLOntology ont) {
+        String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();
         if (circles == null) {
             circles = new HashMap<>();
-            return handle(root, proof, delta, circles);
+            return handle(root, proof, delta, circles,ont);
         }
         circles.put(root, null);
         Collection<? extends Inference<OWLAxiom>> inferences = proof.getInferences(root);
@@ -238,6 +237,9 @@ public class Calc {
                 }
             }
         }
+        System.out.println("***************************************");
+        String str = root.toString().replaceAll(url, "");
+        System.out.println("root == "+ str);
         for (Inference<OWLAxiom> inf : inferences) {
             Set<OWLClassExpression> pUnion = new HashSet<>();
             Set<OWLAxiom> axioms = new HashSet<>();
@@ -253,7 +255,7 @@ public class Calc {
                     }
                     break;
                 } else {
-                    res = handle(premise, proof, delta, circles);
+                    res = handle(premise, proof, delta, circles,ont);
                 }
                 if (isEmpty(res)) continue;
                 pUnion.add(res);
@@ -269,6 +271,7 @@ public class Calc {
                         union.add(new OWLObjectUnionOfImpl(pUnion));
                     }
                     break;
+                case "Asserted Conclusion":
                 case "Intersection Decomposition":
                     if (root instanceof OWLSubClassOfAxiom) {
                         OWLClassExpression superClass = ((OWLSubClassOfAxiom) root).getSuperClass();
@@ -312,6 +315,7 @@ public class Calc {
                         union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
                     }
                     break;
+
                 default:
                     union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
                     break;
@@ -328,6 +332,7 @@ public class Calc {
             ret = union2.iterator().next();
         }
         circles.put(root, ret);
+        System.out.println("return " + ret.toString().replaceAll(url,""));
         return ret;
     }
 
