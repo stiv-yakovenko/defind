@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Calc {
 
@@ -121,6 +122,7 @@ public class Calc {
         manager.addAxioms(ont, srcOnt.getAxioms());
         OWLOntology ont1 = cloneWithAsterisk(manager, ont, delta);
         manager.addAxioms(ont, ont1.getAxioms());
+        System.out.println("ont1 = "+ont1.toString().replaceAll(Pattern.quote("http://www.semanticweb.org/denis/ontologies/2018/2/untitled-ontology-283"),"") );
         saveOnt(ont);
         printOntology(ont);
         OWLOntology ont2[] = new OWLOntology[1];
@@ -170,12 +172,14 @@ public class Calc {
         s.add(ont1);
         Map<IRI, IRI> map = new HashMap<>();
         for (OWLObjectProperty oop : ont1.getObjectPropertiesInSignature()) {
+            if (oop.isBuiltIn()) continue;
             if (delta.contains(oop)) continue;
             IRI iri = oop.getIRI();
             IRI iri1 = IRI.create(iri.getNamespace(), (iri.getRemainder()).get() + "_");
             map.put(iri, iri1);
         }
         for (OWLClass cls : ont1.getClassesInSignature()) {
+            if (cls.isBuiltIn()) continue;
             if (delta.contains(cls)) continue;
             IRI iri = cls.getIRI();
             IRI iri1 = IRI.create(iri.getNamespace(), iri.getRemainder().get() + "_");

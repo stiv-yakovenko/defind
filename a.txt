@@ -1,0 +1,59 @@
+root == SubClassOf(<#A1> <#A1_>)
+***************************************
+    root == SubClassOf(<#A1> ObjectIntersectionOf(ObjectSomeValuesFrom(<#r> <#A0_>) ObjectSomeValuesFrom(<#s> <#A0_>)))
+    ***************************************
+        root == SubClassOf(<#A1> ObjectSomeValuesFrom(<#r> <#A0_>))
+        ***************************************
+            root == SubClassOf(<#A1> ObjectSomeValuesFrom(<#r> <#A0>))
+            ***************************************
+                root == SubClassOf(<#A1> ObjectIntersectionOf(ObjectSomeValuesFrom(<#r> <#A0>) ObjectSomeValuesFrom(<#s> <#A0>)))
+                ***************************************
+                    root == EquivalentClasses(<#A1> ObjectIntersectionOf(ObjectSomeValuesFrom(<#r> <#A0>) ObjectSomeValuesFrom(<#s> <#A0>)) )
+                    return ObjectUnionOf()
+                return ObjectUnionOf()
+                ***************************************
+                root == SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<#r> <#A0>) ObjectSomeValuesFrom(<#s> <#A0>)) ObjectSomeValuesFrom(<#r> <#A0>))
+                return ObjectUnionOf()
+            return ObjectUnionOf()
+            ***************************************
+            root == SubClassOf(ObjectSomeValuesFrom(<#r> <#A0>) ObjectSomeValuesFrom(<#r> <#A0_>))
+            ***************************************
+            root == SubClassOf(<#A0> <#A0_>)
+            ***************************************
+            root == SubClassOf(<#A0> owl:Thing)
+            ***************************************
+            root == EquivalentClasses(<#A0> owl:Thing )
+            return ObjectUnionOf()
+            ***************************************
+            root == SubClassOf(<#A0_> owl:Thing)
+            ***************************************
+            root == EquivalentClasses(<#A0_> owl:Thing )
+            return ObjectUnionOf()
+            return ObjectUnionOf()
+            return ObjectUnionOf()
+            ***************************************
+            root == SubClassOf(owl:Thing <#A0_>)
+            return ObjectUnionOf()
+            return ObjectUnionOf()
+            return ObjectUnionOf()
+            return ObjectUnionOf()
+            ***************************************
+            root == SubClassOf(<#A1> ObjectSomeValuesFrom(<#s> <#A0_>))
+            ***************************************
+            root == SubClassOf(<#A1> ObjectSomeValuesFrom(<#s> <#A0>))
+            ***************************************
+            root == SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<#r> <#A0>) ObjectSomeValuesFrom(<#s> <#A0>)) ObjectSomeValuesFrom(<#s> <#A0>))
+            return ObjectUnionOf()
+            return ObjectUnionOf()
+            ***************************************
+            root == SubClassOf(ObjectSomeValuesFrom(<#s> <#A0>) ObjectSomeValuesFrom(<#s> <#A0_>))
+            return ObjectUnionOf()
+            return ObjectUnionOf()
+            return ObjectIntersectionOf()
+            ***************************************
+            root == SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<#r> <#A0_>) ObjectSomeValuesFrom(<#s> <#A0_>)) <#A1_>)
+            ***************************************
+            root == EquivalentClasses(<#A1_> ObjectIntersectionOf(ObjectSomeValuesFrom(<#r> <#A0_>) ObjectSomeValuesFrom(<#s> <#A0_>)) )
+            return ObjectUnionOf()
+            return ObjectUnionOf()
+            return ObjectIntersectionOf()
