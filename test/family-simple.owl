@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#"
+     xml:base="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#hasChild -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#hasChild"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Father -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Father">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Man"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#hasChild"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Person"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Female -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Female">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Grandmother -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Grandmother">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Mother"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#hasChild"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Father"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Mother"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Man -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Man">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Person"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Woman"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Mother -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Mother">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Woman"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#hasChild"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Person"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Person">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Woman -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Woman">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Female"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100#Person"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

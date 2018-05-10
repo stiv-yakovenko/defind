@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#"
+         xml:base="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:xml="http://www.w3.org/XML/1998/namespace"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#r1"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#r2"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#s1"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#s2"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#u1"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#u2"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#v1"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#v2"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#A">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B11"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B12"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B21"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B22"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B1"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B11">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#r1"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X11"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#s1"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X11"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B1"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B12">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#u1"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X12"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#v1"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X12"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B1"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B2"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B21">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#r2"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#Y21"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#s2"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#Y21"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B2"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B22">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#u2"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#Y22"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#v2"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#Y22"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B2"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X0">
+        <owl:equivalentClass rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X11">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#r1"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X0"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#s1"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X0"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X12">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#u1"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X0"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#v1"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X0"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#Y21">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#r2"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X0"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#s2"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X0"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#Y22">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#u2"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X0"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#v2"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#X0"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B1"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#B2"/>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282#A"/>
+    </owl:Class>
+</rdf:RDF>

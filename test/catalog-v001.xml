@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="http://www.semanticweb.org/denis/ontologies/2016/3/untitled-ontology-100" uri="family-simple.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-257" uri="omit_cyclic_inferences.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-259" uri="concept_simplification.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-260" uri="combofDeltaconcepts.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="duplicate:http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282" uri="ExpLongDefinitionExpManyConjunctions.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="duplicate:http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282" uri="ExpManyConjunctions.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="duplicate:http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-283" uri="ExpLongDefinition.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="duplicate:http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-283" uri="ExpLongDefinitionSimple.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-287" uri="EquivalentClassesDecompositionTest.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="duplicate:http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-293" uri="AEquivtoThing.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="duplicate:http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-293" uri="ASubclassOfD.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="duplicate:http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-293" uri="ASubclassOfThing.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-296" uri="ASubclassOfBAndC.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-297" uri="D1D2EquivalentClassesTest.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="http://www.semanticweb.org/denis/ontologies/2017/2/untitled-ontology-195" uri="example_for_ELK.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="duplicate:http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239" uri="interpolant_test.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="duplicate:http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239" uri="interpolant_test1.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1525883971813" name="duplicate:http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239" uri="interpolant_test2.owl"/>
+    </group>
+</catalog>

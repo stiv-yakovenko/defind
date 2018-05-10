@@ -1,36 +1,42 @@
 package defind;
 
 import net.miginfocom.swing.MigLayout;
+import org.coode.owlapi.manchesterowlsyntax.ManchesterOWLSyntaxOntologyFormat;
+import org.liveontologies.protege.explanation.proof.ProofServiceManager;
 import org.protege.editor.owl.OWLEditorKit;
 import org.protege.editor.owl.model.OWLModelManager;
+import org.protege.editor.owl.ui.clsdescriptioneditor.ExpressionEditor;
+import org.protege.editor.owl.ui.clsdescriptioneditor.OWLExpressionChecker;
+import org.protege.editor.owl.ui.frame.OWLEntityFrame;
+import org.protege.editor.owl.ui.frame.OWLFrame;
+import org.protege.editor.owl.ui.framelist.OWLFrameList;
 import org.protege.editor.owl.ui.view.AbstractOWLViewComponent;
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntax;
 import org.semanticweb.owlapi.model.*;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDropEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
 
 public class GridLayoutDemo extends JFrame {
-
     public GridLayoutDemo(String name) {
         super(name);
-    }
-
-    static void updateList(JList jlist, java.util.List<String> list) {
-        DefaultListModel model = new DefaultListModel<String>();
-        for (String p : list) {
-            model.addElement(p);
-        }
-        jlist.setModel(model);
-        jlist.setSelectedIndex(0);
     }
 
     static void updateList(JList jlist, Set<OWLNamedObject> list) {
@@ -40,6 +46,40 @@ public class GridLayoutDemo extends JFrame {
         }
         jlist.setModel(model);
         jlist.setSelectedIndex(0);
+    }
+
+    static void updateList(JPanel panel, Collection<OWLClassExpression> list) {
+        panel.removeAll();
+        for (int i = 0; i < 3; i++) {
+            for (OWLClassExpression p : list) {
+                String name = ((OWLNamedObject) p).getIRI().getShortForm();
+                JEditorPane jep = new JEditorPane("text/html", name+"QWQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+                //jep.setPreferredSize(new Dimension(200,20));
+                jep.setEditable(false);
+                jep.setOpaque(false);
+                panel.add(jep);
+            }
+        }
+        panel.add( Box.createVerticalStrut(400) );
+    }
+
+    static OWLClass transToClass(Transferable transferable) {
+        DataFlavor[] transferDataFlavors = transferable.getTransferDataFlavors();
+        for (DataFlavor df : transferDataFlavors) {
+            Object transferData;
+            try {
+                transferData = transferable.getTransferData(df);
+                if (transferData instanceof List) {
+                    OWLClass cls = (OWLClass) ((List) transferData).get(0);
+                    return cls;
+                }
+            } catch (UnsupportedFlavorException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     static void removeElem(int idx, Set<OWLNamedObject> delta, JList deltaList) {
@@ -52,63 +92,16 @@ public class GridLayoutDemo extends JFrame {
         }
     }
 
-    public static JPanel addComponentsToPane(AbstractOWLViewComponent aoc) {
+    static public JPanel addComponentsToPane(AbstractOWLViewComponent aoc) {
+        JPanel mainPanel = new JPanel();
+        JPanel resPanel = new JPanel();
         OWLOntology ont = aoc.getOWLModelManager().getActiveOntology();
         Set<OWLNamedObject> allClasses = new HashSet<>();
         allClasses.addAll(ont.getClassesInSignature());
         allClasses.addAll(ont.getObjectPropertiesInSignature());
-        JPanel mainPanel = new JPanel();
         Set<OWLNamedObject> delta = new HashSet<>();
-        OWLClass c[] = new OWLClass[1];
-        mainPanel.setLayout(new MigLayout("", "[][grow, left][][grow][]", "[][][grow][][grow][]"));
-        mainPanel.add(new JLabel("find:"));
-        JTextField filter = new JTextField("", 10);
         Map<Integer, OWLNamedObject> idxToObject = new HashMap<>();
-        JList jList = new JList(new String[]{});
-        filter.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                upd();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                upd();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                upd();
-            }
-
-            void upd() {
-                String txt = filter.getText();
-                java.util.List<String> arr = new ArrayList<>();
-                int i = 0;
-                idxToObject.clear();
-                for (OWLNamedObject elem : allClasses) {
-                    if (!elem.getIRI().getShortForm().contains(txt)) continue;
-                    arr.add(elem.getIRI().getShortForm());
-                    idxToObject.put(i, elem);
-                    i++;
-                }
-                updateList(jList, arr);
-            }
-        });
         JList deltaList = new JList(new String[]{});
-        jList.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent evt) {
-                JList list = (JList) evt.getSource();
-                if (evt.getClickCount() == 2) {
-                    int idx = list.locationToIndex(evt.getPoint());
-                    if (idx < 0) return;
-                    OWLNamedObject owlNamedObject = idxToObject.get(idx);
-                    delta.add(owlNamedObject);
-                    updateList(deltaList, delta);
-                }
-            }
-        });
         deltaList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
@@ -127,62 +120,24 @@ public class GridLayoutDemo extends JFrame {
             idxToObject.put(i, elem);
             i++;
         }
-        updateList(jList, arr);
         updateList(deltaList, new HashSet<>());
-        mainPanel.add(filter, "wrap");
-        JScrollPane jScrollPane = new JScrollPane(jList);
-        Dimension d = jList.getPreferredSize();
-        jScrollPane.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
-        jList.setPreferredSize(d);
-        mainPanel.add(jScrollPane, "growy, growx, span 2 4");
-        mainPanel.add(new JPanel(), "");
-        mainPanel.add(new JLabel("Delta:"), "wrap");
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        JButton addButton = new JButton("->");
-        addButton.addActionListener(new AbstractAction() {
+        final OWLExpressionChecker<OWLClassExpression> checker = aoc.getOWLModelManager().getOWLExpressionCheckerFactory().getOWLClassExpressionChecker();
+        ExpressionEditor owlDescriptionEditor = new ExpressionEditor<>(aoc.getOWLEditorKit(), checker);
+        owlDescriptionEditor.setPreferredSize(new Dimension(100, 40));
+        deltaList.setDropTarget(new DropTarget() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                int idx = jList.getSelectedIndex();
-                if (idx < 0) return;
-                OWLNamedObject owlClass = idxToObject.get(idx);
-                delta.add(owlClass);
+            public synchronized void drop(DropTargetDropEvent dtde) {
+                Transferable transferable = dtde.getTransferable();
+                delta.add(transToClass(transferable));
                 updateList(deltaList, delta);
             }
         });
-        panel.add(addButton);
-        JButton removeButton = new JButton("<-");
-        removeButton.addActionListener(e -> {
-            int idx = deltaList.getSelectedIndex();
-            if (idx < 0) return;
-            removeElem(idx, delta, deltaList);
-        });
-        JButton clearButton = new JButton("clear");
-        clearButton.addActionListener(e -> {
-            delta.clear();
-            updateList(deltaList, delta);
-        });
-        panel.add(removeButton);
-        panel.add(clearButton);
-        mainPanel.add(panel, "");
-        mainPanel.add(new JScrollPane(deltaList), "growx,growy,span2,wrap");
-        JButton setCButton = new JButton("->");
-        JLabel cLabel = new JLabel("C = ");
-        setCButton.addActionListener(e -> {
-            int idx = jList.getSelectedIndex();
-            if (idx < 0) return;
-            OWLNamedObject cls = idxToObject.get(idx);
-            if (!(cls instanceof OWLClass)) return;
-            c[0] = ((OWLClass) cls);
-            cLabel.setText("C = " + cls.getIRI().getShortForm());
-        });
-        mainPanel.add(setCButton, "");
-        mainPanel.add(cLabel, "");
         JButton calcButton = new JButton("calculate");
-        JList<Object> res = new JList<>();
+        calcButton.setPreferredSize(new Dimension(100, 40));
+        JPanel res = new JPanel();
         calcButton.addActionListener(e -> {
             try {
-                if (c[0] == null) {
+                if (!owlDescriptionEditor.isWellFormed()) {
                     JOptionPane.showMessageDialog(mainPanel, "C is null, select something");
                     return;
                 }
@@ -190,38 +145,48 @@ public class GridLayoutDemo extends JFrame {
                 aoc.getOWLEditorKit().getModelManager();
                 OWLModelManager manager = aoc.getOWLModelManager();
                 OWLOntology ontology = manager.getActiveOntology();
-                String url = ontology.getOntologyID().getDefaultDocumentIRI().get().toString();
                 Calc calc = new Calc();
+                OWLClass cls = (OWLClass) owlDescriptionEditor.createObject();
                 OWLOntologyManager mgr = aoc.getOWLEditorKit().getOWLModelManager().getOWLOntologyManager();
-                OWLClassExpression sol = (OWLClassExpression) calc.solve(ontology, delta, c[0], owlEditorKit,mgr,manager);
-                List<String> results = new ArrayList<>();
+                OWLClassExpression sol = (OWLClassExpression) calc.solve(ontology, delta, cls, owlEditorKit, mgr, manager);
+                Collection<OWLClassExpression> rs = new ArrayList<>();
                 if (sol instanceof OWLObjectUnionOf) {
                     OWLObjectUnionOf ouo = (OWLObjectUnionOf) sol;
                     Set<OWLClassExpression> operands = ouo.getOperands();
                     operands.forEach(owlClassExpression -> {
-                        results.add(owlClassExpression.toString().replace(url, ""));
+                        rs.add(owlClassExpression);
                     });
                 } else {
-                    results.add(sol.toString().replace(url, ""));
+                    rs.add(sol);
                 }
-                updateList(res, results);
-
+                updateList(resPanel, rs);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         });
-        mainPanel.add(calcButton, "wrap");
         List<String> strs = Arrays.asList(new String[]{});
         updateList(res, strs);
-        mainPanel.add(new JLabel(""), "");
-        mainPanel.add(new JScrollPane(res), "growx,growy, span 2");
-        System.out.println("initializing example tab");
+        resPanel.setLayout(new BoxLayout(resPanel, BoxLayout.Y_AXIS));
+        mainPanel.setLayout(new MigLayout("", "[][grow][grow][]", "[][][][grow]"));
+        mainPanel.add(new JLabel("Class expression"), "wrap");
+        mainPanel.add(owlDescriptionEditor, "growx,span 3");
+        mainPanel.add(calcButton, "wrap");
+        mainPanel.add(new JLabel("Definitions found"), "span 2");
+        mainPanel.add(new JLabel("Target signature"), "span 2,wrap");
+        JScrollPane jsp = new JScrollPane(resPanel);
+        mainPanel.add(jsp, "growy, growx, span 2");
+        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        mainPanel.add(new JScrollPane(deltaList), "growx,growy,span 2");
         return mainPanel;
-//        pane.add(new JButton("test"));
-        //pane.add(mainPanel);
     }
 
+    private static void updateList(JPanel panel, List<String> results) {
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        for (String res : results) {
+            panel.add(new JLabel(res));
+        }
 
+    }
 
     /*private static void createAndShowGUI() throws OWLOntologyCreationException {
         OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -241,3 +206,11 @@ public class GridLayoutDemo extends JFrame {
 
 
 }
+/*        cLabel.setDropTarget(new DropTarget() {
+            @Override
+            public synchronized void drop(DropTargetDropEvent dtde) {
+                Transferable transferable = dtde.getTransferable();
+                c[0] = transToClass(transferable);
+                cLabel.setText("C = " + c[0].getIRI().getShortForm());
+            }
+        });*/

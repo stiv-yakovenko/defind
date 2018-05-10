@@ -1,8 +1,6 @@
 package defind;
 
 
-
-
 import org.liveontologies.protege.explanation.proof.ProofServiceManager;
 import org.liveontologies.protege.explanation.proof.service.ProofService;
 import org.liveontologies.puli.DynamicProof;
@@ -12,6 +10,7 @@ import org.protege.editor.owl.OWLEditorKit;
 import org.protege.editor.owl.model.OWLModelManager;
 import org.protege.editor.owl.model.inference.OWLReasonerManager;
 import org.protege.editor.owl.model.inference.ReasonerStatus;
+import org.protege.editor.owl.ui.framelist.OWLFrameList;
 import org.protege.editor.owl.ui.view.AbstractOWLViewComponent;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
@@ -37,7 +36,7 @@ public class Calc {
         delta.add(new OWLClassImpl(IRI.create(url + "#", "C")));
         delta.add(new OWLClassImpl(IRI.create(url + "#", "D")));
         OWLClassImpl D1 = new OWLClassImpl(IRI.create(url + "#", "A"));
-        System.out.println("D=" + delta.toString().replaceAll(url+"X", ""));
+        System.out.println("D=" + delta.toString().replaceAll(url + "X", ""));
 //        solve(manager, ont, delta, D1, null);
         // System.exit(0);
 
@@ -49,7 +48,7 @@ public class Calc {
         // System.out.println(null);
     }
 
-    static OWLAxiom addClassAsterix(OWLOntologyManager manager, OWLClass c, Set<OWLNamedObject> delta,OWLOntology ont[]) throws OWLOntologyCreationException {
+    public static OWLAxiom addClassAsterix(OWLOntologyManager manager, OWLClass c, Set<OWLNamedObject> delta, OWLOntology ont[]) throws OWLOntologyCreationException {
         ont[0] = manager.createOntology();
         OWLDataFactory fucktory = manager.getOWLDataFactory();
         OWLSubClassOfAxiom axiom = fucktory.getOWLSubClassOfAxiom(c, c);
@@ -68,6 +67,7 @@ public class Calc {
             i++;
         }
     }
+
     public Object invoke(OWLModelManager modelManager, OWLEditorKit owlEditorKit, OWLAxiom cIsLessC_) {
         OWLReasonerManager owlReasonerManager = modelManager.getOWLReasonerManager();
         owlReasonerManager.classifyAsynchronously(owlReasonerManager.getReasonerPreferences().getPrecomputedInferences());
@@ -78,7 +78,7 @@ public class Calc {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
                 }
-                if (owlReasonerManager.getReasonerStatus()== ReasonerStatus.INITIALIZED){
+                if (owlReasonerManager.getReasonerStatus() == ReasonerStatus.INITIALIZED) {
                     synchronized (parent) {
                         parent.notify();
                     }
@@ -94,14 +94,14 @@ public class Calc {
         }
         ProofServiceManager proofServiceManager;
         try {
-            proofServiceManager  = ProofServiceManager.get(owlEditorKit);
+            proofServiceManager = ProofServiceManager.get(owlEditorKit);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Can't create ProofServiceManager.");
             return null;
         }
         Collection<ProofService> proofServices = proofServiceManager.getProofServices();
-        if (proofServices.size()==0) {
+        if (proofServices.size() == 0) {
             System.out.println("No proof service");
         }
         ProofService proofService = proofServices.iterator().next();
@@ -114,40 +114,41 @@ public class Calc {
         }
         return proofService.getProof(cIsLessC_);
     }
+
     public Object solve(OWLOntology srcOnt, Set<OWLNamedObject> delta, OWLClass c,
-                                             OWLEditorKit owlEditorKit,OWLOntologyManager manager,OWLModelManager modelManager) throws OWLOntologyCreationException {
+                        OWLEditorKit owlEditorKit, OWLOntologyManager manager, OWLModelManager modelManager) throws OWLOntologyCreationException {
         Set<OWLAxiom> srcAxioms = srcOnt.getAxioms();
-        System.out.println("srcAxioms = "+srcAxioms.size());
+        System.out.println("srcAxioms = " + srcAxioms.size());
         OWLOntology ont = manager.createOntology();
         manager.addAxioms(ont, srcOnt.getAxioms());
         OWLOntology ont1 = cloneWithAsterisk(manager, ont, delta);
         manager.addAxioms(ont, ont1.getAxioms());
-        System.out.println("ont1 = "+ont1.toString().replaceAll(Pattern.quote("http://www.semanticweb.org/denis/ontologies/2018/2/untitled-ontology-283"),"") );
+        System.out.println("ont = " + ont.toString().replaceAll(Pattern.quote("http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-293"), ""));
         saveOnt(ont);
         printOntology(ont);
         OWLOntology ont2[] = new OWLOntology[1];
-        OWLAxiom cIsLessC_ = addClassAsterix(manager, c, delta,ont2);
+        OWLAxiom cIsLessC_ = addClassAsterix(manager, c, delta, ont2);
         System.out.println("cIsLessC_=" + cIsLessC_.toString());
         manager.removeAxioms(srcOnt, srcAxioms);
-        manager.addAxioms(srcOnt,ont.getAxioms());
-        Proof inferences = (Proof) invoke(modelManager,owlEditorKit,cIsLessC_);
-        if (inferences==null) return null;
-        System.out.println("inferences = "+inferences.getInferences(cIsLessC_).size());
-        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null,srcOnt);
+        manager.addAxioms(srcOnt, ont.getAxioms());
+        Proof inferences = (Proof) invoke(modelManager, owlEditorKit, cIsLessC_);
+        if (inferences == null) return null;
+        System.out.println("inferences = " + inferences.getInferences(cIsLessC_).size());
+        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null, srcOnt);
         OWLClassExpression res1 = DNFConverter.toDNF(res);
-        manager.removeAxioms(srcOnt,ont.getAxioms());
-        manager.addAxioms(srcOnt,srcAxioms);
+        manager.removeAxioms(srcOnt, ont.getAxioms());
+        manager.addAxioms(srcOnt, srcAxioms);
         manager.removeOntology(ont);
         manager.removeOntology(ont1);
         manager.removeOntology(ont2[0]);
-        System.out.println("getClassesInSignature="+srcOnt.getClassesInSignature().size());
-        System.out.println("imports="+srcOnt.getImports().size());
+        System.out.println("getClassesInSignature=" + srcOnt.getClassesInSignature().size());
+        System.out.println("imports=" + srcOnt.getImports().size());
         return res1;
     }
 
     private static void saveOnt(OWLOntology ont) {
         try {
-            FileOutputStream outputStream = new FileOutputStream("ont-"+new Date().getTime()+".xml");
+            FileOutputStream outputStream = new FileOutputStream("ont-" + new Date().getTime() + ".xml");
             ont.saveOntology(outputStream);
             try {
                 outputStream.close();
@@ -211,11 +212,35 @@ public class Calc {
         return null;
     }
 
-    static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta, Map<OWLAxiom, OWLClassExpression> circles,OWLOntology ont) {
+    static boolean allSymbolsInDelta(Set<OWLNamedObject> delta, Set<OWLEntity> objs) {
+        for (OWLEntity o : objs) {
+            if (o.isBuiltIn()) {
+                continue;
+            }
+            if (!delta.contains(o)) return false;
+        }
+        return true;
+    }
+
+    static OWLClassExpression merge(Set<OWLClassExpression> union){
+        Set<OWLClassExpression> union2 = new HashSet();
+        for (OWLClassExpression elem : union) {
+            if (!isEmpty(elem)) {
+                union2.add(elem);
+            }
+        }
+        OWLClassExpression ret = new OWLObjectUnionOfImpl(union2);
+        if (union2.size() == 1) {
+            ret = union2.iterator().next();
+        }
+        return ret;
+    }
+
+    static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta, Map<OWLAxiom, OWLClassExpression> circles, OWLOntology ont) {
         String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();
         if (circles == null) {
             circles = new HashMap<>();
-            return handle(root, proof, delta, circles,ont);
+            return handle(root, proof, delta, circles, ont);
         }
         circles.put(root, null);
         Collection<? extends Inference<OWLAxiom>> inferences = proof.getInferences(root);
@@ -225,7 +250,7 @@ public class Calc {
             if (root instanceof OWLSubClassOfAxiomImpl) {
                 OWLClassExpression superClass = ((OWLSubClassOfAxiomImpl) root).getSuperClass();
                 Set<OWLEntity> signature = superClass.getSignature();
-                if (delta.containsAll(signature)) {
+                if (allSymbolsInDelta(delta, signature)) {
                     union.add(superClass);
                 } else {
                     union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
@@ -235,15 +260,29 @@ public class Calc {
                 OWLEquivalentClassesAxiomImpl eq = (OWLEquivalentClassesAxiomImpl) root;
                 for (OWLClassExpression el : eq.getClassExpressionsAsList()) {
                     Set<OWLEntity> signature = el.getSignature();
-                    if (delta.containsAll(signature)) {
+                    if (allSymbolsInDelta(delta, signature)) {
                         union.add(el);
                     }
                 }
             }
         }
+        if (inferences.size()==1 && inferences.iterator().next().getPremises().size()==0){
+            if (root instanceof OWLSubClassOfAxiomImpl) {
+                OWLClassExpression superClass = ((OWLSubClassOfAxiomImpl) root).getSuperClass();
+                Set<OWLEntity> signature = superClass.getSignature();
+                if (allSymbolsInDelta(delta, signature)) {
+                    union.add(superClass);
+                } else {
+                    union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
+                }
+                System.out.println("inferences.size()==1 premises.size() == 0");
+                return merge(union);
+            }
+        }
         System.out.println("***************************************");
         String str = root.toString().replaceAll(url, "");
-        System.out.println("root == "+ str);
+        System.out.println("root == " + str);
+
         for (Inference<OWLAxiom> inf : inferences) {
             Set<OWLClassExpression> pUnion = new HashSet<>();
             Set<OWLAxiom> axioms = new HashSet<>();
@@ -259,15 +298,22 @@ public class Calc {
                     }
                     break;
                 } else {
-                    res = handle(premise, proof, delta, circles,ont);
+                    res = handle(premise, proof, delta, circles, ont);
                 }
                 if (isEmpty(res)) continue;
                 pUnion.add(res);
             }
             switch (inf.getName()) {
-                case "Equivalent Classes Decomposition":
-                    union.addAll(pUnion);
-                    break;
+                case "Equivalent Classes Decomposition": {
+                    OWLClassExpression superClass = ((OWLSubClassOfAxiom) root).getSuperClass();
+                    Set<OWLEntity> signature = superClass.getSignature();
+                    if (allSymbolsInDelta(delta, signature)) {
+                        union.add(superClass);
+                    } else {
+                        union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
+                    }
+                }
+                break;
                 case "Class Hierarchy":
                     if (pUnion.size() == 1) {
                         union.add(pUnion.iterator().next());
@@ -280,7 +326,7 @@ public class Calc {
                     if (root instanceof OWLSubClassOfAxiom) {
                         OWLClassExpression superClass = ((OWLSubClassOfAxiom) root).getSuperClass();
                         Set<OWLEntity> signature = superClass.getSignature();
-                        if (delta.containsAll(signature)) {
+                        if (allSymbolsInDelta(delta, signature)) {
                             union.add(superClass);
                         } else {
                             union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
@@ -291,7 +337,9 @@ public class Calc {
                     break;
                 case "Existential Filler Expansion":
                     Set<OWLObjectProperty> rSet = ((OWLSubClassOfAxiomImpl) root).getSubClass().getObjectPropertiesInSignature();
-                    if (delta.containsAll(rSet)) {
+                    Set<OWLEntity> s1 = new HashSet<>();
+                    s1.addAll(rSet);
+                    if (allSymbolsInDelta(delta, s1)) {
                         if (pUnion.size() > 0) {
                             OWLClassExpression mark = pUnion.iterator().next();
                             if (!isEmpty(mark)) {
@@ -325,18 +373,9 @@ public class Calc {
                     break;
             }
         }
-        Set<OWLClassExpression> union2 = new HashSet();
-        for (OWLClassExpression elem : union) {
-            if (!isEmpty(elem)) {
-                union2.add(elem);
-            }
-        }
-        OWLClassExpression ret = new OWLObjectUnionOfImpl(union2);
-        if (union2.size() == 1) {
-            ret = union2.iterator().next();
-        }
+        OWLClassExpression ret = merge(union);
         circles.put(root, ret);
-        System.out.println("return " + ret.toString().replaceAll(url,""));
+        System.out.println("return " + ret.toString().replaceAll(url, ""));
         return ret;
     }
 

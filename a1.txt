@@ -1,0 +1,9 @@
+Ontology(OntologyID(Anonymous-2)) [Axioms: 7 Logical Axioms: 4]
+First 20 axioms: {
+SubClassOf(<#D> <#A>)
+SubClassOf(<#A> <#D>)
+SubClassOf(<#A_> <#D>)
+SubClassOf(<#D> <#A_>)
+Declaration(Class(<#A>))
+Declaration(Class(<#A_>))
+Declaration(Class(<#D>)) }
