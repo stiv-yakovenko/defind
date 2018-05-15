@@ -26,9 +26,7 @@ package edu.stanford.bmir.protege.examples.view;
 import java.awt.BorderLayout;
 
 
-import defind.GridLayoutDemo;
-import org.liveontologies.protege.explanation.proof.ProofServiceManager;
-import org.protege.editor.owl.model.OWLModelManager;
+import defind.MainForm;
 import org.protege.editor.owl.ui.view.AbstractOWLViewComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +39,7 @@ public class ExampleViewComponent extends AbstractOWLViewComponent {
     @Override
     protected void initialiseOWLView() throws Exception {
         setLayout(new BorderLayout());
-        JPanel panel = GridLayoutDemo.addComponentsToPane(this);
+        JPanel panel = MainForm.addComponentsToPane(this);
         add(panel, BorderLayout.CENTER);
         log.info("Example View Component initialized");
     }

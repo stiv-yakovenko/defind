@@ -1,17 +1,14 @@
 package defind;
 
 
-import org.liveontologies.protege.explanation.proof.ProofServiceManager;
+import org.liveontologies.protege.explanation.proof.MyProofServiceManager;
 import org.liveontologies.protege.explanation.proof.service.ProofService;
-import org.liveontologies.puli.DynamicProof;
 import org.liveontologies.puli.Inference;
 import org.liveontologies.puli.Proof;
 import org.protege.editor.owl.OWLEditorKit;
 import org.protege.editor.owl.model.OWLModelManager;
 import org.protege.editor.owl.model.inference.OWLReasonerManager;
 import org.protege.editor.owl.model.inference.ReasonerStatus;
-import org.protege.editor.owl.ui.framelist.OWLFrameList;
-import org.protege.editor.owl.ui.view.AbstractOWLViewComponent;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.util.OWLEntityRenamer;
@@ -37,15 +34,6 @@ public class Calc {
         delta.add(new OWLClassImpl(IRI.create(url + "#", "D")));
         OWLClassImpl D1 = new OWLClassImpl(IRI.create(url + "#", "A"));
         System.out.println("D=" + delta.toString().replaceAll(url + "X", ""));
-//        solve(manager, ont, delta, D1, null);
-        // System.exit(0);
-
-        // Create an instance of ELK
-
-/*        prover.precomputeInferences(InferenceType.CLASS_HIERARCHY);
-        OWLAxiom entailment = getEntailment();
-        Proof inferences = prover.getProof(entailment);*/
-        // System.out.println(null);
     }
 
     public static OWLAxiom addClassAsterix(OWLOntologyManager manager, OWLClass c, Set<OWLNamedObject> delta, OWLOntology ont[]) throws OWLOntologyCreationException {
@@ -92,25 +80,27 @@ public class Calc {
             }
         } catch (InterruptedException e) {
         }
-        ProofServiceManager proofServiceManager;
+
+        MyProofServiceManager proofServiceManager;
         try {
-            proofServiceManager = ProofServiceManager.get(owlEditorKit);
+            proofServiceManager = MyProofServiceManager.get(owlEditorKit);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Can't create ProofServiceManager.");
             return null;
         }
         Collection<ProofService> proofServices = proofServiceManager.getProofServices();
-        if (proofServices.size() == 0) {
+        if (proofServices==null || proofServices.size() == 0) {
             System.out.println("No proof service");
         }
         ProofService proofService = proofServices.iterator().next();
+        if (proofService==null) {
+            return null;
+        }
+
         try {
             proofService.initialise();
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Can't init ProofService.");
-            return null;
         }
         return proofService.getProof(cIsLessC_);
     }
@@ -378,17 +368,4 @@ public class Calc {
         System.out.println("return " + ret.toString().replaceAll(url, ""));
         return ret;
     }
-
-
 }
-
-
-
-
-
-/*
-OSVF(r,OUO(A1..An)) => OUO(OSVF(r,A1),OSVF(r,A2),OSVF(r,An))
-OIO(OUO(A1,A2),OUO(B1,B2)) => OUO ( OIO(A_i,B_j) )
-OUO должен быть только снаружи
-
-* */

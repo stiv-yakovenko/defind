@@ -187,9 +187,8 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-SymbolicName>org.liveontologies.protege.explanation.proof;singleton:=true</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>org.stivyakovenko.defind;singleton:=true</Bundle-SymbolicName>
                         <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
-                        <Export-Package>org.liveontologies.protege.explanation.proof.service,org.liveontologies.protege.explanation.proof.preferences</Export-Package>
                         <Update-Url>${update.url}/p5.update.properties</Update-Url>
                     </instructions>
                     <executions>
