@@ -46,7 +46,7 @@ public class MainForm extends JFrame {
         for (OWLClassExpression p : list) {
             String html =htmlHead+ RenderHTML.render(p,objNames);
             html += "&nbsp;<a class='q' href='_src_'>&nbsp;?&nbsp;</a>".replaceAll("_src_","EXPL:"+p.toString());
-            JEditorPane jep = new JEditorPane("text/html", html);
+            JEditorPane jep = new JEditorPane("text/html",html);
             jep.addHyperlinkListener(e -> {
                 if (e.getEventType() != ACTIVATED) return;
                 if(e.getDescription().startsWith("EXPL")){
@@ -73,14 +73,14 @@ public class MainForm extends JFrame {
         panel.add(Box.createVerticalStrut(400));
     }
 
-    static OWLClass transToClass(Transferable transferable) {
+    static OWLNamedObject transToClass(Transferable transferable) {
         DataFlavor[] transferDataFlavors = transferable.getTransferDataFlavors();
         for (DataFlavor df : transferDataFlavors) {
             Object transferData;
             try {
                 transferData = transferable.getTransferData(df);
                 if (transferData instanceof List) {
-                    OWLClass cls = (OWLClass) ((List) transferData).get(0);
+                    OWLNamedObject cls = (OWLNamedObject) ((List) transferData).get(0);
                     return cls;
                 }
             } catch (UnsupportedFlavorException e) {
@@ -177,6 +177,7 @@ public class MainForm extends JFrame {
         List<String> strs = Arrays.asList(new String[]{});
         updateList(res, strs);
         resPanel.setLayout(new BoxLayout(resPanel, BoxLayout.Y_AXIS));
+        resPanel.setBackground(Color.WHITE);
         mainPanel.setLayout(new MigLayout("", "[][grow][grow][]", "[][][][grow]"));
         mainPanel.add(new JLabel("Class expression"), "wrap");
         mainPanel.add(owlDescriptionEditor, "growx,span 3");
