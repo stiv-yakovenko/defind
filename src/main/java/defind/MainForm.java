@@ -11,6 +11,8 @@ import org.protege.editor.owl.ui.view.AbstractOWLViewComponent;
 import org.semanticweb.owlapi.model.*;
 
 import javax.swing.*;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -42,14 +44,17 @@ public class MainForm extends JFrame {
         panel.removeAll();
         OWLEditorKit owlEditorKit = aoc.getOWLEditorKit();
         Map<String, Object> objNames = new HashMap<>();
-        String htmlHead = "<style>.q {background-color:#AAAAAA;text-decoration: none; border-radius:10px; color:white}</style>";
         for (OWLClassExpression p : list) {
-            String html =htmlHead+ RenderHTML.render(p,objNames);
+            String html =RenderHTML.render(p,objNames);
             html += "&nbsp;<a class='q' href='_src_'>&nbsp;?&nbsp;</a>".replaceAll("_src_","EXPL:"+p.toString());
             JEditorPane jep = new JEditorPane("text/html",html);
+            HTMLEditorKit kit = new HTMLEditorKit();
+            StyleSheet styleSheet = kit.getStyleSheet();
+            styleSheet.addRule(".q {background-color:#AAAAAA;text-decoration: none; border-radius:10px; color:white}");
             jep.addHyperlinkListener(e -> {
                 if (e.getEventType() != ACTIVATED) return;
                 if(e.getDescription().startsWith("EXPL")){
+                    Calc.launchReasoner(owlEditorKit.getOWLModelManager());
                     String key = e.getDescription().substring(5);
                     OWLClassExpression obj = (OWLClassExpression) objNames.get(key);
                     ExplanationManager explanationManager = owlEditorKit.getOWLModelManager().getExplanationManager();
@@ -177,7 +182,7 @@ public class MainForm extends JFrame {
         List<String> strs = Arrays.asList(new String[]{});
         updateList(res, strs);
         resPanel.setLayout(new BoxLayout(resPanel, BoxLayout.Y_AXIS));
-        resPanel.setBackground(Color.WHITE);
+//        resPanel.setBackground(Color.WHITE);
         mainPanel.setLayout(new MigLayout("", "[][grow][grow][]", "[][][][grow]"));
         mainPanel.add(new JLabel("Class expression"), "wrap");
         mainPanel.add(owlDescriptionEditor, "growx,span 3");
@@ -187,6 +192,7 @@ public class MainForm extends JFrame {
         JScrollPane jsp = new JScrollPane(resPanel);
         mainPanel.add(jsp, "growy, growx, span 2");
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         mainPanel.add(new JScrollPane(deltaList), "growx,growy,span 2");
         return mainPanel;
     }

@@ -3,6 +3,7 @@ package defind;
 
 import org.liveontologies.protege.explanation.proof.MyProofServiceManager;
 import org.liveontologies.protege.explanation.proof.service.ProofService;
+import org.liveontologies.puli.DynamicProof;
 import org.liveontologies.puli.Inference;
 import org.liveontologies.puli.Proof;
 import org.protege.editor.owl.OWLEditorKit;
@@ -27,12 +28,10 @@ public class Calc {
         OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
         // Load your ontology.
         Set<OWLNamedObject> delta = new HashSet<>();
-
         OWLOntology ont = manager.loadOntologyFromOntologyDocument(new File("C:\\Users\\steve\\Dropbox\\Projects\\git\\protege_workspace\\protege-master\\omit_cyclic_inferences.owl"));
         String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();//"http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#";
         delta.add(new OWLClassImpl(IRI.create(url + "#", "C")));
         delta.add(new OWLClassImpl(IRI.create(url + "#", "D")));
-        OWLClassImpl D1 = new OWLClassImpl(IRI.create(url + "#", "A"));
         System.out.println("D=" + delta.toString().replaceAll(url + "X", ""));
     }
 
@@ -49,14 +48,12 @@ public class Calc {
 
     static void printOntology(OWLOntology ont) {
         int i = 0;
-        //String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();//"http://www.semanticweb.org/denis/ontologies/2017/6/untitled-ontology-239#";
         for (OWLAxiom a : ont.getAxioms()) {
             System.out.println(i + ":" + a.toString());
             i++;
         }
     }
-
-    public Object invoke(OWLModelManager modelManager, OWLEditorKit owlEditorKit, OWLAxiom cIsLessC_) {
+    public static void launchReasoner(OWLModelManager modelManager){
         OWLReasonerManager owlReasonerManager = modelManager.getOWLReasonerManager();
         owlReasonerManager.classifyAsynchronously(owlReasonerManager.getReasonerPreferences().getPrecomputedInferences());
         Thread parent = Thread.currentThread();
@@ -80,7 +77,10 @@ public class Calc {
             }
         } catch (InterruptedException e) {
         }
+    }
 
+    public Object invoke(OWLModelManager modelManager, OWLEditorKit owlEditorKit, OWLAxiom cIsLessC_) {
+        launchReasoner(modelManager);
         MyProofServiceManager proofServiceManager;
         try {
             proofServiceManager = MyProofServiceManager.get(owlEditorKit);
@@ -102,7 +102,10 @@ public class Calc {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return proofService.getProof(cIsLessC_);
+        DynamicProof<Inference<? extends OWLAxiom>> proof = proofService.getProof(cIsLessC_);
+        OWLReasonerManager reasonerManager = owlEditorKit.getOWLModelManager().getOWLReasonerManager();
+        //reasonerManager.killCurrentReasoner();
+        return proof;
     }
 
     public Object solve(OWLOntology srcOnt, Set<OWLNamedObject> delta, OWLClass c,

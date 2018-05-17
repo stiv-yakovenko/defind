@@ -52,9 +52,9 @@ public class RenderHTML {
             OWLObjectSomeValuesFrom osvf = ((OWLObjectSomeValuesFrom) exp);
             OWLClassExpression filler = osvf.getFiller();
             OWLObjectPropertyExpression prop = osvf.getProperty();
-            res.append("OSVF(");
+            res.append("(");
             res.append(render(prop));
-            res.append(",");
+            res.append(" some ");
             String html = render(filler,objs);
             res.append(html);
             res.append(")");
