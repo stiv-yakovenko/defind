@@ -1,2 +1,2 @@
 # defind
-DeFind plugin for Protege
+DeFind plugin for Protege.

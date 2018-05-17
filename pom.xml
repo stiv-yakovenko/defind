@@ -4,8 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>defind</artifactId>
     <groupId>org.stivyakovenko</groupId>
-    <!--<artifactId>protege-proof-explanation</artifactId>-->
-    <!--<groupId>org.liveontologies</groupId>-->
     <version>0.2.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
@@ -32,7 +30,6 @@
         <url>https://github.com/stiv-yakovenko/defind</url>
     </organization>
 
-
     <inceptionYear>2014</inceptionYear>
 
     <properties>
@@ -46,8 +43,6 @@
         <release.version>
             ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}
         </release.version>
-        <!-- the path to update.properties and version-info.txt for Protege auto-update -->
-        <update.url>https://raw.githubusercontent.com/liveontologies/protege-proof-explanation/release</update.url>
     </properties>
 
     <repositories>
@@ -118,13 +113,6 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <build>
         <resources>
             <!-- additional resources included in jar -->
@@ -190,6 +178,10 @@
                         <Bundle-SymbolicName>org.stivyakovenko.defind;singleton:=true</Bundle-SymbolicName>
                         <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
                         <Update-Url>${update.url}/p5.update.properties</Update-Url>
+                        <Import-Package>
+                            org.protege.editor.owl.*;version="5.0.0", <!-- equivalent to [4.3,infinity) -->
+                            *
+                        </Import-Package>
                     </instructions>
                     <executions>
                         <execution>
@@ -216,18 +208,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <!-- deplyoing to maven central -->
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
             </plugin>
         </plugins>
     </build>

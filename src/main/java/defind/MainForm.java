@@ -19,6 +19,8 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -117,6 +119,23 @@ public class MainForm extends JFrame {
         Set<OWLNamedObject> delta = new HashSet<>();
         Map<Integer, OWLNamedObject> idxToObject = new HashMap<>();
         JList deltaList = new JList(new String[]{});
+        deltaList.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode()==127) {
+                    JList list = (JList) e.getSource();
+                    int idx=list.getSelectedIndex();
+                    if (idx < 0) return;
+                    removeElem(idx, delta, deltaList);
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
         deltaList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
@@ -182,7 +201,7 @@ public class MainForm extends JFrame {
         List<String> strs = Arrays.asList(new String[]{});
         updateList(res, strs);
         resPanel.setLayout(new BoxLayout(resPanel, BoxLayout.Y_AXIS));
-//        resPanel.setBackground(Color.WHITE);
+        resPanel.setBackground(Color.WHITE);
         mainPanel.setLayout(new MigLayout("", "[][grow][grow][]", "[][][][grow]"));
         mainPanel.add(new JLabel("Class expression"), "wrap");
         mainPanel.add(owlDescriptionEditor, "growx,span 3");
@@ -192,7 +211,6 @@ public class MainForm extends JFrame {
         JScrollPane jsp = new JScrollPane(resPanel);
         mainPanel.add(jsp, "growy, growx, span 2");
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         mainPanel.add(new JScrollPane(deltaList), "growx,growy,span 2");
         return mainPanel;
     }
