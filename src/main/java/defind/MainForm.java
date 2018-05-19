@@ -116,7 +116,7 @@ public class MainForm extends JFrame {
         Set<OWLNamedObject> allClasses = new HashSet<>();
         allClasses.addAll(ont.getClassesInSignature());
         allClasses.addAll(ont.getObjectPropertiesInSignature());
-        Set<OWLNamedObject> delta = new HashSet<>();
+        Set<OWLNamedObject> delta = new LinkedHashSet<>();
         Map<Integer, OWLNamedObject> idxToObject = new HashMap<>();
         JList deltaList = new JList(new String[]{});
         deltaList.addKeyListener(new KeyListener() {

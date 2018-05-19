@@ -10,10 +10,12 @@ import java.util.Map;
 import java.util.Set;
 
 public class RenderHTML {
-    public static String render(OWLObjectPropertyExpression exp) {
+    public static String render(OWLObjectPropertyExpression exp, Map<String, Object> objs) {
+        objs.put(exp.toString(),exp);
         return "<a href='_href_'>_name_</a>"
                 .replaceAll("_href_", exp.toString())
                 .replaceAll("_name_", ((OWLObjectPropertyImpl) exp).getIRI().getRemainder().get());
+
     }
 
     public static String render(OWLClassExpression exp, Map<String, Object> objs) {
@@ -53,7 +55,7 @@ public class RenderHTML {
             OWLClassExpression filler = osvf.getFiller();
             OWLObjectPropertyExpression prop = osvf.getProperty();
             res.append("(");
-            res.append(render(prop));
+            res.append(render(prop,objs));
             res.append(" some ");
             String html = render(filler,objs);
             res.append(html);
