@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1526689795519
+Bnd-LastModified: 1526815966679
 Build-Jdk: 1.8.0_171
 Built-By: steve
 Bundle-Description: DeFind plugin
@@ -20,8 +20,8 @@ Export-Package: defind;version="0.2.0";uses:="javax.swing,org.protege.ed
  otege.editor.owl",org.liveontologies.protege.explanation.proof.service;
  version="0.2.0";uses:="org.eclipse.core.runtime,org.liveontologies.puli
  ,org.protege.editor.core.plugin,org.protege.editor.owl,org.semanticweb.
- owlapi.model,org.semanticweb.owlapi.reasoner",test;uses:="org.semanticw
- eb.owlapi.model";version="0.2.0"
+ owlapi.model,org.semanticweb.owlapi.reasoner",test;version="0.2.0";uses
+ :="org.semanticweb.owlapi.model"
 Import-Package: org.protege.editor.owl;version="5.0.0",org.protege.edito
  r.owl.model;version="5.0.0",org.protege.editor.owl.model.inference;vers
  ion="5.0.0",org.protege.editor.owl.model.selection;version="5.0.0",org.

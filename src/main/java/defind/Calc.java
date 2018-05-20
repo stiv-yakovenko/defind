@@ -351,14 +351,14 @@ public class Calc {
                             break;
                         }
                     }
-                    if (!haveEmpty) {
+                    if (haveEmpty || pUnion.size()==0) {
+                        union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
+                    } else {
                         if (pUnion.size() == 1 && pUnion.iterator().next() instanceof OWLObjectIntersectionOf) {
                             union.add(pUnion.iterator().next());
                         } else {
                             union.add(new OWLObjectIntersectionOfImpl(pUnion));
                         }
-                    } else {
-                        union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
                     }
                     break;
 

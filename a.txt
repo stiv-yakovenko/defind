@@ -1,9 +1,7 @@
-Ontology(OntologyID(Anonymous-3)) [Axioms: 7 Logical Axioms: 4]
-First 20 axioms: {
-Declaration(Class(<#A>))
-Declaration(Class(<#D>))
-Declaration(Class(<#A_>))
-SubClassOf(<#D> <#A>)
-SubClassOf(<#A> <#D>)
-SubClassOf(<#A_> <#D>)
-SubClassOf(<#D> <#A_>) }
+I(U(I(U(I(OSVF(<#r1> I(OSVF(<#r1> owl:Thing) OSVF(<#s1> owl:Thing))))
+OSVF(<#s1> I(OSVF(<#r1> owl:Thing) OSVF(<#s1> owl:Thing)))) OSVF(<#r1> I(OSVF(<#r1> owl:Thing) OSVF(<#s1> owl:Thing))))
+I(U(I(OSVF(<#u1> I(OSVF(<#u1> owl:Thing) OSVF(<#v1> owl:Thing)))) OSVF(<#v1> I(OSVF(<#u1> owl:Thing) OSVF(<#v1> owl:Thing))))
+OSVF(<#u1> I(OSVF(<#u1> owl:Thing) OSVF(<#v1> owl:Thing))))) U(I(U(I(OSVF(<#s2> I(OSVF(<#r2> owl:Thing) OSVF(<#s2> owl:Thing))))
+OSVF(<#r2> I(OSVF(<#r2> owl:Thing) OSVF(<#s2> owl:Thing)))) OSVF(<#s2> I(OSVF(<#r2> owl:Thing) OSVF(<#s2> owl:Thing))))
+I(U(I(OSVF(<#v2> I(OSVF(<#u2> owl:Thing) OSVF(<#v2> owl:Thing)))) OSVF(<#u2> I(OSVF(<#u2> owl:Thing) OSVF(<#v2> owl:Thing))))
+OSVF(<#v2> I(OSVF(<#u2> owl:Thing) OSVF(<#v2> owl:Thing))))))
