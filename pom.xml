@@ -178,10 +178,6 @@
                         <Bundle-SymbolicName>org.stivyakovenko.defind;singleton:=true</Bundle-SymbolicName>
                         <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
                         <Update-Url>${update.url}/p5.update.properties</Update-Url>
-                        <Import-Package>
-                            org.protege.editor.owl.*;version="5.0.0", <!-- equivalent to [4.3,infinity) -->
-                            *
-                        </Import-Package>
                     </instructions>
                     <executions>
                         <execution>

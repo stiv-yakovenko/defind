@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1526815966679
+Bnd-LastModified: 1526836396241
 Build-Jdk: 1.8.0_171
 Built-By: steve
 Bundle-Description: DeFind plugin
@@ -11,32 +11,29 @@ Bundle-SymbolicName: org.stivyakovenko.defind;singleton:=true
 Bundle-Vendor: Some Organisation
 Bundle-Version: 0.2.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
-Export-Package: defind;version="0.2.0";uses:="javax.swing,org.protege.ed
- itor.owl,org.protege.editor.owl.model,org.protege.editor.owl.ui.view,or
- g.semanticweb.owlapi.model",net.miginfocom.layout;version="0.2.0",net.m
- iginfocom.swing;version="0.2.0";uses:="net.miginfocom.layout",org.liveo
- ntologies.protege.explanation.proof;version="0.2.0";uses:="org.liveonto
- logies.protege.explanation.proof.service,org.protege.editor.core,org.pr
- otege.editor.owl",org.liveontologies.protege.explanation.proof.service;
- version="0.2.0";uses:="org.eclipse.core.runtime,org.liveontologies.puli
- ,org.protege.editor.core.plugin,org.protege.editor.owl,org.semanticweb.
- owlapi.model,org.semanticweb.owlapi.reasoner",test;version="0.2.0";uses
- :="org.semanticweb.owlapi.model"
-Import-Package: org.protege.editor.owl;version="5.0.0",org.protege.edito
- r.owl.model;version="5.0.0",org.protege.editor.owl.model.inference;vers
- ion="5.0.0",org.protege.editor.owl.model.selection;version="5.0.0",org.
- protege.editor.owl.ui.clsdescriptioneditor;version="5.0.0",org.protege.
- editor.owl.ui.explanation;version="5.0.0",org.protege.editor.owl.ui.vie
- w;version="5.0.0",com.google.common.base;version="[18.0,19)",defind;ver
- sion="[0.2,1)",javax.swing,javax.swing.border,javax.swing.event,javax.s
- wing.text,javax.swing.text.html,net.miginfocom.layout;version="[0.2,1)"
- ,net.miginfocom.swing;version="[0.2,1)",org.eclipse.core.runtime;versio
- n="[3.4,4)";common=split,org.liveontologies.owlapi.proof,org.liveontolo
- gies.protege.explanation.proof;version="[0.2,1)",org.liveontologies.pro
- tege.explanation.proof.service;version="[0.2,1)",org.liveontologies.pul
- i;version="[0.1,1)",org.protege.editor.core;version="[5.0,6)",org.prote
- ge.editor.core.plugin;version="[5.0,6)",org.protege.editor.core.ui.work
- space;version="[5.0,6)",org.semanticweb.elk.owlapi,org.semanticweb.owla
+Export-Package: defind;uses:="javax.swing,org.protege.editor.owl,org.pro
+ tege.editor.owl.model,org.protege.editor.owl.ui.view,org.semanticweb.ow
+ lapi.model";version="0.2.0",net.miginfocom.layout;version="0.2.0",net.m
+ iginfocom.swing;uses:="net.miginfocom.layout";version="0.2.0",org.liveo
+ ntologies.protege.explanation.proof;uses:="org.liveontologies.protege.e
+ xplanation.proof.service,org.protege.editor.core,org.protege.editor.owl
+ ";version="0.2.0",org.liveontologies.protege.explanation.proof.service;
+ uses:="org.eclipse.core.runtime,org.liveontologies.puli,org.protege.edi
+ tor.core.plugin,org.protege.editor.owl,org.semanticweb.owlapi.model,org
+ .semanticweb.owlapi.reasoner";version="0.2.0"
+Import-Package: com.google.common.base;version="[18.0,19)",javax.swing,j
+ avax.swing.border,javax.swing.event,javax.swing.text,javax.swing.text.h
+ tml,net.miginfocom.layout,net.miginfocom.swing,org.eclipse.core.runtime
+ ;version="[3.4,4)";common=split,org.liveontologies.protege.explanation.
+ proof,org.liveontologies.protege.explanation.proof.service,org.liveonto
+ logies.puli;version="[0.1,1)",org.protege.editor.core;version="[5.0,6)"
+ ,org.protege.editor.core.plugin;version="[5.0,6)",org.protege.editor.co
+ re.ui.workspace;version="[5.0,6)",org.protege.editor.owl;version="[5.0,
+ 6)",org.protege.editor.owl.model;version="[5.0,6)",org.protege.editor.o
+ wl.model.inference;version="[5.0,6)",org.protege.editor.owl.model.selec
+ tion;version="[5.0,6)",org.protege.editor.owl.ui.clsdescriptioneditor;v
+ ersion="[5.0,6)",org.protege.editor.owl.ui.explanation;version="[5.0,6)
+ ",org.protege.editor.owl.ui.view;version="[5.0,6)",org.semanticweb.owla
  pi.apibinding;version="[4.2,5)",org.semanticweb.owlapi.model;version="[
  4.2,5)",org.semanticweb.owlapi.model.parameters;version="[4.2,5)",org.s
  emanticweb.owlapi.reasoner;version="[4.2,5)",org.semanticweb.owlapi.uti
