@@ -186,6 +186,13 @@ public class Calc {
             manager.applyChanges(owlOntologyChanges);
         }
     }
+    static boolean isEmpty(Set<OWLClassExpression> e) {
+        if (e.size() == 0 )return true;
+        for (OWLClassExpression el:e){
+            if (!isEmpty(el)) return false;
+        }
+        return true;
+    }
 
     static boolean isEmpty(OWLClassExpression e) {
         if (e instanceof OWLObjectUnionOfImpl) {
@@ -196,7 +203,7 @@ public class Calc {
         return false;
     }
 
-    static OWLAxiom getFirst(Set<OWLAxiom> premises, Map<OWLAxiom, OWLClassExpression> circles) {
+    static OWLAxiom getFirstNonProcessed(Set<OWLAxiom> premises, Map<OWLAxiom, Set<OWLClassExpression>> circles) {
         for (OWLAxiom premise : premises) {
             if (!circles.containsKey(premise)) {
                 premises.remove(premise);
@@ -230,7 +237,7 @@ public class Calc {
         return ret;
     }
 
-    static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta, Map<OWLAxiom, OWLClassExpression> circles, OWLOntology ont) {
+    static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta, Map<OWLAxiom, Set<OWLClassExpression>> circles, OWLOntology ont) {
         String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();
         if (circles == null) {
             circles = new HashMap<>();
@@ -260,35 +267,41 @@ public class Calc {
                 }
             }
         }
-        if (inferences.size()==1 && inferences.iterator().next().getPremises().size()==0){
-            if (root instanceof OWLSubClassOfAxiomImpl) {
-                OWLClassExpression superClass = ((OWLSubClassOfAxiomImpl) root).getSuperClass();
-                Set<OWLEntity> signature = superClass.getSignature();
-                if (allSymbolsInDelta(delta, signature)) {
-                    union.add(superClass);
-                } else {
-                    union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
-                }
-                System.out.println("inferences.size()==1 premises.size() == 0");
-                return merge(union);
-            }
-        }
-        System.out.println("***************************************");
-        String str = root.toString().replaceAll(url, "");
-        System.out.println("root == " + str);
-
         for (Inference<OWLAxiom> inf : inferences) {
+            if (inf.getPremises().size()==0){
+                if (root instanceof OWLSubClassOfAxiomImpl) {
+                    OWLClassExpression superClass = ((OWLSubClassOfAxiomImpl) root).getSuperClass();
+                    Set<OWLEntity> signature = superClass.getSignature();
+                    if (allSymbolsInDelta(delta, signature)) {
+                        union.add(superClass);
+                    } else {
+                        union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
+                    }
+                    System.out.println("root == " + root.toString().replaceAll(url,""));
+                    for(Inference i : inferences) {
+                        System.out.println("  inf="+i.toString().replaceAll(url,""));
+                    }
+                    OWLClassExpression res = merge(union);
+                    System.out.println("return " + res.toString().replaceAll(url, ""));
+                    System.out.println();
+                    Set<OWLClassExpression> oldVals = circles.get(root);
+                    if (oldVals == null) oldVals = new HashSet<>();
+                    oldVals.add(res);
+                    circles.put(root,oldVals);
+                    return res;
+                }
+            }
             Set<OWLClassExpression> pUnion = new HashSet<>();
             Set<OWLAxiom> axioms = new HashSet<>();
             axioms.addAll(inf.getPremises());
             while (true) {
-                OWLAxiom premise = getFirst(axioms, circles);
+                OWLAxiom premise = getFirstNonProcessed(axioms, circles);
                 OWLClassExpression res;
-                if (premise == null) {
+                if (premise == null) { // all axioms processed in circles
                     for (OWLAxiom ax : axioms) {
-                        res = circles.get(ax);
-                        if (isEmpty(res) || res == null) continue;
-                        pUnion.add(res);
+                        Set<OWLClassExpression> rs = circles.get(ax);
+                        if (rs == null || isEmpty(rs)) continue;
+                        pUnion.addAll(rs);
                     }
                     break;
                 } else {
@@ -368,7 +381,16 @@ public class Calc {
             }
         }
         OWLClassExpression ret = merge(union);
-        circles.put(root, ret);
+        System.out.println("***************************************");
+        Set<OWLClassExpression> oldVals = circles.get(root);
+        if (oldVals == null ) oldVals = new HashSet<>();
+        oldVals.add(ret);
+        circles.put(root,oldVals);
+        String str = root.toString().replaceAll(url, "");
+        System.out.println("root == " + str);
+        for(Inference i : inferences) {
+            System.out.println("  inf="+i.toString().replaceAll(url,""));
+        }
         System.out.println("return " + ret.toString().replaceAll(url, ""));
         return ret;
     }

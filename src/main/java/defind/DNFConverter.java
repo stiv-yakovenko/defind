@@ -23,7 +23,7 @@ public class DNFConverter {
     }
 
     static String toStr(OWLClassExpression e){
-        return e.toString().replaceAll("http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-282","").replaceAll("ObjectIntersectionOf","I")
+        return e.toString().replaceAll("http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-341","").replaceAll("ObjectIntersectionOf","I")
                 .replaceAll("ObjectUnionOf","U").replaceAll("ObjectSomeValuesFrom","OSVF");
     }
 
