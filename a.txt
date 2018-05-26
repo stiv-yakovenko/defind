@@ -1,7 +1,56 @@
-I(U(I(U(I(OSVF(<#r1> I(OSVF(<#r1> owl:Thing) OSVF(<#s1> owl:Thing))))
-OSVF(<#s1> I(OSVF(<#r1> owl:Thing) OSVF(<#s1> owl:Thing)))) OSVF(<#r1> I(OSVF(<#r1> owl:Thing) OSVF(<#s1> owl:Thing))))
-I(U(I(OSVF(<#u1> I(OSVF(<#u1> owl:Thing) OSVF(<#v1> owl:Thing)))) OSVF(<#v1> I(OSVF(<#u1> owl:Thing) OSVF(<#v1> owl:Thing))))
-OSVF(<#u1> I(OSVF(<#u1> owl:Thing) OSVF(<#v1> owl:Thing))))) U(I(U(I(OSVF(<#s2> I(OSVF(<#r2> owl:Thing) OSVF(<#s2> owl:Thing))))
-OSVF(<#r2> I(OSVF(<#r2> owl:Thing) OSVF(<#s2> owl:Thing)))) OSVF(<#s2> I(OSVF(<#r2> owl:Thing) OSVF(<#s2> owl:Thing))))
-I(U(I(OSVF(<#v2> I(OSVF(<#u2> owl:Thing) OSVF(<#v2> owl:Thing)))) OSVF(<#u2> I(OSVF(<#u2> owl:Thing) OSVF(<#v2> owl:Thing))))
-OSVF(<#v2> I(OSVF(<#u2> owl:Thing) OSVF(<#v2> owl:Thing))))))
+U ( I(AB) I (A)) = U (I(A))
+
+
+U(I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
+    OSVF(<r2> I(OSVF(<r2> T) OSVF(<s2> T)))
+     OSVF(<s1> I(OSVF(<r1> T) OSVF(<s1> T)))
+     OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T)))
+     )
+
+I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
+OSVF(<r2> I(OSVF(<r2> T) OSVF(<s2> T)))
+OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T))))
+
+I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
+OSVF(<s1> I(OSVF(<r1> T) OSVF(<s1> T)))
+OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T))))
+
+I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
+OSVF(<s1> I(OSVF(<r1> T) OSVF(<s1> T)))
+OSVF(<u2> I(OSVF(<u2> T) OSVF(<v2> T)))
+OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
+
+I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
+OSVF(<s1> I(OSVF(<r1> T) OSVF(<s1> T)))
+OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
+
+I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
+OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T))))
+
+I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
+OSVF(<u2> I(OSVF(<u2> T) OSVF(<v2> T)))
+OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
+
+I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
+OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
+
+I(OSVF(<r2> I(OSVF(<r2> T) OSVF(<s2> T)))
+OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T)))
+
+OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))))
+I(OSVF(<r2> I(OSVF(<r2> T) OSVF(<s2> T)))
+OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T)))
+OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T)))
+OSVF(<v1> I(OSVF(<u1> T) OSVF(<v1> T))))
+
+I(OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T)))
+OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))))
+I(OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T)))
+OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T)))
+OSVF(<v1> I(OSVF(<u1> T) OSVF(<v1> T))))
+ I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T)))
+  OSVF(<u2> I(OSVF(<u2> T) OSVF(<v2> T)))
+  OSVF(<v1> I(OSVF(<u1> T) OSVF(<v1> T)))
+  OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
+
+  I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<u2> I(OSVF(<u2> T) OSVF(<v2> T))) OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T)))) I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<v1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T)))) I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T)))))

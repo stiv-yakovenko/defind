@@ -1,5 +1,6 @@
 package defind;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.semanticweb.owlapi.model.*;
 import uk.ac.manchester.cs.owl.owlapi.OWLObjectIntersectionOfImpl;
 import uk.ac.manchester.cs.owl.owlapi.OWLObjectSomeValuesFromImpl;
@@ -22,9 +23,9 @@ public class DNFConverter {
         }
     }
 
-    static String toStr(OWLClassExpression e){
-        return e.toString().replaceAll("http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-341","").replaceAll("ObjectIntersectionOf","I")
-                .replaceAll("ObjectUnionOf","U").replaceAll("ObjectSomeValuesFrom","OSVF");
+    static String toStr(OWLClassExpression e) {
+        return e.toString().replaceAll("http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-341", "").replaceAll("ObjectIntersectionOf", "I")
+                .replaceAll("ObjectUnionOf", "U").replaceAll("ObjectSomeValuesFrom", "OSVF");
     }
 
     static List<List<OWLClassExpression>> regroup(List<List<OWLClassExpression>> lists) {
@@ -33,24 +34,35 @@ public class DNFConverter {
         regr(lists, result, 0, current);
         return result;
     }
+
     // U(A,B) -> A, I(A) -> A
-    static OWLClassExpression expandSimple(OWLClassExpression e){
-        if (e instanceof  OWLObjectUnionOf) {
+    static OWLClassExpression expandSimple(OWLClassExpression e) {
+        if (e instanceof OWLObjectUnionOf) {
             OWLObjectUnionOf u = (OWLObjectUnionOf) e;
-            if (u.getOperands().size()==1) {
+            if (u.getOperands().size() == 1) {
                 return expandSimple(u.getOperands().iterator().next());
             }
-        } else if (e instanceof OWLObjectIntersectionOf){
+        } else if (e instanceof OWLObjectIntersectionOf) {
             OWLObjectIntersectionOf i = (OWLObjectIntersectionOf) e;
-            if (i.getOperands().size()==1) {
+            if (i.getOperands().size() == 1) {
                 return expandSimple(i.getOperands().iterator().next());
             }
+            Set<OWLClassExpression> kids = new HashSet<>();
+            i.getOperands().forEach(op -> {
+                if (!(op instanceof OWLObjectIntersectionOf)) {
+                    kids.add(op);
+                } else {
+                    OWLObjectIntersectionOf intt = (OWLObjectIntersectionOf) op;
+                    kids.addAll(intt.getOperands());
+                }
+            });
+            return new OWLObjectIntersectionOfImpl(kids);
         }
         return (e);
     }
 
     //OIO(OUO(A1,A2),OUO(B1,B2)) => OUO ( OIO(A_i,B_j) )
-    static OWLClassExpression process(OWLObjectIntersectionOf oio,Map<OWLClassExpression,OWLClassExpression> cache) {
+    static OWLClassExpression process(OWLObjectIntersectionOf oio, Map<OWLClassExpression, OWLClassExpression> cache) {
         if (cache.containsKey(oio)) return cache.get(oio);
         List<List<OWLClassExpression>> arr = new ArrayList<>();
         for (OWLClassExpression exp : oio.getOperands()) {
@@ -72,16 +84,15 @@ public class DNFConverter {
             if (iParams.size() == 1) {
                 newClass = iParams.iterator().next();
             }
-            //OWLClassExpression oio1 = handleRecursively(newClass,cache);
-            uset.add(newClass);
+            uset.add(expandSimple(newClass));
         }
         OWLClassExpression ret;
         if (uset.size() == 1) {
-            ret= expandSimple(uset.iterator().next());
+            ret = expandSimple(uset.iterator().next());
         } else {
             ret = new OWLObjectUnionOfImpl(uset);
         }
-        cache.put(oio,ret);
+        cache.put(oio, ret);
         return ret;
     }
 
@@ -101,7 +112,7 @@ public class DNFConverter {
     }
 
     //OIO(OUO(A1,A2),OUO(B1,B2)) => OUO ( OIO(A_i,B_j) )
-    static OWLClassExpression handleRecursively(OWLClassExpression exp0,Map<OWLClassExpression,OWLClassExpression> cache) {
+    static OWLClassExpression handleRecursively(OWLClassExpression exp0, Map<OWLClassExpression, OWLClassExpression> cache) {
         //System.out.println("process:"+toStr(exp0));
         if (cache.containsKey(exp0)) {
             return cache.get(exp0);
@@ -113,21 +124,21 @@ public class DNFConverter {
         if (exp instanceof OWLObjectIntersectionOf) {
             OWLObjectIntersectionOf oio = (OWLObjectIntersectionOf) exp;
             Set<OWLClassExpression> ops = oio.getOperands();
-            Set<OWLClassExpression> newOps = new HashSet<>(),ops2=new HashSet<>();
+            Set<OWLClassExpression> newOps = new HashSet<>(), ops2 = new HashSet<>();
             ops.forEach(owlClassExpression -> {
-                OWLClassExpression updExp = handleRecursively(owlClassExpression,cache);
+                OWLClassExpression updExp = handleRecursively(owlClassExpression, cache);
                 if (updExp instanceof OWLObjectIntersectionOf) {
-                    newOps.addAll(((OWLObjectIntersectionOf)updExp).getOperands());
+                    newOps.addAll(((OWLObjectIntersectionOf) updExp).getOperands());
                 } else {
                     newOps.add(owlClassExpression);
                 }
             });
-            newOps.forEach(op->{
-                ops2.add(handleRecursively(op,cache));
+            newOps.forEach(op -> {
+                ops2.add(expandSimple(handleRecursively(op, cache)));
             });
             parts.addAll(ops2);
-            if (ops2.size()==0) {
-                res= new OWLObjectUnionOfImpl(ops2);
+            if (ops2.size() == 0) {
+                res = new OWLObjectUnionOfImpl(ops2);
             } else {
                 OWLObjectIntersectionOfImpl newObj = new OWLObjectIntersectionOfImpl(ops2);
                 res = process(newObj, cache);
@@ -135,7 +146,7 @@ public class DNFConverter {
         } else if (exp instanceof OWLObjectSomeValuesFrom) {// OSVF(r,OUO(A1..An)) => OUO(OSVF(r,A1),OSVF(r,A2) ... OSVF(r,An))
             OWLObjectSomeValuesFrom osvf = (OWLObjectSomeValuesFrom) exp;
             OWLClassExpression child = osvf.getFiller();
-            OWLClassExpression updChild = handleRecursively(child,cache);
+            OWLClassExpression updChild = handleRecursively(child, cache);
             OWLObjectSomeValuesFromImpl osvf1 = new OWLObjectSomeValuesFromImpl(osvf.getProperty(), updChild);
             res = process(osvf1);
         } else if (exp instanceof OWLObjectUnionOf) {
@@ -143,7 +154,7 @@ public class DNFConverter {
             Set<OWLClassExpression> ops = ouo.getOperands();
             Set<OWLClassExpression> newOps = new HashSet<>();
             ops.forEach(owlClassExpression -> {
-                OWLClassExpression updExp = handleRecursively(owlClassExpression,cache);
+                OWLClassExpression updExp = handleRecursively(owlClassExpression, cache);
                 if (updExp instanceof OWLObjectUnionOf) {
                     OWLObjectUnionOf u2 = (OWLObjectUnionOf) updExp;
                     newOps.addAll(u2.getOperands());
@@ -152,24 +163,24 @@ public class DNFConverter {
                 }
             });
             if (newOps.size() == 1) {
-                res= newOps.iterator().next();
+                res = newOps.iterator().next();
             } else {
                 res = new OWLObjectUnionOfImpl(newOps);
             }
         }
-        cache.put(exp0,res);
+        cache.put(exp0, res);
 
         System.out.println("\nConverting " + toStr(exp0) + " => ");
         System.out.println("           " + toStr(res));
-        for(OWLClassExpression e:parts) {
-            System.out.println("              part="+toStr(e));
+        for (OWLClassExpression e : parts) {
+            System.out.println("              part=" + toStr(e));
         }
         return res;
     }
 
     public static OWLClassExpression toDNF(OWLClassExpression src) {
-        Map<OWLClassExpression,OWLClassExpression> cache = new HashMap<>();
-        OWLClassExpression res = handleRecursively(src,cache);
+        Map<OWLClassExpression, OWLClassExpression> cache = new HashMap<>();
+        OWLClassExpression res = handleRecursively(src, cache);
         System.out.println(toStr(res));
         return res;
     }
