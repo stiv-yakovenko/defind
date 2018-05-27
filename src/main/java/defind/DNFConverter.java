@@ -24,7 +24,7 @@ public class DNFConverter {
     }
 
     static String toStr(OWLClassExpression e) {
-        return e.toString().replaceAll("http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-341", "").replaceAll("ObjectIntersectionOf", "I")
+        return e.toString().replaceAll("http://www.semanticweb.org/denis/ontologies/2018/2/untitled-ontology-282", "").replaceAll("ObjectIntersectionOf", "I")
                 .replaceAll("ObjectUnionOf", "U").replaceAll("ObjectSomeValuesFrom", "OSVF");
     }
 
@@ -35,6 +35,14 @@ public class DNFConverter {
         return result;
     }
 
+    static boolean inside(Set<OWLClassExpression> parent, Set<OWLClassExpression> child) {
+        for (OWLClassExpression c : child) {
+            if (!parent.contains(c)) return false;
+        }
+        return true;
+    }
+
+
     // U(A,B) -> A, I(A) -> A
     static OWLClassExpression expandSimple(OWLClassExpression e) {
         if (e instanceof OWLObjectUnionOf) {
@@ -42,6 +50,41 @@ public class DNFConverter {
             if (u.getOperands().size() == 1) {
                 return expandSimple(u.getOperands().iterator().next());
             }
+            Set<Set<OWLClassExpression>> kids = new HashSet<>();
+            u.getOperands().forEach(op -> {
+                if (op instanceof OWLObjectIntersectionOf) {
+                    Set<OWLClassExpression> subkids = ((OWLObjectIntersectionOf) op).getOperands();
+                    kids.add(subkids);
+                } else {
+                    HashSet<OWLClassExpression> hs = new HashSet<>();
+                    hs.add(op);
+                    kids.add(hs);
+                }
+            });
+            Set<Set<OWLClassExpression>> cleared = new HashSet<>();
+            int c1 = 0;
+            for (Set<OWLClassExpression> kid : kids) {
+                boolean toremove = false;
+                int c2 = 0;
+                for (Set<OWLClassExpression> other : kids) {
+                    if (inside(other, kid) && c1 != c2) {
+                        toremove |= true;
+                    }
+                    c2++;
+                }
+                if (!toremove) {
+                    cleared.add(kid);
+                }
+                c1++;
+            }
+            Set<OWLClassExpression> ret = new HashSet();
+            for (Set<OWLClassExpression> kid : cleared) {
+                if (kid.size() == 1)
+                    ret.add(kid.iterator().next());
+                else
+                    ret.add(new OWLObjectIntersectionOfImpl(kid));
+            }
+            return new OWLObjectUnionOfImpl(ret);
         } else if (e instanceof OWLObjectIntersectionOf) {
             OWLObjectIntersectionOf i = (OWLObjectIntersectionOf) e;
             if (i.getOperands().size() == 1) {
@@ -141,7 +184,7 @@ public class DNFConverter {
                 res = new OWLObjectUnionOfImpl(ops2);
             } else {
                 OWLObjectIntersectionOfImpl newObj = new OWLObjectIntersectionOfImpl(ops2);
-                res = process(newObj, cache);
+                res = expandSimple(process(newObj, cache));
             }
         } else if (exp instanceof OWLObjectSomeValuesFrom) {// OSVF(r,OUO(A1..An)) => OUO(OSVF(r,A1),OSVF(r,A2) ... OSVF(r,An))
             OWLObjectSomeValuesFrom osvf = (OWLObjectSomeValuesFrom) exp;
