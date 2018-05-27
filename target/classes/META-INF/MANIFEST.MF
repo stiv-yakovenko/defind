@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1527417635160
+Bnd-LastModified: 1527438807832
 Build-Jdk: 1.8.0_171
 Built-By: steve
 Bundle-Description: DeFind plugin
