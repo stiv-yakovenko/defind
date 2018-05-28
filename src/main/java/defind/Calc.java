@@ -35,14 +35,14 @@ public class Calc {
         System.out.println("D=" + delta.toString().replaceAll(url + "X", ""));
     }
 
-    public static OWLAxiom addClassAsterix(OWLOntologyManager manager, OWLClass c, Set<OWLNamedObject> delta, OWLOntology ont[]) throws OWLOntologyCreationException {
+    public static OWLAxiom addClassAsterix(OWLOntologyManager manager, OWLClassExpression c, Set<OWLNamedObject> delta, OWLOntology[] ont) throws OWLOntologyCreationException {
         ont[0] = manager.createOntology();
         OWLDataFactory fucktory = manager.getOWLDataFactory();
         OWLSubClassOfAxiom axiom = fucktory.getOWLSubClassOfAxiom(c, c);
         manager.addAxiom(ont[0], axiom);
         performRename(manager, ont[0], delta);
         OWLAxiom cls = ont[0].getAxioms().iterator().next();
-        OWLClass c_ = (OWLClass) ((OWLSubClassOfAxiomImpl) cls).getSubClass();
+        OWLClassExpression c_ = ((OWLSubClassOfAxiomImpl) cls).getSubClass();
         return fucktory.getOWLSubClassOfAxiom(c, c_);
     }
 
@@ -109,7 +109,7 @@ public class Calc {
         return proof;
     }
 
-    public Object solve(OWLOntology srcOnt, Set<OWLNamedObject> delta, OWLClass c,
+    public Object solve(OWLOntology srcOnt, Set<OWLNamedObject> delta, OWLClassExpression c,
                         OWLEditorKit owlEditorKit, OWLOntologyManager manager, OWLModelManager modelManager) throws OWLOntologyCreationException {
         Set<OWLAxiom> srcAxioms = srcOnt.getAxioms();
         System.out.println("srcAxioms = " + srcAxioms.size());
@@ -182,7 +182,6 @@ public class Calc {
         }
         for (IRI iri : map.keySet()) {
             List<OWLOntologyChange> owlOntologyChanges = new OWLEntityRenamer(manager, s).changeIRI(iri, map.get(iri));
-            //ChangeApplied changeApplied =
             manager.applyChanges(owlOntologyChanges);
         }
     }
@@ -243,6 +242,7 @@ public class Calc {
             circles = new HashMap<>();
             return handle(root, proof, delta, circles, ont);
         }
+        System.out.println("ENTER " + root.toString().replaceAll(url,""));
         circles.put(root, null);
         Collection<? extends Inference<OWLAxiom>> inferences = proof.getInferences(root);
         Set<OWLClassExpression> union = new HashSet();

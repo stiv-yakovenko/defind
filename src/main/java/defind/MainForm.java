@@ -42,31 +42,33 @@ public class MainForm extends JFrame {
         jlist.setModel(model);
         jlist.setSelectedIndex(0);
     }
-    static void updateList(JPanel panel, Collection<OWLClassExpression> list, AbstractOWLViewComponent aoc, OWLClass cls) {
+
+    static void updateList(JPanel panel, Collection<OWLClassExpression> list, AbstractOWLViewComponent aoc, OWLClassExpression cls) {
         panel.removeAll();
         OWLEditorKit owlEditorKit = aoc.getOWLEditorKit();
         Map<String, Object> objNames = new HashMap<>();
         for (OWLClassExpression p : list) {
-            String html =RenderHTML.render(p,objNames);
-            html += "&nbsp;<a class='q' href='_src_'>&nbsp;?&nbsp;</a>".replaceAll("_src_","EXPL:"+p.toString());
-            JEditorPane jep = new JEditorPane("text/html",html);
+            String html = RenderHTML.render(p, objNames);
+            html += "&nbsp;<a class='q' href='_src_'>&nbsp;?&nbsp;</a>".replaceAll("_src_", "EXPL:" + p.toString());
+            JEditorPane jep = new JEditorPane("text/html", html);
             HTMLEditorKit kit = new HTMLEditorKit();
             StyleSheet styleSheet = kit.getStyleSheet();
             styleSheet.addRule(".q {background-color:#AAAAAA;text-decoration: none; border-radius:10px; color:white}");
             jep.addHyperlinkListener(e -> {
                 if (e.getEventType() != ACTIVATED) return;
-                if(e.getDescription().startsWith("EXPL")){
+                if (e.getDescription().startsWith("EXPL")) {
                     Calc.launchReasoner(owlEditorKit.getOWLModelManager());
                     String key = e.getDescription().substring(5);
                     OWLClassExpression obj = (OWLClassExpression) objNames.get(key);
                     ExplanationManager explanationManager = owlEditorKit.getOWLModelManager().getExplanationManager();
-                    OWLDataFactory fucktory = owlEditorKit.getModelManager().getOWLDataFactory();
+                    OWLModelManager modelManager = owlEditorKit.getModelManager();
+                    OWLDataFactory fucktory = modelManager.getOWLDataFactory();
                     OWLEquivalentClassesAxiom axiom = fucktory.getOWLEquivalentClassesAxiom(cls, obj);
                     JFrame frame = ProtegeManager.getInstance().getFrame(owlEditorKit.getWorkspace());
-                    explanationManager.handleExplain(frame,axiom);
+                    explanationManager.handleExplain(frame, axiom);
                     return;
                 }
-                objNames.forEach((exp,obj) -> {
+                objNames.forEach((exp, obj) -> {
                     if (exp.toString().equals(e.getDescription())) {
                         owlEditorKit.getWorkspace().getOWLSelectionModel().setSelectedEntity((OWLEntity) obj);
                         owlEditorKit.getWorkspace().displayOWLEntity((OWLEntity) obj);
@@ -99,14 +101,16 @@ public class MainForm extends JFrame {
         return null;
     }
 
-    static void removeElem(int idx, Set<OWLNamedObject> delta, JList deltaList) {
-        Object dlt = deltaList.getModel().getElementAt(idx);
-        for (OWLNamedObject cls : delta) {
-            if (cls.getIRI().getShortForm() != dlt) continue;
-            delta.remove(cls);
-            updateList(deltaList, delta);
-            return;
+    static void removeElem(int[] idx, Set<OWLNamedObject> delta, JList deltaList) {
+        for (int i : idx) {
+            Object dlt = deltaList.getModel().getElementAt(i);
+            for (OWLNamedObject cls : delta) {
+                if (cls.getIRI().getShortForm() != dlt) continue;
+                delta.remove(cls);
+                break;
+            }
         }
+        updateList(deltaList, delta);
     }
 
     static public JPanel addComponentsToPane(AbstractOWLViewComponent aoc) {
@@ -123,15 +127,16 @@ public class MainForm extends JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
             }
+
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode()==127) {
+                if (e.getKeyCode() == 127) {
                     JList list = (JList) e.getSource();
-                    int idx=list.getSelectedIndex();
-                    if (idx < 0) return;
-                    removeElem(idx, delta, deltaList);
+                    int[] idxes = list.getSelectedIndices();
+                    removeElem(idxes, delta, deltaList);
                 }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
             }
@@ -141,9 +146,8 @@ public class MainForm extends JFrame {
             public void mouseClicked(MouseEvent evt) {
                 JList list = (JList) evt.getSource();
                 if (evt.getClickCount() == 2) {
-                    int idx = list.locationToIndex(evt.getPoint());
-                    if (idx < 0) return;
-                    removeElem(idx, delta, deltaList);
+                    int[] idxes = list.getSelectedIndices();
+                    removeElem(idxes, delta, deltaList);
                 }
             }
         });
@@ -169,6 +173,7 @@ public class MainForm extends JFrame {
         JButton calcButton = new JButton("calculate");
         calcButton.setPreferredSize(new Dimension(100, 40));
         JPanel res = new JPanel();
+        JCheckBox invert = new JCheckBox("doesn't include symbols");
         calcButton.addActionListener(e -> {
             try {
                 if (!owlDescriptionEditor.isWellFormed()) {
@@ -180,9 +185,19 @@ public class MainForm extends JFrame {
                 OWLModelManager manager = aoc.getOWLModelManager();
                 OWLOntology ontology = manager.getActiveOntology();
                 Calc calc = new Calc();
-                OWLClass cls = (OWLClass) owlDescriptionEditor.createObject();
+                Object object = owlDescriptionEditor.createObject();
+                OWLClassExpression cls = (OWLClassExpression) object;
                 OWLOntologyManager mgr = aoc.getOWLEditorKit().getOWLModelManager().getOWLOntologyManager();
-                OWLClassExpression sol = (OWLClassExpression) calc.solve(ontology, delta, cls, owlEditorKit, mgr, manager);
+                Set<OWLNamedObject> inverted = new HashSet<>();
+                if (invert.isSelected()){
+                    for(OWLObjectProperty oop: ontology.getObjectPropertiesInSignature()){
+                        if (!delta.contains(oop)) inverted.add(oop);
+                    }
+                    for(OWLClass oop: ontology.getClassesInSignature()){
+                        if (!delta.contains(oop)) inverted.add(oop);
+                    }
+                }
+                OWLClassExpression sol = (OWLClassExpression) calc.solve(ontology, invert.isSelected()?inverted:delta, cls, owlEditorKit, mgr, manager);
                 Collection<OWLClassExpression> rs = new ArrayList<>();
                 if (sol instanceof OWLObjectUnionOf) {
                     OWLObjectUnionOf ouo = (OWLObjectUnionOf) sol;
@@ -193,7 +208,10 @@ public class MainForm extends JFrame {
                 } else {
                     rs.add(sol);
                 }
-                updateList(resPanel, rs, aoc,cls);
+                updateList(resPanel, rs, aoc, cls);
+                if (rs.size() == 0) {
+                    JOptionPane.showMessageDialog(mainPanel, "No definitions found in the target signature");
+                }
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -206,12 +224,22 @@ public class MainForm extends JFrame {
         mainPanel.add(new JLabel("Class expression"), "wrap");
         mainPanel.add(owlDescriptionEditor, "growx,span 3");
         mainPanel.add(calcButton, "wrap");
-        mainPanel.add(new JLabel("Definitions found"), "span 2");
-        mainPanel.add(new JLabel("Target signature"), "span 2,wrap");
+        JButton addAllObjectProperties = new JButton("Add all Object Properties");
+        mainPanel.add(addAllObjectProperties);
+        mainPanel.add(invert, "wrap");
+        addAllObjectProperties.addActionListener(e -> {
+            aoc.getOWLEditorKit().getModelManager();
+            OWLModelManager manager = aoc.getOWLModelManager();
+            OWLOntology ontology = manager.getActiveOntology();
+            delta.addAll(ontology.getObjectPropertiesInSignature());
+            updateList(deltaList, delta);
+        });
+        mainPanel.add(new JLabel("Target signature"), "span 2");
+        mainPanel.add(new JLabel("Definitions found"), "span 2,wrap");
         JScrollPane jsp = new JScrollPane(resPanel);
-        mainPanel.add(jsp, "growy, growx, span 2");
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         mainPanel.add(new JScrollPane(deltaList), "growx,growy,span 2");
+        mainPanel.add(jsp, "growy, growx, span 2");
         return mainPanel;
     }
 

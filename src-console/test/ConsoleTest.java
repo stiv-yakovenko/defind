@@ -66,6 +66,7 @@ public class ConsoleTest {
         res = loadAndSolve("./test/ExpLongExpManSimplified.owl", new String[]{"r1","s1"}, "A");
         testEq(res,"ObjectUnionOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))) ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing)))))",rss);
 
+        System.exit(0);
         res = loadAndSolve("./test/EquivalentClassesDecompositionTest.owl", new String[]{"B","C"}, "A");
         testEq(res,"ObjectUnionOf(<287#B> <287#C> owl:Nothing)",rss);
 
