@@ -104,8 +104,11 @@ public class Calc {
         }
         DynamicProof<Inference<? extends OWLAxiom>> proof = proofService.getProof(cIsLessC_);
         OWLReasonerManager reasonerManager = owlEditorKit.getOWLModelManager().getOWLReasonerManager();
-        reasonerManager.killCurrentReasoner();
+        reasonerManager.getCurrentReasoner().flush();
         //launchReasoner(modelManager);
+        try {
+            proofService.dispose();
+        } catch (Exception e){}
         return proof;
     }
 

@@ -170,10 +170,11 @@ public class MainForm extends JFrame {
                 updateList(deltaList, delta);
             }
         });
-        JButton calcButton = new JButton("calculate");
+        JButton calcButton = new JButton("compute");
         calcButton.setPreferredSize(new Dimension(100, 40));
         JPanel res = new JPanel();
-        JCheckBox invert = new JCheckBox("doesn't include symbols");
+        JCheckBox invert = new JCheckBox("don't include symbols");
+        invert.setMinimumSize(new Dimension(200,10));
         calcButton.addActionListener(e -> {
             try {
                 if (!owlDescriptionEditor.isWellFormed()) {
@@ -220,13 +221,12 @@ public class MainForm extends JFrame {
         updateList(res, strs);
         resPanel.setLayout(new BoxLayout(resPanel, BoxLayout.Y_AXIS));
         resPanel.setBackground(Color.WHITE);
-        mainPanel.setLayout(new MigLayout("", "[][grow][grow][]", "[][][][grow]"));
+        mainPanel.setLayout(new MigLayout("", "[][][grow][]", "[][][][][grow]"));
         mainPanel.add(new JLabel("Class expression"), "wrap");
         mainPanel.add(owlDescriptionEditor, "growx,span 3");
         mainPanel.add(calcButton, "wrap");
         JButton addAllObjectProperties = new JButton("Add all Object Properties");
-        mainPanel.add(addAllObjectProperties);
-        mainPanel.add(invert, "wrap");
+        mainPanel.add(addAllObjectProperties,"wrap");
         addAllObjectProperties.addActionListener(e -> {
             aoc.getOWLEditorKit().getModelManager();
             OWLModelManager manager = aoc.getOWLModelManager();
@@ -234,7 +234,8 @@ public class MainForm extends JFrame {
             delta.addAll(ontology.getObjectPropertiesInSignature());
             updateList(deltaList, delta);
         });
-        mainPanel.add(new JLabel("Target signature"), "span 2");
+        mainPanel.add(new JLabel("Target signature"), "");
+        mainPanel.add(invert, "");
         mainPanel.add(new JLabel("Definitions found"), "span 2,wrap");
         JScrollPane jsp = new JScrollPane(resPanel);
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
