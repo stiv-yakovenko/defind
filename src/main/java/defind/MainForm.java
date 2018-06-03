@@ -174,7 +174,6 @@ public class MainForm extends JFrame {
         calcButton.setPreferredSize(new Dimension(100, 40));
         JPanel res = new JPanel();
         JCheckBox invert = new JCheckBox("don't include symbols");
-        invert.setMinimumSize(new Dimension(200,10));
         calcButton.addActionListener(e -> {
             try {
                 if (!owlDescriptionEditor.isWellFormed()) {
@@ -226,7 +225,7 @@ public class MainForm extends JFrame {
         mainPanel.add(owlDescriptionEditor, "growx,span 3");
         mainPanel.add(calcButton, "wrap");
         JButton addAllObjectProperties = new JButton("Add all Object Properties");
-        mainPanel.add(addAllObjectProperties,"wrap");
+        mainPanel.add(addAllObjectProperties,"span 2,wrap");
         addAllObjectProperties.addActionListener(e -> {
             aoc.getOWLEditorKit().getModelManager();
             OWLModelManager manager = aoc.getOWLModelManager();
