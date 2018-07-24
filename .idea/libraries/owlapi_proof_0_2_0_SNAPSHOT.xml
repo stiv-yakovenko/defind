@@ -2,6 +2,19 @@
   <library name="owlapi-proof-0.2.0-SNAPSHOT">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/owlapi-proof-0.2.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-owlapi-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-osgidistribution-4.2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-reasoner-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-common-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-collections-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-owl-implementation-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-owl-model-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-proofs-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-concurrent-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-hashing-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-io-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/elk-util-logging-0.5.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/owlapi-api-4.2.6.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
