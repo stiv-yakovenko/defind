@@ -41,6 +41,7 @@ public class ConsoleTest {
             }
         }
         OWLClassImpl a = new OWLClassImpl(IRI.create(url + "#", cName));
+        System.out.println("C = " + a.toString());
         Calc calc = new Calc(){
             @Override
             public Object invoke(OWLModelManager modelManager, OWLEditorKit owlEditorKit, OWLAxiom cIsLessC_) {

@@ -20,20 +20,6 @@ import java.util.regex.Pattern;
 
 class TestProblem {
     public static void main(String[] args) throws OWLOntologyCreationException {
-        OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-        OWLOntology ont = manager.loadOntologyFromOntologyDocument(new File("C:\\Users\\steve\\Dropbox\\Projects\\git\\defind\\ont-1525351722713.xml"));
-        System.out.println(ont.toString().replaceAll(Pattern.quote("http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-293"), ""));
-        ElkProverFactory proverFactory = new ElkProverFactory();
-        OWLProver prover = proverFactory.createReasoner(ont);
-        OWLDataFactory fucktory = manager.getOWLDataFactory();
-        Set<OWLClass> classes = ont.getClassesInSignature();
-        Iterator<OWLClass> iterator = classes.iterator();
-        OWLClass c_ = iterator.next();
-        OWLClass c = iterator.next();
-        OWLSubClassOfAxiom cc_ = fucktory.getOWLSubClassOfAxiom(c, c_);
-        System.out.println(cc_);
-        DynamicProof<? extends Inference<OWLAxiom>> proof = prover.getProof(cc_);
-        System.out.println(proof.getInferences(cc_));
-
+        ConsoleTest.loadAndSolve("C:\\Users\\steve\\Project\\defind\\test\\pizza_simplified.owl", new String[]{"Pizza","SpicyPizza"}, "C");
     }
 }

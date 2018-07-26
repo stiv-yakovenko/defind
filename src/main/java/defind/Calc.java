@@ -131,7 +131,7 @@ public class Calc {
         Proof inferences = (Proof) invoke(modelManager, owlEditorKit, cIsLessC_);
         if (inferences == null) return null;
         System.out.println("inferences = " + inferences.getInferences(cIsLessC_).size());
-        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null, srcOnt);
+        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null, srcOnt,0);
         OWLClassExpression res1 = DNFConverter.toDNF(res);
         manager.removeAxioms(srcOnt, ont.getAxioms());
         manager.addAxioms(srcOnt, srcAxioms);
@@ -239,17 +239,28 @@ public class Calc {
         return ret;
     }
 
-    static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta, Map<OWLAxiom, Set<OWLClassExpression>> circles, OWLOntology ont) {
+    static String indent(int rec){
+        StringBuilder r = new StringBuilder();
+        for(int i=0;i<rec;i++){
+            r.append("  ");
+        }
+        return r.toString();
+    }
+
+    static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta, Map<OWLAxiom, Set<OWLClassExpression>> circles, OWLOntology ont, int rec) {
         String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();
+        String rootStr = root.toString().replaceAll(url,"");
         if (circles == null) {
             circles = new HashMap<>();
-            return handle(root, proof, delta, circles, ont);
+            return handle(root, proof, delta, circles, ont,0);
         }
-        System.out.println("ENTER " + root.toString().replaceAll(url,""));
+        System.out.print(indent(rec));
+        System.out.println("ENTER " + rootStr);
         circles.put(root, null);
         Collection<? extends Inference<OWLAxiom>> inferences = proof.getInferences(root);
         Set<OWLClassExpression> union = new HashSet();
         if (inferences.size() == 0) {
+            System.out.print(indent(rec));
             System.out.println("inferences.size() == 0");
             if (root instanceof OWLSubClassOfAxiomImpl) {
                 OWLClassExpression superClass = ((OWLSubClassOfAxiomImpl) root).getSuperClass();
@@ -259,6 +270,7 @@ public class Calc {
                 } else {
                     union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
                 }
+                System.out.print(indent(rec));
                 System.out.println("premises.size() == 0");
             } else if (root instanceof OWLEquivalentClassesAxiomImpl) {
                 OWLEquivalentClassesAxiomImpl eq = (OWLEquivalentClassesAxiomImpl) root;
@@ -280,12 +292,16 @@ public class Calc {
                     } else {
                         union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
                     }
+                    System.out.print(indent(rec));
                     System.out.println("root == " + root.toString().replaceAll(url,""));
                     for(Inference i : inferences) {
+                        System.out.print(indent(rec));
                         System.out.println("  inf="+i.toString().replaceAll(url,""));
                     }
                     OWLClassExpression res = merge(union);
+                    System.out.print(indent(rec));
                     System.out.println("return " + res.toString().replaceAll(url, ""));
+                    System.out.print(indent(rec));
                     System.out.println();
                     Set<OWLClassExpression> oldVals = circles.get(root);
                     if (oldVals == null) oldVals = new HashSet<>();
@@ -303,16 +319,23 @@ public class Calc {
                 if (premise == null) { // all axioms processed in circles
                     for (OWLAxiom ax : axioms) {
                         Set<OWLClassExpression> rs = circles.get(ax);
-                        if (rs == null || isEmpty(rs)) continue;
+                        if (rs == null) {
+                            continue;
+                        }
+//                        if(isEmpty(rs)) {
+//                            continue;
+//                        }
                         pUnion.addAll(rs);
                     }
                     break;
                 } else {
-                    res = handle(premise, proof, delta, circles, ont);
+                    res = handle(premise, proof, delta, circles, ont,rec+1);
                 }
                 if (isEmpty(res)) continue;
                 pUnion.add(res);
             }
+            System.out.print(indent(rec));
+            System.out.println("SWITCH: " +inf.getName());
             switch (inf.getName()) {
                 case "Equivalent Classes Decomposition": {
                     OWLClassExpression superClass = ((OWLSubClassOfAxiom) root).getSuperClass();
@@ -384,16 +407,20 @@ public class Calc {
             }
         }
         OWLClassExpression ret = merge(union);
+        System.out.print(indent(rec));
         System.out.println("***************************************");
         Set<OWLClassExpression> oldVals = circles.get(root);
         if (oldVals == null ) oldVals = new HashSet<>();
         oldVals.add(ret);
         circles.put(root,oldVals);
         String str = root.toString().replaceAll(url, "");
+        System.out.print(indent(rec));
         System.out.println("root == " + str);
         for(Inference i : inferences) {
+            System.out.print(indent(rec));
             System.out.println("  inf="+i.toString().replaceAll(url,""));
         }
+        System.out.print(indent(rec));
         System.out.println("return " + ret.toString().replaceAll(url, ""));
         return ret;
     }

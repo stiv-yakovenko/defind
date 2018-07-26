@@ -1,0 +1,437 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.co-ode.org/ontologies/pizza/pizza.owl#"
+         xml:base="http://www.co-ode.org/ontologies/pizza/pizza.owl"
+         xmlns:pizza="http://www.co-ode.org/ontologies/pizza/pizza.owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:terms="http://purl.org/dc/terms/"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:xml="http://www.w3.org/XML/1998/namespace"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl">
+        <dc:title xml:lang="en">pizza</dc:title>
+        <terms:contributor>Nick Drummond</terms:contributor>
+        <terms:license rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Creative Commons Attribution 3.0 (CC BY 3.0)</terms:license>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pizza</rdfs:label>
+        <terms:provenance xml:lang="en">v2.0 Added new annotations to the ontology using standard/well-know annotation properties
+
+            v1.5. Removed protege.owl import and references. Made ontology URI date-independent
+
+            v1.4. Added Food class (used in domain/range of hasIngredient), Added several hasCountryOfOrigin restrictions on pizzas, Made hasTopping invers functional</terms:provenance>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.0</owl:versionInfo>
+        <terms:contributor>Alan Rector</terms:contributor>
+        <dc:description xml:lang="en">An ontology about pizzas and their toppings.
+
+            This is an example ontology that contains all constructs required for the various versions of the Pizza Tutorial run by Manchester University (see http://owl.cs.manchester.ac.uk/publications/talks-and-tutorials/protg-owl-tutorial).</dc:description>
+        <terms:contributor>Matthew Horridge</terms:contributor>
+        <terms:contributor>Chris Wroe</terms:contributor>
+        <terms:contributor>Robert Stevens</terms:contributor>
+    </owl:Ontology>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+
+
+
+    <!-- http://purl.org/dc/terms/provenance -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/provenance"/>
+
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
+
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#hasBase -->
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasBase">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasIngredient"/>
+        <owl:inverseOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#isBaseOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#hasCountryOfOrigin -->
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasCountryOfOrigin"/>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#hasIngredient -->
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasIngredient">
+        <owl:inverseOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#isIngredientOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#Food"/>
+        <rdfs:range rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#Food"/>
+        <rdfs:comment xml:lang="en">NB Transitive - the ingredients of ingredients are ingredients of the whole</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#hasSpiciness -->
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasSpiciness">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#Spiciness"/>
+        <rdfs:comment xml:lang="en">A property created to be used with the ValuePartition - Spiciness.</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping -->
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasIngredient"/>
+        <owl:inverseOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#isToppingOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza"/>
+        <rdfs:range rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#PizzaTopping"/>
+        <rdfs:comment xml:lang="en">Note that hasTopping is inverse functional because isToppingOf is functional</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#isBaseOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#isBaseOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#isIngredientOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#isIngredientOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#isIngredientOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">The inverse property tree to hasIngredient - all subproperties and attributes of the properties should reflect those under hasIngredient.</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#isToppingOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#isToppingOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#isIngredientOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">Any given instance of topping should only be added to a single pizza (no cheap half-measures on our pizzas)</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza#C -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#C">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#SpicyTopping"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#DomainConcept -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#DomainConcept">
+        <owl:disjointWith rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#ValuePartition"/>
+        <rdfs:label xml:lang="en">DomainThing</rdfs:label>
+        <skos:prefLabel xml:lang="en">Domain Thing</skos:prefLabel>
+    </owl:Class>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#Food -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#Food">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#DomainConcept"/>
+        <rdfs:label xml:lang="en">Food</rdfs:label>
+        <skos:prefLabel xml:lang="en">Food</skos:prefLabel>
+    </owl:Class>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#Hot -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#Hot">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#Spiciness"/>
+        <rdfs:label xml:lang="en">Hot</rdfs:label>
+        <rdfs:label xml:lang="pt">Picante</rdfs:label>
+        <skos:prefLabel xml:lang="en">Hot</skos:prefLabel>
+    </owl:Class>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#Food"/>
+        <rdfs:label xml:lang="en">Pizza</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://en.wikipedia.org/wiki/Pizza"/>
+        <skos:prefLabel xml:lang="en">Pizza</skos:prefLabel>
+    </owl:Class>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#PizzaTopping -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#PizzaTopping">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#Food"/>
+        <rdfs:label xml:lang="pt">CoberturaDaPizza</rdfs:label>
+        <rdfs:label xml:lang="en">PizzaTopping</rdfs:label>
+        <skos:prefLabel xml:lang="en">Pizza Topping</skos:prefLabel>
+    </owl:Class>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#Spiciness -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#Spiciness">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#ValuePartition"/>
+        <rdfs:comment xml:lang="en">A ValuePartition that describes only values from Hot, Medium or Mild. NB Subclasses can themselves be divided up into further partitions.</rdfs:comment>
+        <rdfs:label xml:lang="en">Spiciness</rdfs:label>
+        <rdfs:label xml:lang="pt">Tempero</rdfs:label>
+        <skos:prefLabel xml:lang="en">Spiciness</skos:prefLabel>
+    </owl:Class>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#SpicyPizza -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#SpicyPizza">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping"/>
+                        <owl:someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#SpicyTopping"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="pt">PizzaTemperada</rdfs:label>
+        <rdfs:label xml:lang="en">SpicyPizza</rdfs:label>
+        <skos:definition xml:lang="en">Any pizza that has a spicy topping is a SpicyPizza</skos:definition>
+        <skos:prefLabel xml:lang="en">Spicy Pizza</skos:prefLabel>
+    </owl:Class>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#SpicyPizzaEquivalent -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#SpicyPizzaEquivalent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#PizzaTopping"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasSpiciness"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#Hot"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">An alternative definition for the SpicyPizza which does away with needing a definition of SpicyTopping and uses a slightly more complicated restriction: Pizzas that have at least one topping that is both a PizzaTopping and has spiciness hot are members of this class.</rdfs:comment>
+        <rdfs:label xml:lang="pt">PizzaTemperadaEquivalente</rdfs:label>
+        <rdfs:label xml:lang="en">SpicyPizzaEquivalent</rdfs:label>
+        <skos:prefLabel xml:lang="en">Spicy Pizza Equivalent</skos:prefLabel>
+    </owl:Class>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#SpicyTopping -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#SpicyTopping">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#PizzaTopping"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasSpiciness"/>
+                        <owl:someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#Hot"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="pt">CoberturaTemperada</rdfs:label>
+        <rdfs:label xml:lang="en">SpicyTopping</rdfs:label>
+        <skos:definition xml:lang="en">Any pizza topping that has spiciness Hot</skos:definition>
+        <skos:prefLabel xml:lang="en">Spicy</skos:prefLabel>
+    </owl:Class>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#ValuePartition -->
+
+    <owl:Class rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#ValuePartition">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A ValuePartition is a pattern that describes a restricted set of classes from which a property can be associated. The parent class is used in restrictions, and the covering axiom means that only members of the subclasses may be used as values. The possible subclasses cannot be extended without updating the ValuePartition class.</rdfs:comment>
+        <rdfs:label xml:lang="pt">ValorDaParticao</rdfs:label>
+        <rdfs:label xml:lang="en">ValuePartition</rdfs:label>
+        <skos:prefLabel xml:lang="en">Value Partition</skos:prefLabel>
+    </owl:Class>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#America -->
+
+    <owl:Thing rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#America">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#England -->
+
+    <owl:Thing rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#England">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#France -->
+
+    <owl:Thing rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#France">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#Germany -->
+
+    <owl:Thing rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#Germany">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+
+
+
+    <!-- http://www.co-ode.org/ontologies/pizza/pizza.owl#Italy -->
+
+    <owl:Thing rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#Italy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#America"/>
+            <rdf:Description rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#England"/>
+            <rdf:Description rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#France"/>
+            <rdf:Description rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#Germany"/>
+            <rdf:Description rdf:about="http://www.co-ode.org/ontologies/pizza/pizza.owl#Italy"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+        <!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+
