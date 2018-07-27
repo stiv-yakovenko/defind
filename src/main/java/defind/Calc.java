@@ -310,6 +310,8 @@ public class Calc {
                     return res;
                 }
             }
+            System.out.print(indent(rec));
+            System.out.println("reset punion");
             Set<OWLClassExpression> pUnion = new HashSet<>();
             Set<OWLAxiom> axioms = new HashSet<>();
             axioms.addAll(inf.getPremises());
@@ -320,18 +322,23 @@ public class Calc {
                     for (OWLAxiom ax : axioms) {
                         Set<OWLClassExpression> rs = circles.get(ax);
                         if (rs == null) {
+                            System.out.print(indent(rec));
+                            System.out.println("skipping unfinished premise:" +ax);
+                            pUnion.add(new OWLObjectUnionOfImpl(new HashSet<>()));
                             continue;
                         }
-//                        if(isEmpty(rs)) {
-//                            continue;
-//                        }
+                        //if(isEmpty(rs)) continue;
+                        System.out.print(indent(rec));
+                        System.out.println("adding to punion from circles: " +rs);
                         pUnion.addAll(rs);
                     }
                     break;
                 } else {
                     res = handle(premise, proof, delta, circles, ont,rec+1);
                 }
-                if (isEmpty(res)) continue;
+                //if (isEmpty(res)) continue;
+                System.out.print(indent(rec));
+                System.out.println("adding to punion: " +res);
                 pUnion.add(res);
             }
             System.out.print(indent(rec));

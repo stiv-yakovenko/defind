@@ -63,20 +63,12 @@ public class ConsoleTest {
     public static void main(String[] args) throws OWLOntologyCreationException, FileNotFoundException {
         List<OWLClassExpression> rss= new ArrayList();
         OWLClassExpression res;
-
-        res = loadAndSolve("./test/ExpLongExpManSimplified.owl", new String[]{"r1","s1"}, "A");
-        testEq(res,"ObjectUnionOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))) ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing)))))",rss);
-
-        System.exit(0);
         res = loadAndSolve("./test/EquivalentClassesDecompositionTest.owl", new String[]{"B","C"}, "A");
         testEq(res,"ObjectUnionOf(<287#B> <287#C> owl:Nothing)",rss);
-
         res = loadAndSolve("./test/concept_simplification.owl", new String[]{"A"}, "C");
         testEq(res,"<259#A>",rss);
         res = loadAndSolve("./test/omit_cyclic_inferences.owl", new String[]{"C","D"}, "A");
         testEq(res,"ObjectIntersectionOf(<257#C> <257#D>)",rss);
-        res = loadAndSolve("./test/combofDeltaconcepts.owl", new String[]{"D1","D2"}, "A");
-        testEq(res,"ObjectIntersectionOf(<260#D1> <260#D2>)",rss);
         res = loadAndSolve("./test/ExpLongDefinition.owl", new String[]{"r","s"}, "A2");
         testEq(res,"ObjectIntersectionOf(ObjectSomeValuesFrom(<283#r> ObjectIntersectionOf(ObjectSomeValuesFrom(<283#r> owl:Thing) ObjectSomeValuesFrom(<283#s> owl:Thing))) ObjectSomeValuesFrom(<283#s> ObjectIntersectionOf(ObjectSomeValuesFrom(<283#r> owl:Thing) ObjectSomeValuesFrom(<283#s> owl:Thing))))",rss);
         res = loadAndSolve("./test/D1D2EquivalentClassesTest.owl", new String[]{"D1","D2"}, "A");
@@ -100,14 +92,19 @@ public class ConsoleTest {
         res = loadAndSolve("./test/ExpManyConjunctions.owl", new String[]{"B11","B12","B21","B22"}, "A");
         System.out.println("res="+res.toString());
         testEq(res,"ObjectUnionOf(ObjectIntersectionOf(<282#B11> <282#B21>) ObjectIntersectionOf(<282#B11> <282#B22>) ObjectIntersectionOf(<282#B12> <282#B21>) ObjectIntersectionOf(<282#B12> <282#B22>))",rss);
-
         res = loadAndSolve("./test/ResTransformaOSVFTest.owl", new String[]{"B11", "B21", "r","s"}, "B");
         System.out.println("res="+res.toString());
         testEq(res,"ObjectIntersectionOf(ObjectSomeValuesFrom(<341#r> ObjectIntersectionOf(<341#B11> <341#B21>)) ObjectSomeValuesFrom(<341#s> ObjectIntersectionOf(<341#B11> <341#B21>)))",rss);
-        System.out.println("SUCCESS");
         res = loadAndSolve("./test/ExpLongDefinitionExpManyConjunctions.owl", new String[]{"r1","s1","r2","s2","u1",
                 "v1","u2","v2"}, "A");
         System.out.println("res="+res.toString().replaceAll(url,"").replaceAll("ObjectUnionOf","U").replaceAll("ObjectIntersectionOf","I").replaceAll("ObjectSomeValuesFrom","OSVF").replaceAll("owl:Thing","T").replaceAll("282#",""));
         testEq(res,"ObjectUnionOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> owl:Thing) ObjectSomeValuesFrom(<282#s1> owl:Thing))) ObjectSomeValuesFrom(<282#r2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r2> owl:Thing) ObjectSomeValuesFrom(<282#s2> owl:Thing))) ObjectSomeValuesFrom(<282#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> owl:Thing) ObjectSomeValuesFrom(<282#s1> owl:Thing))) ObjectSomeValuesFrom(<282#s2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r2> owl:Thing) ObjectSomeValuesFrom(<282#s2> owl:Thing)))) ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> owl:Thing) ObjectSomeValuesFrom(<282#s1> owl:Thing))) ObjectSomeValuesFrom(<282#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> owl:Thing) ObjectSomeValuesFrom(<282#s1> owl:Thing))) ObjectSomeValuesFrom(<282#u2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u2> owl:Thing) ObjectSomeValuesFrom(<282#v2> owl:Thing))) ObjectSomeValuesFrom(<282#v2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u2> owl:Thing) ObjectSomeValuesFrom(<282#v2> owl:Thing)))) ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r2> owl:Thing) ObjectSomeValuesFrom(<282#s2> owl:Thing))) ObjectSomeValuesFrom(<282#s2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r2> owl:Thing) ObjectSomeValuesFrom(<282#s2> owl:Thing))) ObjectSomeValuesFrom(<282#u1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u1> owl:Thing) ObjectSomeValuesFrom(<282#v1> owl:Thing))) ObjectSomeValuesFrom(<282#v1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u1> owl:Thing) ObjectSomeValuesFrom(<282#v1> owl:Thing)))) ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u1> owl:Thing) ObjectSomeValuesFrom(<282#v1> owl:Thing))) ObjectSomeValuesFrom(<282#u2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u2> owl:Thing) ObjectSomeValuesFrom(<282#v2> owl:Thing))) ObjectSomeValuesFrom(<282#v1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u1> owl:Thing) ObjectSomeValuesFrom(<282#v1> owl:Thing))) ObjectSomeValuesFrom(<282#v2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u2> owl:Thing) ObjectSomeValuesFrom(<282#v2> owl:Thing)))))",rss);
+        res = loadAndSolve("./test/ExpLongExpManSimplified.owl", new String[]{"r1","s1"}, "A");
+        testEq(res,"ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))) ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))))",rss);
+        res = loadAndSolve("./test/pizza_simplified.owl", new String[]{"Pizza","SpicyPizza"}, "C");
+        testEq(res,"<416#SpicyPizza>",rss);
+        res = loadAndSolve("./test/combofDeltaconcepts.owl", new String[]{"D1","D2"}, "A");
+        testEq(res,"ObjectUnionOf(<260#D1> <260#D2> ObjectIntersectionOf(<260#D1> <260#D2>))",rss);
+        System.out.println("SUCCESS");
     }
 }

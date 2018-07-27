@@ -54,3 +54,19 @@ OSVF(<v1> I(OSVF(<u1> T) OSVF(<v1> T))))
   OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
 
   I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<u2> I(OSVF(<u2> T) OSVF(<v2> T))) OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T)))) I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<v1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T)))) I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T)))))
+
+  ObjectUnionOf(
+      ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))) ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))))
+  )
+
+  wrong:ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(
+     ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing)))
+     ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing)
+     ObjectSomeValuesFrom(<287#s1> owl:Thing))))
+
+     expected ObjectUnionOf(
+     ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing)
+     ObjectSomeValuesFrom(<287#s1> owl:Thing)))
+     ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing)
+     ObjectSomeValuesFrom(<287#s1> owl:Thing))))
+     )
