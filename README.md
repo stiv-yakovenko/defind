@@ -1,4 +1,4 @@
-# defind
+# DeFind
 DeFind plugin for Protege.
 
 # Замечания по написанию плагинов для Protege
