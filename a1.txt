@@ -1,9 +1,913 @@
-Ontology(OntologyID(Anonymous-2)) [Axioms: 7 Logical Axioms: 4]
-First 20 axioms: {
-SubClassOf(<#D> <#A>)
-SubClassOf(<#A> <#D>)
-SubClassOf(<#A_> <#D>)
-SubClassOf(<#D> <#A_>)
-Declaration(Class(<#A>))
-Declaration(Class(<#A_>))
-Declaration(Class(<#D>)) }
+"C:\Program Files\Java\jdk1.8.0_181\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2018.1.5\lib\idea_rt.jar=56380:C:\Program Files\JetBrains\IntelliJ IDEA 2018.1.5\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_181\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\rt.jar;C:\Users\steve\Project\defind\target\test-classes;C:\Users\steve\Project\defind\target\classes;C:\Users\steve\.m2\repository\edu\stanford\protege\protege-editor-core\5.0.0\protege-editor-core-5.0.0.jar;C:\Users\steve\.m2\repository\org\eclipse\equinox\org.eclipse.equinox.common\3.6.0.v20100503\org.eclipse.equinox.common-3.6.0.v20100503.jar;C:\Users\steve\.m2\repository\org\eclipse\osgi\org.eclipse.osgi\3.6.0.v20100517\org.eclipse.osgi-3.6.0.v20100517.jar;C:\Users\steve\.m2\repository\com\googlecode\mdock\mdock\2.0.1\mdock-2.0.1.jar;C:\Users\steve\.m2\repository\ch\qos\logback\logback-core\1.1.3\logback-core-1.1.3.jar;C:\Users\steve\.m2\repository\ch\qos\logback\logback-classic\1.1.3\logback-classic-1.1.3.jar;C:\Users\steve\.m2\repository\com\jgoodies\jgoodies-looks\2.5.3\jgoodies-looks-2.5.3.jar;C:\Users\steve\.m2\repository\com\jgoodies\jgoodies-common\1.6.0\jgoodies-common-1.6.0.jar;C:\Users\steve\.m2\repository\edu\stanford\protege\protege-editor-owl\5.0.0\protege-editor-owl-5.0.0.jar;C:\Users\steve\.m2\repository\edu\stanford\protege\protege-common\5.0.0\protege-common-5.0.0.jar;C:\Users\steve\.m2\repository\org\slf4j\log4j-over-slf4j\1.7.12\log4j-over-slf4j-1.7.12.jar;C:\Users\steve\.m2\repository\org\slf4j\jul-to-slf4j\1.7.12\jul-to-slf4j-1.7.12.jar;C:\Users\steve\.m2\repository\org\apache\felix\org.apache.felix.main\4.4.1\org.apache.felix.main-4.4.1.jar;C:\Users\steve\.m2\repository\org\apache\felix\org.apache.felix.framework\4.4.1\org.apache.felix.framework-4.4.1.jar;C:\Users\steve\.m2\repository\edu\stanford\protege\org.protege.xmlcatalog\1.0.5\org.protege.xmlcatalog-1.0.5.jar;C:\Users\steve\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\steve\.m2\repository\xml-resolver\xml-resolver\1.2\xml-resolver-1.2.jar;C:\Users\steve\.m2\repository\net\sourceforge\owlapi\owlapi-osgidistribution\4.2.5\owlapi-osgidistribution-4.2.5.jar;C:\Users\steve\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.5.1\jackson-core-2.5.1.jar;C:\Users\steve\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.5.1\jackson-databind-2.5.1.jar;C:\Users\steve\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.5.1\jackson-annotations-2.5.1.jar;C:\Users\steve\.m2\repository\org\tukaani\xz\1.5\xz-1.5.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-model\2.7.16\sesame-model-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-api\2.7.16\sesame-rio-api-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-languages\2.7.16\sesame-rio-languages-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-datatypes\2.7.16\sesame-rio-datatypes-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-binary\2.7.16\sesame-rio-binary-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-n3\2.7.16\sesame-rio-n3-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-nquads\2.7.16\sesame-rio-nquads-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-ntriples\2.7.16\sesame-rio-ntriples-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-rdfjson\2.7.16\sesame-rio-rdfjson-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-rdfxml\2.7.16\sesame-rio-rdfxml-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-trix\2.7.16\sesame-rio-trix-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-turtle\2.7.16\sesame-rio-turtle-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-rio-trig\2.7.16\sesame-rio-trig-2.7.16.jar;C:\Users\steve\.m2\repository\org\openrdf\sesame\sesame-util\2.7.16\sesame-util-2.7.16.jar;C:\Users\steve\.m2\repository\com\github\jsonld-java\jsonld-java-sesame\0.5.0\jsonld-java-sesame-0.5.0.jar;C:\Users\steve\.m2\repository\com\github\jsonld-java\jsonld-java\0.5.0\jsonld-java-0.5.0.jar;C:\Users\steve\.m2\repository\org\slf4j\jcl-over-slf4j\1.7.7\jcl-over-slf4j-1.7.7.jar;C:\Users\steve\.m2\repository\org\apache\httpcomponents\httpclient\4.5.1\httpclient-4.5.1.jar;C:\Users\steve\.m2\repository\org\apache\httpcomponents\httpclient-cache\4.5.1\httpclient-cache-4.5.1.jar;C:\Users\steve\.m2\repository\org\apache\httpcomponents\httpcore\4.4.3\httpcore-4.4.3.jar;C:\Users\steve\.m2\repository\commons-codec\commons-codec\1.9\commons-codec-1.9.jar;C:\Users\steve\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\steve\.m2\repository\org\semarglproject\semargl-sesame\0.6.1\semargl-sesame-0.6.1.jar;C:\Users\steve\.m2\repository\org\semarglproject\semargl-core\0.6.1\semargl-core-0.6.1.jar;C:\Users\steve\.m2\repository\org\semarglproject\semargl-rdfa\0.6.1\semargl-rdfa-0.6.1.jar;C:\Users\steve\.m2\repository\org\semarglproject\semargl-rdf\0.6.1\semargl-rdf-0.6.1.jar;C:\Users\steve\.m2\repository\org\apache\servicemix\bundles\org.apache.servicemix.bundles.aopalliance\1.0_6\org.apache.servicemix.bundles.aopalliance-1.0_6.jar;C:\Users\steve\.m2\repository\net\sf\trove4j\trove4j\3.0.3\trove4j-3.0.3.jar;C:\Users\steve\.m2\repository\com\google\inject\guice\4.0\guice-4.0.jar;C:\Users\steve\.m2\repository\javax\inject\javax.inject\1\javax.inject-1.jar;C:\Users\steve\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\steve\.m2\repository\com\google\inject\extensions\guice-assistedinject\4.0\guice-assistedinject-4.0.jar;C:\Users\steve\.m2\repository\com\google\inject\extensions\guice-multibindings\4.0\guice-multibindings-4.0.jar;C:\Users\steve\.m2\repository\commons-io\commons-io\2.4\commons-io-2.4.jar;C:\Users\steve\.m2\repository\org\liveontologies\puli\0.1.0\puli-0.1.0.jar;C:\Users\steve\.m2\repository\com\google\guava\guava\18.0\guava-18.0.jar;C:\Users\steve\.m2\repository\org\slf4j\slf4j-api\1.7.12\slf4j-api-1.7.12.jar;C:\Users\steve\.m2\repository\com\google\code\findbugs\jsr305\2.0.3\jsr305-2.0.3.jar;C:\Users\steve\.m2\repository\org\eclipse\equinox\org.eclipse.equinox.registry\3.5.101\org.eclipse.equinox.registry-3.5.101.jar;C:\Users\steve\.m2\repository\org\apache\servicemix\bundles\org.apache.servicemix.bundles.javax-inject\1_2\org.apache.servicemix.bundles.javax-inject-1_2.jar;C:\Users\steve\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\steve\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\steve\Project\defind\lib\owlapi-proof-0.2.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\elk-owlapi-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\owlapi-osgidistribution-4.2.5.jar;C:\Users\steve\Project\defind\lib\elk-reasoner-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\elk-util-common-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\elk-util-collections-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\elk-owl-implementation-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\elk-owl-model-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\elk-proofs-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\elk-util-concurrent-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\elk-util-hashing-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\elk-util-io-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\elk-util-logging-0.5.0-SNAPSHOT.jar;C:\Users\steve\Project\defind\lib\owlapi-api-4.2.6.jar" test.ConsoleTest
+22:07:04.219 [main] DEBUG o.s.o.rdf.rdfxml.parser.TripleLogger - Total number of triples: 55
+22:07:04.242 [main] DEBUG o.s.o.r.r.p.OptimisedListTranslator - list: <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza>
+22:07:04.246 [main] DEBUG o.s.o.r.r.p.OptimisedListTranslator - list: ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>)
+22:07:04.248 [main] DEBUG o.s.o.r.r.p.OptimisedListTranslator - list: <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza>
+22:07:04.249 [main] DEBUG o.s.o.r.r.p.OptimisedListTranslator - list: ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>))
+22:07:04.249 [main] DEBUG o.s.o.r.r.p.OptimisedListTranslator - list: <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping>
+22:07:04.249 [main] DEBUG o.s.o.r.r.p.OptimisedListTranslator - list: ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>)
+22:07:04.252 [main] DEBUG o.s.o.rdf.rdfxml.parser.TripleLogger - Loaded OntologyID(OntologyIRI(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416>) VersionIRI(<null>))
+ont=Ontology(OntologyID(OntologyIRI(<>) VersionIRI(<null>))) [Axioms: 15 Logical Axioms: 6] First 20 axioms: {Declaration(ObjectProperty(<#hasSpiciness>)) Declaration(Class(<#PizzaTopping>)) Declaration(ObjectProperty(<#hasTopping>)) Declaration(Class(<#SpicyPizza>)) Declaration(Class(<#SpicyPizzaEquivalent>)) Declaration(Class(<#C>)) Declaration(Class(<#Hot>)) Declaration(Class(<#Pizza>)) Declaration(Class(<#SpicyTopping>)) ObjectPropertyDomain(<#hasSpiciness> <#PizzaTopping>) ObjectPropertyDomain(<#hasTopping> <#Pizza>) EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) ) EquivalentClasses(<#C> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ) EquivalentClasses(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) ) EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) ) }
+C = ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>)
+srcAxioms = 15
+ont = Ontology(OntologyID(Anonymous-3)) [Axioms: 28 Logical Axioms: 12] First 20 axioms: {Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent>)) Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza_>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C_>)) Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping_>)) Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>)) Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness>)) Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping>)) ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza_>) ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping_>) ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza>) ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping>) }
+0:EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>) )
+1:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping_>))
+2:EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>)) )
+3:ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping_>)
+4:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>))
+5:Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness>))
+6:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent>))
+7:ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza>)
+8:EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) )
+9:EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>))) )
+10:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>))
+11:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>))
+12:Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_>))
+13:EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>)) )
+14:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>))
+15:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>))
+16:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza>))
+17:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C>))
+18:Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping>))
+19:Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_>))
+20:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping>))
+21:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza_>))
+22:ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza_>)
+23:Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C_>))
+24:ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping>)
+25:EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>)) )
+26:EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>)) )
+27:EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>))) )
+c=ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>)
+c_=ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>)
+cIsLessC_=SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>))
+22:07:04.396 [main] DEBUG o.s.elk.config.ConfigurationFactory - Loading default configuration parameters for class org.semanticweb.elk.reasoner.config.ReasonerConfiguration
+22:07:05.010 [main] INFO  o.s.elk.reasoner.tracing.TraceState - elk.reasoner.tracing.evictor=org.semanticweb.elk.util.collections.RecencyEvictor(16896,0.750000)
+22:07:05.021 [main] INFO  o.s.e.r.s.ClassExpressionQueryState - elk.reasoner.classexpressionquery.evictor = org.semanticweb.elk.util.collections.RecencyEvictor(512,0.750000)
+22:07:05.026 [main] INFO  o.s.e.r.stages.EntailmentQueryState - elk.reasoner.entailmentquery.evictor = org.semanticweb.elk.util.collections.RecencyEvictor(512,0.750000)
+22:07:05.027 [main] INFO  o.semanticweb.elk.reasoner.Reasoner - ELK reasoner was created
+22:07:05.169 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Context Reset stage:
+22:07:05.171 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Context Reset started
+22:07:05.180 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Context Reset using 4 workers
+22:07:05.182 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Context Reset took 2 ms
+22:07:05.182 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 59/242/3621
+22:07:05.182 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Context Reset: done.
+22:07:05.182 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Input Loading stage:
+22:07:05.182 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Input Loading started
+22:07:05.193 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Input Loading using 4 workers
+22:07:05.265 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Input Loading took 82 ms
+22:07:05.266 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 66/242/3621
+22:07:05.266 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Input Loading: done.
+22:07:05.266 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Context Reset stage:
+22:07:05.266 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Context Reset started
+22:07:05.266 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Context Reset using 4 workers
+22:07:05.266 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Context Reset took 0 ms
+22:07:05.266 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 66/242/3621
+22:07:05.266 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Context Reset: done.
+22:07:05.266 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Property Saturation Initialization stage:
+22:07:05.266 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Property Saturation Initialization started
+22:07:05.273 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Property Saturation Initialization using 4 workers
+22:07:05.273 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Property Saturation Initialization took 6 ms
+22:07:05.273 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 66/242/3621
+22:07:05.273 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Property Saturation Initialization: done.
+22:07:05.273 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Object Property Hierarchy and Composition Computation stage:
+22:07:05.273 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Object Property Hierarchy and Composition Computation started
+22:07:05.321 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Object Property Hierarchy and Composition Computation using 4 workers
+22:07:05.367 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Object Property Hierarchy and Composition Computation took 92 ms
+22:07:05.367 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 70/242/3621
+22:07:05.367 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Object Property Hierarchy and Composition Computation: done.
+22:07:05.367 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Entailment Query Computation stage:
+22:07:05.367 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Entailment Query Computation started
+22:07:05.388 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Entailment Query Computation using 4 workers
+22:07:05.618 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:05.618 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - CONCLUSIONS:                                        processed | unique [time ms]
+22:07:05.619 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:05.620 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Backward Link......................................         8 |      8 [   1 ms]
+22:07:05.621 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Context Initialization.............................         8 |      7 [   1 ms]
+22:07:05.621 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Decomposed Subsumer................................        33 |     26 [   1 ms]
+22:07:05.623 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Composed Subsumer..................................        55 |     45 [   0 ms]
+22:07:05.623 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Propagation........................................        16 |     16 [   2 ms]
+22:07:05.624 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Sub-Context Initialization.........................         6 |      6 [   0 ms]
+22:07:05.624 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:05.625 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - TOTAL CONCLUSIONS:.................................       126 |    108 [   6 ms]
+22:07:05.626 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:05.637 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:05.637 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - RULES:                                                           count [time ms]
+22:07:05.637 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:05.637 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Composed from Decomposed Subsumer...............................    12 [   0 ms]
+22:07:05.638 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Definition Expansion............................................    12 [   0 ms]
+22:07:05.638 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - ObjectIntersectionOf Decomposition..............................     6 [   0 ms]
+22:07:05.638 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - IndexedObjectSomeValuesFrom Decomposition.......................     8 [   0 ms]
+22:07:05.640 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Propagation.....................................................    16 [   0 ms]
+22:07:05.640 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - ObjectIntersectionOf From 1st Conjunct..........................     8 [   0 ms]
+22:07:05.640 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - ObjectIntersectionOf From 2nd Conjunct..........................     6 [   0 ms]
+22:07:05.641 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - owl:Thing Introduction..........................................     7 [   0 ms]
+22:07:05.642 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - ObjectSomeValuesFrom Propagation Introduction...................    17 [   0 ms]
+22:07:05.643 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Root Introduction...............................................     7 [   0 ms]
+22:07:05.643 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Propagation Over BackwardLink...................................     8 [   0 ms]
+22:07:05.644 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - SubClassOf Expansion............................................     6 [   0 ms]
+22:07:05.645 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - EquivalentClasses First from Second.............................     2 [   0 ms]
+22:07:05.645 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - EquivalentClasses Second from First.............................     2 [   0 ms]
+22:07:05.646 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Defined Class Introduction......................................     8 [   0 ms]
+22:07:05.647 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Propagations For SubContext.....................................     6 [   0 ms]
+22:07:05.647 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:05.647 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - TOTAL RULES:....................................................   131 [   2 ms]
+22:07:05.647 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:05.648 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts created: 7
+22:07:05.648 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts processed: 17 (7 ms)
+22:07:05.648 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts modified: 7
+22:07:05.648 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Saturation Jobs Submitted=Done+Processed: 1=0+1
+22:07:05.648 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Locks: 0
+22:07:05.648 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Entailment Query Computation took 281 ms
+22:07:05.648 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 20/306/3621
+22:07:05.648 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Entailment Query Computation: done.
+22:07:06.117 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Consistency Checking stage:
+22:07:06.117 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Consistency Checking started
+22:07:06.117 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Consistency Checking using 4 workers
+22:07:06.118 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Locks: 0
+22:07:06.118 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Consistency Checking took 0 ms
+22:07:06.118 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 57/306/3621
+22:07:06.118 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Consistency Checking: done.
+22:07:06.118 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Taxonomy Construction stage:
+22:07:06.118 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Taxonomy Construction started
+22:07:06.125 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Taxonomy Construction using 4 workers
+22:07:06.143 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:06.143 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - CONCLUSIONS:                                        processed | unique [time ms]
+22:07:06.143 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Backward Link......................................        16 |     16 [   0 ms]
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Context Initialization.............................        20 |     10 [   0 ms]
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contradiction......................................         1 |      1 [   1 ms]
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Decomposed Subsumer................................        76 |     56 [   0 ms]
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Composed Subsumer..................................       114 |     79 [   0 ms]
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - TOTAL CONCLUSIONS:.................................       227 |    162 [   2 ms]
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - RULES:                                                           count [time ms]
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:06.144 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Composed from Decomposed Subsumer...............................    24 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Owl:Nothing Contradiction Introduction..........................     1 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contradiction Propagation over Backward Links...................     1 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Definition Expansion............................................    24 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - ObjectIntersectionOf Decomposition..............................    16 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - IndexedObjectSomeValuesFrom Decomposition.......................    16 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - ObjectIntersectionOf From 1st Conjunct..........................    16 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - ObjectIntersectionOf From 2nd Conjunct..........................    12 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - owl:Thing Introduction..........................................    10 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - ObjectSomeValuesFrom Propagation Introduction...................    10 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Root Introduction...............................................    10 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Propagation Over BackwardLink...................................    16 [   0 ms]
+22:07:06.145 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - SubClassOf Expansion............................................     8 [   0 ms]
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - EquivalentClasses First from Second.............................     8 [   0 ms]
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - EquivalentClasses Second from First.............................     8 [   0 ms]
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Defined Class Introduction......................................    16 [   0 ms]
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - TOTAL RULES:....................................................   196 [   0 ms]
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - --------------------------------------------------------------------------------
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts created: 10
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts processed: 35 (2 ms)
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts modified: 10
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Saturation Jobs Submitted=Done+Processed: 17=7+10
+22:07:06.147 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Locks: 0
+22:07:06.149 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Taxonomy Construction took 30 ms
+22:07:06.149 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 60/306/3621
+22:07:06.149 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Taxonomy Construction: done.
+22:07:06.149 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing stage:
+22:07:06.149 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing started
+22:07:06.154 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Inference tracing using 4 workers
+22:07:06.175 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts created: 5
+22:07:06.175 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts processed: 7 (0 ms)
+22:07:06.175 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts modified: 1
+22:07:06.175 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Saturation Jobs Submitted=Done+Processed: 1=0+1
+22:07:06.175 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Locks: 0
+22:07:06.175 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing took 26 ms
+22:07:06.175 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 63/306/3621
+22:07:06.175 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing: done.
+22:07:06.208 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing stage:
+22:07:06.209 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing started
+22:07:06.209 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Inference tracing using 4 workers
+22:07:06.212 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts created: 2
+22:07:06.212 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts processed: 3 (0 ms)
+22:07:06.212 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts modified: 1
+22:07:06.212 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Saturation Jobs Submitted=Done+Processed: 1=0+1
+22:07:06.212 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Locks: 0
+22:07:06.212 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing took 3 ms
+22:07:06.212 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 68/306/3621
+22:07:06.212 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing: done.
+22:07:06.249 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing stage:
+22:07:06.249 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing started
+22:07:06.249 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Inference tracing using 4 workers
+22:07:06.250 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts created: 1
+22:07:06.250 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts processed: 1 (0 ms)
+22:07:06.250 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts modified: 1
+22:07:06.250 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Saturation Jobs Submitted=Done+Processed: 1=0+1
+22:07:06.250 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Locks: 0
+22:07:06.250 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing took 1 ms
+22:07:06.250 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 70/306/3621
+22:07:06.250 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing: done.
+22:07:06.270 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing stage:
+22:07:06.270 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing started
+22:07:06.270 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Inference tracing using 4 workers
+22:07:06.272 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts created: 2
+22:07:06.272 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts processed: 3 (0 ms)
+22:07:06.272 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts modified: 1
+22:07:06.272 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Saturation Jobs Submitted=Done+Processed: 1=0+1
+22:07:06.272 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Locks: 0
+22:07:06.272 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing took 1 ms
+22:07:06.272 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 73/306/3621
+22:07:06.272 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing: done.
+22:07:06.273 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing stage:
+22:07:06.273 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing started
+22:07:06.273 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Inference tracing using 4 workers
+22:07:06.274 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts created: 2
+22:07:06.274 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts processed: 3 (0 ms)
+22:07:06.274 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts modified: 1
+22:07:06.274 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Saturation Jobs Submitted=Done+Processed: 1=0+1
+22:07:06.274 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Locks: 0
+22:07:06.274 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing took 1 ms
+22:07:06.275 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 73/306/3621
+22:07:06.275 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing: done.
+22:07:06.275 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing stage:
+22:07:06.276 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing started
+22:07:06.276 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Inference tracing using 4 workers
+22:07:06.277 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts created: 2
+22:07:06.277 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts processed: 3 (0 ms)
+22:07:06.277 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts modified: 1
+22:07:06.277 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Saturation Jobs Submitted=Done+Processed: 1=0+1
+22:07:06.278 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Locks: 0
+22:07:06.278 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing took 1 ms
+22:07:06.278 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 73/306/3621
+22:07:06.278 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing: done.
+22:07:06.281 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing stage:
+22:07:06.281 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing started
+22:07:06.281 [main] INFO  o.s.e.r.stages.AbstractReasonerStage - Inference tracing using 4 workers
+22:07:06.283 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts created: 1
+22:07:06.283 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts processed: 1 (0 ms)
+22:07:06.283 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Contexts modified: 1
+22:07:06.283 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Saturation Jobs Submitted=Done+Processed: 1=0+1
+22:07:06.283 [main] DEBUG o.s.e.r.s.ClassExpressionSaturationFactory - Locks: 0
+22:07:06.283 [main] INFO  o.s.e.r.stages.LoggingStageExecutor - Inference tracing took 1 ms
+22:07:06.283 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Memory (MB) Used/Total/Max: 73/306/3621
+22:07:06.283 [main] DEBUG o.s.e.r.stages.LoggingStageExecutor - Inference tracing: done.
+org.semanticweb.elk.owlapi.proofs.ElkOwlProof@7d0cc890
+inferences = 2
+ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))
+reset punion
+  ENTER SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))
+  root == SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))
+    inf=SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) -|
+  return ObjectUnionOf()
+
+adding to punion: ObjectUnionOf()
+  ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)))
+  reset punion
+    ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizza>)
+    reset punion
+      ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)))
+      reset punion
+        ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza>)
+        reset punion
+          ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> owl:Thing))
+          reset punion
+            ENTER SubClassOf(<#SpicyTopping> owl:Thing)
+            root == SubClassOf(<#SpicyTopping> owl:Thing)
+              inf=SubClassOf(<#SpicyTopping> <http://www.w3.org/2002/07/owl#Thing>) -|
+            return owl:Thing
+
+          adding to punion: owl:Thing
+          SWITCH: Existential Filler Expansion
+          reset punion
+            ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) ObjectSomeValuesFrom(<#hasTopping> owl:Thing))
+            reset punion
+              ENTER SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>) owl:Thing)
+              root == SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>) owl:Thing)
+                inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>) <http://www.w3.org/2002/07/owl#Thing>) -|
+              return owl:Thing
+
+            adding to punion: owl:Thing
+            SWITCH: Existential Filler Expansion
+            ***************************************
+            root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) ObjectSomeValuesFrom(<#hasTopping> owl:Thing))
+              inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) ObjectSomeValuesFrom(<#hasTopping> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>) <http://www.w3.org/2002/07/owl#Thing>)
+            return ObjectUnionOf()
+          adding to punion: ObjectUnionOf()
+            ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))
+            reset punion
+              ENTER SubClassOf(<#SpicyTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))
+              reset punion
+                ENTER SubClassOf(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))
+                reset punion
+                  ENTER EquivalentClasses(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) )
+                  reset punion
+                  SWITCH: Asserted Conclusion
+                  ***************************************
+                  root == EquivalentClasses(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) )
+                    inf=EquivalentClasses(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) -|
+                  return ObjectUnionOf()
+                adding to punion: ObjectUnionOf()
+                SWITCH: Equivalent Classes Decomposition
+                reset punion
+                  ENTER SubClassOf(<#SpicyTopping> <#PizzaTopping>)
+                  reset punion
+                    ENTER SubClassOf(ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) <#PizzaTopping>)
+                    root == SubClassOf(ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) <#PizzaTopping>)
+                      inf=SubClassOf(ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) <#PizzaTopping>) -|
+                    return ObjectUnionOf()
+
+                  adding to punion: ObjectUnionOf()
+                  skipping unfinished premise:SubClassOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>)))
+                  SWITCH: Class Hierarchy
+                  reset punion
+                    ENTER SubClassOf(<#SpicyTopping> ObjectSomeValuesFrom(<#hasSpiciness> owl:Thing))
+                    reset punion
+                      ENTER SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>) ObjectSomeValuesFrom(<#hasSpiciness> owl:Thing))
+                      reset punion
+                        ENTER SubClassOf(<#Hot> owl:Thing)
+                        root == SubClassOf(<#Hot> owl:Thing)
+                          inf=SubClassOf(<#Hot> <http://www.w3.org/2002/07/owl#Thing>) -|
+                        return owl:Thing
+
+                      adding to punion: owl:Thing
+                      SWITCH: Existential Filler Expansion
+                      ***************************************
+                      root == SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>) ObjectSomeValuesFrom(<#hasSpiciness> owl:Thing))
+                        inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>) ObjectSomeValuesFrom(<#hasSpiciness> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(<#Hot> <http://www.w3.org/2002/07/owl#Thing>)
+                      return ObjectUnionOf()
+                    adding to punion: ObjectUnionOf()
+                    skipping unfinished premise:SubClassOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>))
+                    SWITCH: Class Hierarchy
+                    ***************************************
+                    root == SubClassOf(<#SpicyTopping> ObjectSomeValuesFrom(<#hasSpiciness> owl:Thing))
+                      inf=SubClassOf(<#SpicyTopping> ObjectSomeValuesFrom(<#hasSpiciness> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(<#SpicyTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)); SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>) ObjectSomeValuesFrom(<#hasSpiciness> <http://www.w3.org/2002/07/owl#Thing>))
+                    return ObjectUnionOf()
+                  adding to punion: ObjectUnionOf()
+                    ENTER SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> owl:Thing) <#PizzaTopping>)
+                    reset punion
+                      ENTER ObjectPropertyDomain(<#hasSpiciness> <#PizzaTopping>)
+                      reset punion
+                      SWITCH: Asserted Conclusion
+                      ***************************************
+                      root == ObjectPropertyDomain(<#hasSpiciness> <#PizzaTopping>)
+                        inf=ObjectPropertyDomain(<#hasSpiciness> <#PizzaTopping>) -|
+                      return ObjectUnionOf()
+                    adding to punion: ObjectUnionOf()
+                    SWITCH: Property Domain Transaltion
+                    ***************************************
+                    root == SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> owl:Thing) <#PizzaTopping>)
+                      inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> <http://www.w3.org/2002/07/owl#Thing>) <#PizzaTopping>) -| ObjectPropertyDomain(<#hasSpiciness> <#PizzaTopping>)
+                    return ObjectUnionOf()
+                  adding to punion: ObjectUnionOf()
+                  SWITCH: Class Hierarchy
+                  ***************************************
+                  root == SubClassOf(<#SpicyTopping> <#PizzaTopping>)
+                    inf=SubClassOf(<#SpicyTopping> <#PizzaTopping>) -| SubClassOf(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))); SubClassOf(ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) <#PizzaTopping>)
+                    inf=SubClassOf(<#SpicyTopping> <#PizzaTopping>) -| SubClassOf(<#SpicyTopping> ObjectSomeValuesFrom(<#hasSpiciness> <http://www.w3.org/2002/07/owl#Thing>)); SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness> <http://www.w3.org/2002/07/owl#Thing>) <#PizzaTopping>)
+                  return ObjectUnionOf()
+                adding to punion: ObjectUnionOf()
+                skipping unfinished premise:SubClassOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>))
+                SWITCH: Intersection Composition
+                ***************************************
+                root == SubClassOf(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))
+                  inf=SubClassOf(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) -| EquivalentClasses(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))
+                  inf=SubClassOf(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) -| SubClassOf(<#SpicyTopping> <#PizzaTopping>); SubClassOf(<#SpicyTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))
+                return ObjectUnionOf()
+              adding to punion: ObjectUnionOf()
+                ENTER SubClassOf(ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))
+                root == SubClassOf(ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))
+                  inf=SubClassOf(ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) -|
+                return ObjectUnionOf()
+
+              adding to punion: ObjectUnionOf()
+              SWITCH: Class Hierarchy
+              ***************************************
+              root == SubClassOf(<#SpicyTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))
+                inf=SubClassOf(<#SpicyTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) -| SubClassOf(<#SpicyTopping> ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))); SubClassOf(ObjectIntersectionOf(<#PizzaTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))
+              return ObjectUnionOf()
+            adding to punion: ObjectUnionOf()
+            SWITCH: Existential Filler Expansion
+            reset punion
+              ENTER SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))
+              root == SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))
+                inf=SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) -|
+              return ObjectUnionOf()
+
+            adding to punion: ObjectUnionOf()
+              ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))))
+              reset punion
+              skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza>)
+              skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>)))
+              SWITCH: Intersection Composition
+              reset punion
+                ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizzaEquivalent>)
+                reset punion
+                  ENTER SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) <#SpicyPizzaEquivalent>)
+                  reset punion
+                    ENTER EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) )
+                    reset punion
+                    SWITCH: Asserted Conclusion
+                    ***************************************
+                    root == EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) )
+                      inf=EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))) -|
+                    return ObjectUnionOf()
+                  adding to punion: ObjectUnionOf()
+                  SWITCH: Equivalent Classes Decomposition
+                  ***************************************
+                  root == SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) <#SpicyPizzaEquivalent>)
+                    inf=SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) <#SpicyPizzaEquivalent>) -| EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))))
+                  return <#SpicyPizzaEquivalent>
+                adding to punion: <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent>
+                skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>))))
+                SWITCH: Class Hierarchy
+                reset punion
+                  ENTER SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) <#SpicyPizzaEquivalent>)
+                  reset punion
+                    ENTER EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) )
+                    reset punion
+                    SWITCH: Asserted Conclusion
+                    ***************************************
+                    root == EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) )
+                      inf=EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))) -|
+                    return ObjectUnionOf()
+                  adding to punion: ObjectUnionOf()
+                  SWITCH: Equivalent Classes Decomposition
+                  ***************************************
+                  root == SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) <#SpicyPizzaEquivalent>)
+                    inf=SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) <#SpicyPizzaEquivalent>) -| EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))))
+                  return <#SpicyPizzaEquivalent>
+                adding to punion: <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent>
+                  ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))))
+                  reset punion
+                    ENTER SubClassOf(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))))
+                    reset punion
+                    adding to punion from circles: [ObjectUnionOf()]
+                    SWITCH: Equivalent Classes Decomposition
+                    ***************************************
+                    root == SubClassOf(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))))
+                      inf=SubClassOf(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))) -| EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))))
+                    return ObjectUnionOf()
+                  adding to punion: ObjectUnionOf()
+                  skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent>)
+                  SWITCH: Class Hierarchy
+                  reset punion
+                    ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                    reset punion
+                      ENTER SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                      root == SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                        inf=SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) -|
+                      return ObjectUnionOf()
+
+                    adding to punion: ObjectUnionOf()
+                    skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>))))
+                    SWITCH: Class Hierarchy
+                    reset punion
+                      ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                      reset punion
+                        ENTER SubClassOf(<#SpicyTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))
+                        reset punion
+                          ENTER SubClassOf(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                          reset punion
+                            ENTER EquivalentClasses(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) )
+                            reset punion
+                            SWITCH: Asserted Conclusion
+                            ***************************************
+                            root == EquivalentClasses(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) )
+                              inf=EquivalentClasses(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) -|
+                            return ObjectUnionOf()
+                          adding to punion: ObjectUnionOf()
+                          SWITCH: Equivalent Classes Decomposition
+                          reset punion
+                            ENTER SubClassOf(<#SpicyTopping_> <#PizzaTopping_>)
+                            reset punion
+                              ENTER SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) <#PizzaTopping_>)
+                              root == SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) <#PizzaTopping_>)
+                                inf=SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) <#PizzaTopping_>) -|
+                              return ObjectUnionOf()
+
+                            adding to punion: ObjectUnionOf()
+                            skipping unfinished premise:SubClassOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>)))
+                            SWITCH: Class Hierarchy
+                            reset punion
+                              ENTER SubClassOf(<#SpicyTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> owl:Thing))
+                              reset punion
+                                ENTER SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> owl:Thing))
+                                reset punion
+                                  ENTER SubClassOf(<#Hot_> owl:Thing)
+                                  root == SubClassOf(<#Hot_> owl:Thing)
+                                    inf=SubClassOf(<#Hot_> <http://www.w3.org/2002/07/owl#Thing>) -|
+                                  return owl:Thing
+
+                                adding to punion: owl:Thing
+                                SWITCH: Existential Filler Expansion
+                                ***************************************
+                                root == SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> owl:Thing))
+                                  inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(<#Hot_> <http://www.w3.org/2002/07/owl#Thing>)
+                                return ObjectUnionOf()
+                              adding to punion: ObjectUnionOf()
+                              skipping unfinished premise:SubClassOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>))
+                              SWITCH: Class Hierarchy
+                              ***************************************
+                              root == SubClassOf(<#SpicyTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> owl:Thing))
+                                inf=SubClassOf(<#SpicyTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(<#SpicyTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)); SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> <http://www.w3.org/2002/07/owl#Thing>))
+                              return ObjectUnionOf()
+                            adding to punion: ObjectUnionOf()
+                              ENTER SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> owl:Thing) <#PizzaTopping_>)
+                              reset punion
+                                ENTER ObjectPropertyDomain(<#hasSpiciness_> <#PizzaTopping_>)
+                                reset punion
+                                SWITCH: Asserted Conclusion
+                                ***************************************
+                                root == ObjectPropertyDomain(<#hasSpiciness_> <#PizzaTopping_>)
+                                  inf=ObjectPropertyDomain(<#hasSpiciness_> <#PizzaTopping_>) -|
+                                return ObjectUnionOf()
+                              adding to punion: ObjectUnionOf()
+                              SWITCH: Property Domain Transaltion
+                              ***************************************
+                              root == SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> owl:Thing) <#PizzaTopping_>)
+                                inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <http://www.w3.org/2002/07/owl#Thing>) <#PizzaTopping_>) -| ObjectPropertyDomain(<#hasSpiciness_> <#PizzaTopping_>)
+                              return ObjectUnionOf()
+                            adding to punion: ObjectUnionOf()
+                            SWITCH: Class Hierarchy
+                            ***************************************
+                            root == SubClassOf(<#SpicyTopping_> <#PizzaTopping_>)
+                              inf=SubClassOf(<#SpicyTopping_> <#PizzaTopping_>) -| SubClassOf(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))); SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) <#PizzaTopping_>)
+                              inf=SubClassOf(<#SpicyTopping_> <#PizzaTopping_>) -| SubClassOf(<#SpicyTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <http://www.w3.org/2002/07/owl#Thing>)); SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <http://www.w3.org/2002/07/owl#Thing>) <#PizzaTopping_>)
+                            return ObjectUnionOf()
+                          adding to punion: ObjectUnionOf()
+                          skipping unfinished premise:SubClassOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>))
+                          SWITCH: Intersection Composition
+                          ***************************************
+                          root == SubClassOf(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                            inf=SubClassOf(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) -| EquivalentClasses(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                            inf=SubClassOf(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) -| SubClassOf(<#SpicyTopping_> <#PizzaTopping_>); SubClassOf(<#SpicyTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))
+                          return ObjectUnionOf()
+                        adding to punion: ObjectUnionOf()
+                          ENTER SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))
+                          root == SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))
+                            inf=SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) -|
+                          return ObjectUnionOf()
+
+                        adding to punion: ObjectUnionOf()
+                        SWITCH: Class Hierarchy
+                        ***************************************
+                        root == SubClassOf(<#SpicyTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))
+                          inf=SubClassOf(<#SpicyTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) -| SubClassOf(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))); SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))
+                        return ObjectUnionOf()
+                      adding to punion: ObjectUnionOf()
+                      SWITCH: Existential Filler Expansion
+                      ***************************************
+                      root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                        inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) -| SubClassOf(<#SpicyTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))
+                      return ObjectUnionOf()
+                    adding to punion: ObjectUnionOf()
+                    skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>))
+                    SWITCH: Class Hierarchy
+                    ***************************************
+                    root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                      inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))); SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                      inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)); SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                    return ObjectUnionOf()
+                  adding to punion: ObjectUnionOf()
+                    ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza_>)
+                    reset punion
+                      ENTER SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) <#Pizza_>)
+                      root == SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) <#Pizza_>)
+                        inf=SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) <#Pizza_>) -|
+                      return ObjectUnionOf()
+
+                    adding to punion: ObjectUnionOf()
+                    skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>)))
+                    SWITCH: Class Hierarchy
+                    reset punion
+                      ENTER SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) <#Pizza_>)
+                      root == SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) <#Pizza_>)
+                        inf=SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) <#Pizza_>) -|
+                      return ObjectUnionOf()
+
+                    adding to punion: ObjectUnionOf()
+                    skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>))))
+                    SWITCH: Class Hierarchy
+                    reset punion
+                      ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> owl:Thing) <#Pizza_>)
+                      reset punion
+                        ENTER ObjectPropertyDomain(<#hasTopping_> <#Pizza_>)
+                        reset punion
+                        SWITCH: Asserted Conclusion
+                        ***************************************
+                        root == ObjectPropertyDomain(<#hasTopping_> <#Pizza_>)
+                          inf=ObjectPropertyDomain(<#hasTopping_> <#Pizza_>) -|
+                        return ObjectUnionOf()
+                      adding to punion: ObjectUnionOf()
+                      SWITCH: Property Domain Transaltion
+                      ***************************************
+                      root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> owl:Thing) <#Pizza_>)
+                        inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> <http://www.w3.org/2002/07/owl#Thing>) <#Pizza_>) -| ObjectPropertyDomain(<#hasTopping_> <#Pizza_>)
+                      return ObjectUnionOf()
+                    adding to punion: ObjectUnionOf()
+                      ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> owl:Thing))
+                      reset punion
+                        ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasTopping_> owl:Thing))
+                        reset punion
+                          ENTER SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) owl:Thing)
+                          root == SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) owl:Thing)
+                            inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) <http://www.w3.org/2002/07/owl#Thing>) -|
+                          return owl:Thing
+
+                        adding to punion: owl:Thing
+                        SWITCH: Existential Filler Expansion
+                        ***************************************
+                        root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasTopping_> owl:Thing))
+                          inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasTopping_> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) <http://www.w3.org/2002/07/owl#Thing>)
+                        return ObjectUnionOf()
+                      adding to punion: ObjectUnionOf()
+                      adding to punion from circles: [ObjectUnionOf()]
+                      SWITCH: Class Hierarchy
+                      reset punion
+                        ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>) ObjectSomeValuesFrom(<#hasTopping_> owl:Thing))
+                        reset punion
+                          ENTER SubClassOf(<#SpicyTopping_> owl:Thing)
+                          root == SubClassOf(<#SpicyTopping_> owl:Thing)
+                            inf=SubClassOf(<#SpicyTopping_> <http://www.w3.org/2002/07/owl#Thing>) -|
+                          return owl:Thing
+
+                        adding to punion: owl:Thing
+                        SWITCH: Existential Filler Expansion
+                        ***************************************
+                        root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>) ObjectSomeValuesFrom(<#hasTopping_> owl:Thing))
+                          inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>) ObjectSomeValuesFrom(<#hasTopping_> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(<#SpicyTopping_> <http://www.w3.org/2002/07/owl#Thing>)
+                        return ObjectUnionOf()
+                      adding to punion: ObjectUnionOf()
+                      skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>))
+                      SWITCH: Class Hierarchy
+                      ***************************************
+                      root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> owl:Thing))
+                        inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))); SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasTopping_> <http://www.w3.org/2002/07/owl#Thing>))
+                        inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)); SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>) ObjectSomeValuesFrom(<#hasTopping_> <http://www.w3.org/2002/07/owl#Thing>))
+                      return ObjectUnionOf()
+                    adding to punion: ObjectUnionOf()
+                    SWITCH: Class Hierarchy
+                    ***************************************
+                    root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza_>)
+                      inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza_>) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))); SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) <#Pizza_>)
+                      inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza_>) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))); SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) <#Pizza_>)
+                      inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza_>) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> <http://www.w3.org/2002/07/owl#Thing>)); SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> <http://www.w3.org/2002/07/owl#Thing>) <#Pizza_>)
+                    return ObjectUnionOf()
+                  adding to punion: ObjectUnionOf()
+                  SWITCH: Intersection Composition
+                  ***************************************
+                  root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))))
+                    inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizzaEquivalent>); SubClassOf(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))))
+                    inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza_>); SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+                  return ObjectUnionOf()
+                adding to punion: ObjectUnionOf()
+                SWITCH: Class Hierarchy
+                ***************************************
+                root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizzaEquivalent>)
+                  inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizzaEquivalent>) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))); SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) <#SpicyPizzaEquivalent>)
+                  inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizzaEquivalent>) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))); SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) <#SpicyPizzaEquivalent>)
+                return ObjectUnionOf(<#SpicyPizzaEquivalent> ObjectUnionOf())
+              adding to punion: ObjectUnionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent> ObjectUnionOf())
+                ENTER SubClassOf(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))))
+                reset punion
+                adding to punion from circles: [ObjectUnionOf()]
+                SWITCH: Equivalent Classes Decomposition
+                ***************************************
+                root == SubClassOf(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))))
+                  inf=SubClassOf(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))) -| EquivalentClasses(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))))
+                return ObjectUnionOf()
+              adding to punion: ObjectUnionOf()
+              SWITCH: Class Hierarchy
+              ***************************************
+              root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))))
+                inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza>); SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))
+                inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizzaEquivalent>); SubClassOf(<#SpicyPizzaEquivalent> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))))
+              return ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<#SpicyPizzaEquivalent> ObjectUnionOf()))
+            adding to punion: ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent> ObjectUnionOf()))
+            SWITCH: Class Hierarchy
+            ***************************************
+            root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))
+              inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) -| SubClassOf(<#SpicyTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))
+              inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))); SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))
+            return ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<#SpicyPizzaEquivalent> ObjectUnionOf())))
+          adding to punion: ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent> ObjectUnionOf())))
+          SWITCH: Class Hierarchy
+          ***************************************
+          root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> owl:Thing))
+            inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(<#SpicyTopping> <http://www.w3.org/2002/07/owl#Thing>)
+            inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <http://www.w3.org/2002/07/owl#Thing>)) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))); SubClassOf(ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)) ObjectSomeValuesFrom(<#hasTopping> <http://www.w3.org/2002/07/owl#Thing>))
+          return ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<#SpicyPizzaEquivalent> ObjectUnionOf()))))
+        adding to punion: ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent> ObjectUnionOf()))))
+          ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> owl:Thing) <#Pizza>)
+          reset punion
+            ENTER ObjectPropertyDomain(<#hasTopping> <#Pizza>)
+            reset punion
+            SWITCH: Asserted Conclusion
+            ***************************************
+            root == ObjectPropertyDomain(<#hasTopping> <#Pizza>)
+              inf=ObjectPropertyDomain(<#hasTopping> <#Pizza>) -|
+            return ObjectUnionOf()
+          adding to punion: ObjectUnionOf()
+          SWITCH: Property Domain Transaltion
+          ***************************************
+          root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> owl:Thing) <#Pizza>)
+            inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <http://www.w3.org/2002/07/owl#Thing>) <#Pizza>) -| ObjectPropertyDomain(<#hasTopping> <#Pizza>)
+          return ObjectUnionOf()
+        adding to punion: ObjectUnionOf()
+        SWITCH: Class Hierarchy
+        reset punion
+          ENTER SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) <#Pizza>)
+          root == SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) <#Pizza>)
+            inf=SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) <#Pizza>) -|
+          return ObjectUnionOf()
+
+        adding to punion: ObjectUnionOf()
+        skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>)))
+        SWITCH: Class Hierarchy
+        reset punion
+          ENTER SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) <#Pizza>)
+          root == SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) <#Pizza>)
+            inf=SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) <#Pizza>) -|
+          return ObjectUnionOf()
+
+        adding to punion: ObjectUnionOf()
+        adding to punion from circles: [ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent> ObjectUnionOf()))]
+        SWITCH: Class Hierarchy
+        ***************************************
+        root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza>)
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza>) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <http://www.w3.org/2002/07/owl#Thing>)); SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <http://www.w3.org/2002/07/owl#Thing>) <#Pizza>)
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza>) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>))); SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) <#Pizza>)
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza>) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>)))); SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> ObjectSomeValuesFrom(<#hasSpiciness> <#Hot>))) <#Pizza>)
+        return ObjectUnionOf(ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<#SpicyPizzaEquivalent> ObjectUnionOf()))) ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<#SpicyPizzaEquivalent> ObjectUnionOf()))))))
+      adding to punion: ObjectUnionOf(ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent> ObjectUnionOf()))) ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent> ObjectUnionOf()))))))
+        ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>))
+        root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>))
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) -|
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) -| SubObjectPropertyOf(<#hasTopping> <#hasTopping>)
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) -| SubClassOf(<#SpicyTopping> <#SpicyTopping>)
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) -| SubObjectPropertyOf(<#hasTopping> <#hasTopping>)
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) -| SubObjectPropertyOf(<#hasTopping> <#hasTopping>)
+        return ObjectUnionOf()
+
+      adding to punion: ObjectUnionOf()
+      SWITCH: Intersection Composition
+      reset punion
+        ENTER SubClassOf(<#SpicyPizza> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)))
+        reset punion
+          ENTER EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) )
+          reset punion
+          SWITCH: Asserted Conclusion
+          ***************************************
+          root == EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) )
+            inf=EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>))) -|
+          return ObjectUnionOf()
+        adding to punion: ObjectUnionOf()
+        SWITCH: Equivalent Classes Decomposition
+        ***************************************
+        root == SubClassOf(<#SpicyPizza> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)))
+          inf=SubClassOf(<#SpicyPizza> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>))) -| EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)))
+        return ObjectUnionOf()
+      adding to punion: ObjectUnionOf()
+      skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>)
+      SWITCH: Class Hierarchy
+      ***************************************
+      root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)))
+        inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza>); SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>))
+        inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizza>); SubClassOf(<#SpicyPizza> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)))
+      return ObjectUnionOf()
+    adding to punion: ObjectUnionOf()
+      ENTER SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) <#SpicyPizza>)
+      reset punion
+      adding to punion from circles: [ObjectUnionOf()]
+      SWITCH: Equivalent Classes Decomposition
+      ***************************************
+      root == SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) <#SpicyPizza>)
+        inf=SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) <#SpicyPizza>) -| EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)))
+      return <#SpicyPizza>
+    adding to punion: <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>
+    SWITCH: Class Hierarchy
+    reset punion
+      ENTER SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) <#SpicyPizza>)
+      reset punion
+        ENTER EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) )
+        reset punion
+        SWITCH: Asserted Conclusion
+        ***************************************
+        root == EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) )
+          inf=EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))) -|
+        return ObjectUnionOf()
+      adding to punion: ObjectUnionOf()
+      SWITCH: Equivalent Classes Decomposition
+      ***************************************
+      root == SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) <#SpicyPizza>)
+        inf=SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) <#SpicyPizza>) -| EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)))
+      return <#SpicyPizza>
+    adding to punion: <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>
+    skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>)))
+    SWITCH: Class Hierarchy
+    ***************************************
+    root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizza>)
+      inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizza>) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>))); SubClassOf(ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)) <#SpicyPizza>)
+      inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizza>) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))); SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) <#SpicyPizza>)
+    return ObjectUnionOf(<#SpicyPizza> ObjectUnionOf())
+  adding to punion: ObjectUnionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza> ObjectUnionOf())
+    ENTER SubClassOf(<#SpicyPizza> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)))
+    reset punion
+    adding to punion from circles: [ObjectUnionOf()]
+    SWITCH: Equivalent Classes Decomposition
+    ***************************************
+    root == SubClassOf(<#SpicyPizza> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)))
+      inf=SubClassOf(<#SpicyPizza> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))) -| EquivalentClasses(<#SpicyPizza> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)))
+    return ObjectUnionOf()
+  adding to punion: ObjectUnionOf()
+  SWITCH: Class Hierarchy
+  reset punion
+  adding to punion from circles: [ObjectUnionOf()]
+  skipping unfinished premise:SubClassOf(ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>))
+  SWITCH: Intersection Composition
+  ***************************************
+  root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)))
+    inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#SpicyPizza>); SubClassOf(<#SpicyPizza> ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)))
+    inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza_>); SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))
+  return ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<#SpicyPizza> ObjectUnionOf()))
+adding to punion: ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza> ObjectUnionOf()))
+SWITCH: Class Hierarchy
+reset punion
+  ENTER SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))
+  reset punion
+    ENTER SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) <#SpicyTopping_>)
+    reset punion
+      ENTER SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) <#SpicyTopping_>)
+      reset punion
+      adding to punion from circles: [ObjectUnionOf()]
+      SWITCH: Equivalent Classes Decomposition
+      ***************************************
+      root == SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) <#SpicyTopping_>)
+        inf=SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) <#SpicyTopping_>) -| EquivalentClasses(<#SpicyTopping_> ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+      return ObjectUnionOf()
+    adding to punion: ObjectUnionOf()
+      ENTER SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+      reset punion
+        ENTER SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))
+        root == SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) -|
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) -| SubObjectPropertyOf(<#hasSpiciness_> <#hasSpiciness_>)
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) -| SubClassOf(<#Hot_> <#Hot_>)
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) -| SubObjectPropertyOf(<#hasSpiciness_> <#hasSpiciness_>)
+        return ObjectUnionOf()
+
+      adding to punion: ObjectUnionOf()
+        ENTER SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) <#PizzaTopping_>)
+        reset punion
+        adding to punion from circles: [ObjectUnionOf()]
+        adding to punion from circles: [ObjectUnionOf()]
+        SWITCH: Class Hierarchy
+        ***************************************
+        root == SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) <#PizzaTopping_>)
+          inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) <#PizzaTopping_>) -| SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> <http://www.w3.org/2002/07/owl#Thing>)); SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <http://www.w3.org/2002/07/owl#Thing>) <#PizzaTopping_>)
+        return ObjectUnionOf()
+      adding to punion: ObjectUnionOf()
+      SWITCH: Intersection Composition
+      ***************************************
+      root == SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)))
+        inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))) -| SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) <#PizzaTopping_>); SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))
+      return ObjectUnionOf()
+    adding to punion: ObjectUnionOf()
+    SWITCH: Class Hierarchy
+    ***************************************
+    root == SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) <#SpicyTopping_>)
+      inf=SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) <#SpicyTopping_>) -| SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))); SubClassOf(ObjectIntersectionOf(<#PizzaTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) <#SpicyTopping_>)
+    return ObjectUnionOf()
+  adding to punion: ObjectUnionOf()
+  SWITCH: Existential Filler Expansion
+  ***************************************
+  root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))
+    inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) -| SubClassOf(ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>) <#SpicyTopping_>)
+  return ObjectUnionOf()
+adding to punion: ObjectUnionOf()
+adding to punion from circles: [ObjectUnionOf()]
+SWITCH: Class Hierarchy
+***************************************
+root == SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))
+  inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))); SubClassOf(ObjectIntersectionOf(<#Pizza_> ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))
+  inf=SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>)) -| SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>))); SubClassOf(ObjectSomeValuesFrom(<#hasTopping_> ObjectSomeValuesFrom(<#hasSpiciness_> <#Hot_>)) ObjectSomeValuesFrom(<#hasTopping_> <#SpicyTopping_>))
+return ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<#SpicyPizza> ObjectUnionOf())))
+
+Converting U() =>
+           U()
+
+Converting <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza> =>
+           <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>
+
+Converting U(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza> U()) =>
+           <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>
+
+Converting U(U() U(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza> U())) =>
+           <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>
+
+Converting U(U() U(U() U(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza> U()))) =>
+           <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>
+<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>
+getClassesInSignature=7
+imports=0
+
+Process finished with exit code 0

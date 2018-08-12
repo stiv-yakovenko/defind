@@ -1,0 +1,4 @@
+
+3 SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) ObjectIntersectionOf(<#Pizza> ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>)))-> ()
+
+4 SubClassOf(ObjectSomeValuesFrom(<#hasTopping> <#SpicyTopping>) <#Pizza>) -> ObjectUnionOf(ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<#SpicyPizzaEquivalent> ObjectUnionOf()))) ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(ObjectUnionOf() ObjectUnionOf(<#SpicyPizzaEquivalent> ObjectUnionOf()))))))

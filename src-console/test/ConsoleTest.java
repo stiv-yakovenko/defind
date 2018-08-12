@@ -11,6 +11,8 @@ import org.semanticweb.elk.owlapi.ElkProverFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 import uk.ac.manchester.cs.owl.owlapi.OWLClassImpl;
+import uk.ac.manchester.cs.owl.owlapi.OWLObjectPropertyImpl;
+import uk.ac.manchester.cs.owl.owlapi.OWLObjectSomeValuesFromImpl;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,7 +42,16 @@ public class ConsoleTest {
                 delta.add(cls);
             }
         }
-        OWLClassImpl a = new OWLClassImpl(IRI.create(url + "#", cName));
+        OWLClassExpression a;
+        if (cName.matches(".* some .*")) {
+            String ob = cName.split(" ")[0];
+            String cl = cName.split(" ")[2];
+            OWLClassExpression cls = new OWLClassImpl(IRI.create(url + "#", cl));
+            OWLObjectPropertyExpression obj = new OWLObjectPropertyImpl(IRI.create(url + "#", ob));
+            a = new OWLObjectSomeValuesFromImpl(obj,cls);
+        } else {
+            a = new OWLClassImpl(IRI.create(url + "#", cName));
+        }
         System.out.println("C = " + a.toString());
         Calc calc = new Calc(){
             @Override
@@ -63,6 +74,13 @@ public class ConsoleTest {
     public static void main(String[] args) throws OWLOntologyCreationException, FileNotFoundException {
         List<OWLClassExpression> rss= new ArrayList();
         OWLClassExpression res;
+
+        res = loadAndSolve("./test/SpicyPizzaEquivalent.owl", new String[]{"SpicyPizza","SpicyPizzaEquivalent"}, "hasTopping some SpicyTopping");
+        testEq(res,"<416#SpicyPizza>",rss);
+        System.exit(0);
+
+
+
         res = loadAndSolve("./test/EquivalentClassesDecompositionTest.owl", new String[]{"B","C"}, "A");
         testEq(res,"ObjectUnionOf(<287#B> <287#C> owl:Nothing)",rss);
         res = loadAndSolve("./test/concept_simplification.owl", new String[]{"A"}, "C");

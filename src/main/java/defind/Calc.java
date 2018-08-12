@@ -43,6 +43,8 @@ public class Calc {
         performRename(manager, ont[0], delta);
         OWLAxiom cls = ont[0].getAxioms().iterator().next();
         OWLClassExpression c_ = ((OWLSubClassOfAxiomImpl) cls).getSubClass();
+        System.out.println("c="+c.toString());
+        System.out.println("c_="+c_.toString());
         return fucktory.getOWLSubClassOfAxiom(c, c_);
     }
 

@@ -1,72 +1,28 @@
-U ( I(AB) I (A)) = U (I(A))
-
-
-U(I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
-    OSVF(<r2> I(OSVF(<r2> T) OSVF(<s2> T)))
-     OSVF(<s1> I(OSVF(<r1> T) OSVF(<s1> T)))
-     OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T)))
-     )
-
-I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
-OSVF(<r2> I(OSVF(<r2> T) OSVF(<s2> T)))
-OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T))))
-
-I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
-OSVF(<s1> I(OSVF(<r1> T) OSVF(<s1> T)))
-OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T))))
-
-I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
-OSVF(<s1> I(OSVF(<r1> T) OSVF(<s1> T)))
-OSVF(<u2> I(OSVF(<u2> T) OSVF(<v2> T)))
-OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
-
-I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
-OSVF(<s1> I(OSVF(<r1> T) OSVF(<s1> T)))
-OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
-
-I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
-OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T))))
-
-I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
-OSVF(<u2> I(OSVF(<u2> T) OSVF(<v2> T)))
-OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
-
-I(OSVF(<r1> I(OSVF(<r1> T) OSVF(<s1> T)))
-OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
-
-I(OSVF(<r2> I(OSVF(<r2> T) OSVF(<s2> T)))
-OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T)))
-
-OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))))
-I(OSVF(<r2> I(OSVF(<r2> T) OSVF(<s2> T)))
-OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T)))
-OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T)))
-OSVF(<v1> I(OSVF(<u1> T) OSVF(<v1> T))))
-
-I(OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T)))
-OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))))
-I(OSVF(<s2> I(OSVF(<r2> T) OSVF(<s2> T)))
-OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T)))
-OSVF(<v1> I(OSVF(<u1> T) OSVF(<v1> T))))
- I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T)))
-  OSVF(<u2> I(OSVF(<u2> T) OSVF(<v2> T)))
-  OSVF(<v1> I(OSVF(<u1> T) OSVF(<v1> T)))
-  OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T))))
-
-  I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<u2> I(OSVF(<u2> T) OSVF(<v2> T))) OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T)))) I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<v1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T)))) I(OSVF(<u1> I(OSVF(<u1> T) OSVF(<v1> T))) OSVF(<v2> I(OSVF(<u2> T) OSVF(<v2> T)))))
-
-  ObjectUnionOf(
-      ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))) ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))))
-  )
-
-  wrong:ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(
-     ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing)))
-     ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing)
-     ObjectSomeValuesFrom(<287#s1> owl:Thing))))
-
-     expected ObjectUnionOf(
-     ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing)
-     ObjectSomeValuesFrom(<287#s1> owl:Thing)))
-     ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing)
-     ObjectSomeValuesFrom(<287#s1> owl:Thing))))
-     )
+EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>) )
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping_>))
+ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping_>)
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>))
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent_>))
+Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness>))
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent>))
+ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza>)
+EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>) )
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>))
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>))
+Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_>))
+EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>)) )
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>))
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza>))
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza>))
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C>))
+Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping>))
+ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza>)
+Declaration(ObjectProperty(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_>))
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping>))
+Declaration(Class(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C_>))
+ObjectPropertyDomain(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping>)
+EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping>)) )
+EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>)) )
+EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping_>)) )
+EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent_> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping_> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness_> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot_>))) )
+EquivalentClasses(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent> ObjectIntersectionOf(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping> ObjectSomeValuesFrom(<http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness> <http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot>))) )
