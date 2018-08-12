@@ -75,9 +75,9 @@ public class ConsoleTest {
         List<OWLClassExpression> rss= new ArrayList();
         OWLClassExpression res;
 
-        res = loadAndSolve("./test/SpicyPizzaEquivalent.owl", new String[]{"SpicyPizza","SpicyPizzaEquivalent"}, "hasTopping some SpicyTopping");
-        testEq(res,"<416#SpicyPizza>",rss);
-        System.exit(0);
+    //    res = loadAndSolve("./test/SpicyPizzaEquivalent.owl", new String[]{"SpicyPizza","SpicyPizzaEquivalent"}, "hasTopping some SpicyTopping");
+  //      testEq(res,"<416#SpicyPizza>",rss);
+//        System.exit(0);
 
 
 

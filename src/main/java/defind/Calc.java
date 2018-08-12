@@ -43,8 +43,8 @@ public class Calc {
         performRename(manager, ont[0], delta);
         OWLAxiom cls = ont[0].getAxioms().iterator().next();
         OWLClassExpression c_ = ((OWLSubClassOfAxiomImpl) cls).getSubClass();
-        System.out.println("c="+c.toString());
-        System.out.println("c_="+c_.toString());
+        System.out.println("c=" + c.toString());
+        System.out.println("c_=" + c_.toString());
         return fucktory.getOWLSubClassOfAxiom(c, c_);
     }
 
@@ -55,7 +55,8 @@ public class Calc {
             i++;
         }
     }
-    public static void launchReasoner(OWLModelManager modelManager){
+
+    public static void launchReasoner(OWLModelManager modelManager) {
         OWLReasonerManager owlReasonerManager = modelManager.getOWLReasonerManager();
         owlReasonerManager.classifyAsynchronously(owlReasonerManager.getReasonerPreferences().getPrecomputedInferences());
         Thread parent = Thread.currentThread();
@@ -91,11 +92,11 @@ public class Calc {
             return null;
         }
         Collection<ProofService> proofServices = proofServiceManager.getProofServices();
-        if (proofServices==null || proofServices.size() == 0) {
+        if (proofServices == null || proofServices.size() == 0) {
             System.out.println("No proof service");
         }
         ProofService proofService = proofServices.iterator().next();
-        if (proofService==null) {
+        if (proofService == null) {
             return null;
         }
 
@@ -110,7 +111,8 @@ public class Calc {
         //launchReasoner(modelManager);
         try {
             proofService.dispose();
-        } catch (Exception e){}
+        } catch (Exception e) {
+        }
         return proof;
     }
 
@@ -133,7 +135,7 @@ public class Calc {
         Proof inferences = (Proof) invoke(modelManager, owlEditorKit, cIsLessC_);
         if (inferences == null) return null;
         System.out.println("inferences = " + inferences.getInferences(cIsLessC_).size());
-        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null, srcOnt,0);
+        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null,null, srcOnt, 0);
         OWLClassExpression res1 = DNFConverter.toDNF(res);
         manager.removeAxioms(srcOnt, ont.getAxioms());
         manager.addAxioms(srcOnt, srcAxioms);
@@ -190,9 +192,10 @@ public class Calc {
             manager.applyChanges(owlOntologyChanges);
         }
     }
+
     static boolean isEmpty(Set<OWLClassExpression> e) {
-        if (e.size() == 0 )return true;
-        for (OWLClassExpression el:e){
+        if (e.size() == 0) return true;
+        for (OWLClassExpression el : e) {
             if (!isEmpty(el)) return false;
         }
         return true;
@@ -227,7 +230,7 @@ public class Calc {
         return true;
     }
 
-    static OWLClassExpression merge(Set<OWLClassExpression> union){
+    static OWLClassExpression merge(Set<OWLClassExpression> union) {
         Set<OWLClassExpression> union2 = new HashSet();
         for (OWLClassExpression elem : union) {
             if (!isEmpty(elem)) {
@@ -241,24 +244,28 @@ public class Calc {
         return ret;
     }
 
-    static String indent(int rec){
+    static String indent(int rec) {
         StringBuilder r = new StringBuilder();
-        for(int i=0;i<rec;i++){
+        for (int i = 0; i < rec; i++) {
             r.append("  ");
         }
         return r.toString();
     }
 
-    static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta, Map<OWLAxiom, Set<OWLClassExpression>> circles, OWLOntology ont, int rec) {
+    static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta,
+                                     Map<Inference<OWLAxiom>, Set<OWLAxiom>> circles,
+                                     Inference<OWLAxiom> prevInf,
+                                     OWLOntology ont, int rec) {
         String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();
-        String rootStr = root.toString().replaceAll(url,"");
+        String rootStr = root.toString().replaceAll(url, "");
         if (circles == null) {
             circles = new HashMap<>();
-            return handle(root, proof, delta, circles, ont,0);
+            return handle(root, proof, delta, circles, prevInf, ont, 0);
         }
         System.out.print(indent(rec));
         System.out.println("ENTER " + rootStr);
-        circles.put(root, null);
+        circles.computeIfAbsent(prevInf, k -> new HashSet<>());
+        circles.get(prevInf).add(root);
         Collection<? extends Inference<OWLAxiom>> inferences = proof.getInferences(root);
         Set<OWLClassExpression> union = new HashSet();
         if (inferences.size() == 0) {
@@ -285,7 +292,16 @@ public class Calc {
             }
         }
         for (Inference<OWLAxiom> inf : inferences) {
-            if (inf.getPremises().size()==0){
+            boolean goodInference = true;
+            for (OWLAxiom premise : inf.getPremises()) {
+                Set<OWLAxiom> infAx = circles.get(inf);
+                if (infAx!=null && circles.get(inf).contains(premise)) { // all axioms processed in circles
+                    goodInference = false;
+                    break;
+                }
+            }
+            if (!goodInference) continue;
+            if (inf.getPremises().size() == 0) {
                 if (root instanceof OWLSubClassOfAxiomImpl) {
                     OWLClassExpression superClass = ((OWLSubClassOfAxiomImpl) root).getSuperClass();
                     Set<OWLEntity> signature = superClass.getSignature();
@@ -295,56 +311,31 @@ public class Calc {
                         union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
                     }
                     System.out.print(indent(rec));
-                    System.out.println("root == " + root.toString().replaceAll(url,""));
-                    for(Inference i : inferences) {
+                    System.out.println("root == " + root.toString().replaceAll(url, ""));
+                    for (Inference i : inferences) {
                         System.out.print(indent(rec));
-                        System.out.println("  inf="+i.toString().replaceAll(url,""));
+                        System.out.println("  inf=" + i.toString().replaceAll(url, ""));
                     }
                     OWLClassExpression res = merge(union);
                     System.out.print(indent(rec));
                     System.out.println("return " + res.toString().replaceAll(url, ""));
                     System.out.print(indent(rec));
                     System.out.println();
-                    Set<OWLClassExpression> oldVals = circles.get(root);
-                    if (oldVals == null) oldVals = new HashSet<>();
-                    oldVals.add(res);
-                    circles.put(root,oldVals);
                     return res;
                 }
             }
             System.out.print(indent(rec));
             System.out.println("reset punion");
             Set<OWLClassExpression> pUnion = new HashSet<>();
-            Set<OWLAxiom> axioms = new HashSet<>();
-            axioms.addAll(inf.getPremises());
-            while (true) {
-                OWLAxiom premise = getFirstNonProcessed(axioms, circles);
+            for (OWLAxiom premise : inf.getPremises()) {
                 OWLClassExpression res;
-                if (premise == null) { // all axioms processed in circles
-                    for (OWLAxiom ax : axioms) {
-                        Set<OWLClassExpression> rs = circles.get(ax);
-                        if (rs == null) {
-                            System.out.print(indent(rec));
-                            System.out.println("skipping unfinished premise:" +ax);
-                            pUnion.add(new OWLObjectUnionOfImpl(new HashSet<>()));
-                            continue;
-                        }
-                        //if(isEmpty(rs)) continue;
-                        System.out.print(indent(rec));
-                        System.out.println("adding to punion from circles: " +rs);
-                        pUnion.addAll(rs);
-                    }
-                    break;
-                } else {
-                    res = handle(premise, proof, delta, circles, ont,rec+1);
-                }
-                //if (isEmpty(res)) continue;
+                res = handle(premise, proof, delta, circles, inf, ont, rec + 1);
                 System.out.print(indent(rec));
-                System.out.println("adding to punion: " +res);
+                System.out.println("adding to punion: " + res);
                 pUnion.add(res);
             }
             System.out.print(indent(rec));
-            System.out.println("SWITCH: " +inf.getName());
+            System.out.println("SWITCH: " + inf.getName());
             switch (inf.getName()) {
                 case "Equivalent Classes Decomposition": {
                     OWLClassExpression superClass = ((OWLSubClassOfAxiom) root).getSuperClass();
@@ -399,7 +390,7 @@ public class Calc {
                             break;
                         }
                     }
-                    if (haveEmpty || pUnion.size()==0) {
+                    if (haveEmpty || pUnion.size() == 0) {
                         union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
                     } else {
                         if (pUnion.size() == 1 && pUnion.iterator().next() instanceof OWLObjectIntersectionOf) {
@@ -418,16 +409,12 @@ public class Calc {
         OWLClassExpression ret = merge(union);
         System.out.print(indent(rec));
         System.out.println("***************************************");
-        Set<OWLClassExpression> oldVals = circles.get(root);
-        if (oldVals == null ) oldVals = new HashSet<>();
-        oldVals.add(ret);
-        circles.put(root,oldVals);
         String str = root.toString().replaceAll(url, "");
         System.out.print(indent(rec));
         System.out.println("root == " + str);
-        for(Inference i : inferences) {
+        for (Inference i : inferences) {
             System.out.print(indent(rec));
-            System.out.println("  inf="+i.toString().replaceAll(url,""));
+            System.out.println("  inf=" + i.toString().replaceAll(url, ""));
         }
         System.out.print(indent(rec));
         System.out.println("return " + ret.toString().replaceAll(url, ""));
