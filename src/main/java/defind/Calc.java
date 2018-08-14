@@ -266,6 +266,9 @@ public class Calc {
         System.out.print(indent(rec));
         System.out.println("ENTER " + rootStr);
         circles.computeIfAbsent(prevInf, k -> new HashSet<>());
+//        if (circles.get(prevInf).contains(root)) {
+//            return new OWLObjectUnionOfImpl(new HashSet<>());
+//        }
         circles.get(prevInf).add(root);
         Collection<? extends Inference<OWLAxiom>> inferences = proof.getInferences(root);
         Set<OWLClassExpression> union = new HashSet();

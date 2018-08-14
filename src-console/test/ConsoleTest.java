@@ -74,10 +74,12 @@ public class ConsoleTest {
     public static void main(String[] args) throws OWLOntologyCreationException, FileNotFoundException {
         List<OWLClassExpression> rss= new ArrayList();
         OWLClassExpression res;
+        res = loadAndSolve("./test/pizza_simplified.owl", new String[]{"Pizza","SpicyPizza"}, "C");
+        testEq(res,"ObjectUnionOf(<416#SpicyPizza> ObjectIntersectionOf(<416#Pizza> <416#SpicyPizza>))",rss);
+        System.exit(0);
 
         res = loadAndSolve("./test/SpicyPizzaEquivalent.owl", new String[]{"SpicyPizza","SpicyPizzaEquivalent"}, "hasTopping some SpicyTopping");
         testEq(res,"<416#SpicyPizza>",rss);
-        System.exit(0);
         res = loadAndSolve("./test/EquivalentClassesDecompositionTest.owl", new String[]{"B","C"}, "A");
         testEq(res,"ObjectUnionOf(<287#B> <287#C> owl:Nothing)",rss);
         res = loadAndSolve("./test/concept_simplification.owl", new String[]{"A"}, "C");
@@ -116,8 +118,6 @@ public class ConsoleTest {
         testEq(res,"ObjectUnionOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> owl:Thing) ObjectSomeValuesFrom(<282#s1> owl:Thing))) ObjectSomeValuesFrom(<282#r2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r2> owl:Thing) ObjectSomeValuesFrom(<282#s2> owl:Thing))) ObjectSomeValuesFrom(<282#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> owl:Thing) ObjectSomeValuesFrom(<282#s1> owl:Thing))) ObjectSomeValuesFrom(<282#s2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r2> owl:Thing) ObjectSomeValuesFrom(<282#s2> owl:Thing)))) ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> owl:Thing) ObjectSomeValuesFrom(<282#s1> owl:Thing))) ObjectSomeValuesFrom(<282#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r1> owl:Thing) ObjectSomeValuesFrom(<282#s1> owl:Thing))) ObjectSomeValuesFrom(<282#u2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u2> owl:Thing) ObjectSomeValuesFrom(<282#v2> owl:Thing))) ObjectSomeValuesFrom(<282#v2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u2> owl:Thing) ObjectSomeValuesFrom(<282#v2> owl:Thing)))) ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r2> owl:Thing) ObjectSomeValuesFrom(<282#s2> owl:Thing))) ObjectSomeValuesFrom(<282#s2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#r2> owl:Thing) ObjectSomeValuesFrom(<282#s2> owl:Thing))) ObjectSomeValuesFrom(<282#u1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u1> owl:Thing) ObjectSomeValuesFrom(<282#v1> owl:Thing))) ObjectSomeValuesFrom(<282#v1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u1> owl:Thing) ObjectSomeValuesFrom(<282#v1> owl:Thing)))) ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u1> owl:Thing) ObjectSomeValuesFrom(<282#v1> owl:Thing))) ObjectSomeValuesFrom(<282#u2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u2> owl:Thing) ObjectSomeValuesFrom(<282#v2> owl:Thing))) ObjectSomeValuesFrom(<282#v1> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u1> owl:Thing) ObjectSomeValuesFrom(<282#v1> owl:Thing))) ObjectSomeValuesFrom(<282#v2> ObjectIntersectionOf(ObjectSomeValuesFrom(<282#u2> owl:Thing) ObjectSomeValuesFrom(<282#v2> owl:Thing)))))",rss);
         res = loadAndSolve("./test/ExpLongExpManSimplified.owl", new String[]{"r1","s1"}, "A");
         testEq(res,"ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))) ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))))",rss);
-        res = loadAndSolve("./test/pizza_simplified.owl", new String[]{"Pizza","SpicyPizza"}, "C");
-        testEq(res,"ObjectUnionOf(<416#SpicyPizza> ObjectIntersectionOf(<416#Pizza> <416#SpicyPizza>))",rss);
         res = loadAndSolve("./test/combofDeltaconcepts.owl", new String[]{"D1","D2"}, "A");
         testEq(res,"ObjectUnionOf(<260#D1> <260#D2> ObjectIntersectionOf(<260#D1> <260#D2>))",rss);
         System.out.println("SUCCESS");
