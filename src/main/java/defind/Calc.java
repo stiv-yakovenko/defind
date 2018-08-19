@@ -142,6 +142,10 @@ public class Calc {
         manager.removeOntology(ont);
         manager.removeOntology(ont1);
         manager.removeOntology(ont2[0]);
+        if (owlEditorKit!=null) {
+            OWLReasonerManager reasonerManager = owlEditorKit.getOWLModelManager().getOWLReasonerManager();
+            reasonerManager.getCurrentReasoner().flush();
+        }
         System.out.println("getClassesInSignature=" + srcOnt.getClassesInSignature().size());
         System.out.println("imports=" + srcOnt.getImports().size());
         return res1;
