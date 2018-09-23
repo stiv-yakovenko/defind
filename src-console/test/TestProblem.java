@@ -20,6 +20,6 @@ import java.util.regex.Pattern;
 
 class TestProblem {
     public static void main(String[] args) throws OWLOntologyCreationException {
-        ConsoleTest.loadAndSolve("C:\\Users\\steve\\Project\\defind\\test\\pizza_simplified.owl", new String[]{"Pizza","SpicyPizza"}, "C");
+        ConsoleTest.loadAndSolve("C:\\Users\\steve\\Project\\defind\\test\\pizza3.owl", new String[]{"Pizza","SpicyPizza"}, "C");
     }
 }

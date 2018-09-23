@@ -135,14 +135,14 @@ public class Calc {
         Proof inferences = (Proof) invoke(modelManager, owlEditorKit, cIsLessC_);
         if (inferences == null) return null;
         System.out.println("inferences = " + inferences.getInferences(cIsLessC_).size());
-        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null,null,null, srcOnt, 0);
+        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null, null, null, srcOnt, 0);
         OWLClassExpression res1 = DNFConverter.toDNF(res);
         manager.removeAxioms(srcOnt, ont.getAxioms());
         manager.addAxioms(srcOnt, srcAxioms);
         manager.removeOntology(ont);
         manager.removeOntology(ont1);
         manager.removeOntology(ont2[0]);
-        if (owlEditorKit!=null) {
+        if (owlEditorKit != null) {
             OWLReasonerManager reasonerManager = owlEditorKit.getOWLModelManager().getOWLReasonerManager();
             reasonerManager.getCurrentReasoner().flush();
         }
@@ -257,16 +257,21 @@ public class Calc {
     }
 
     static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta,
-                                     Map<Inference<OWLAxiom>, Set<OWLAxiom>> circles,Map<OWLAxiom,OWLClassExpression> cache,
+                                     Map<Inference<OWLAxiom>, Set<OWLAxiom>> circles, Map<OWLAxiom, OWLClassExpression> cache,
                                      Inference<OWLAxiom> prevInf,
                                      OWLOntology ont, int rec) {
         String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();
         String rootStr = root.toString().replaceAll(url, "");
         if (circles == null) {
             circles = new HashMap<>();
-            return handle(root, proof, delta, circles, new HashMap<>(),prevInf, ont, 0);
+            return handle(root, proof, delta, circles, new HashMap<>(), prevInf, ont, 0);
         }
-        if (cache.containsKey(root)) return cache.get(root);
+        if (cache.containsKey(root)) {
+            System.out.print(indent(rec));
+            OWLClassExpression val = cache.get(root);
+            System.out.println("CUT " + rootStr + " " + val);
+            return val;
+        }
         System.out.print(indent(rec));
         System.out.println("ENTER " + rootStr);
         circles.computeIfAbsent(prevInf, k -> new HashSet<>());
@@ -303,7 +308,7 @@ public class Calc {
             boolean goodInference = true;
             for (OWLAxiom premise : inf.getPremises()) {
                 Set<OWLAxiom> infAx = circles.get(inf);
-                if (infAx!=null && circles.get(inf).contains(premise)) { // all axioms processed in circles
+                if (infAx != null && circles.get(inf).contains(premise)) { // all axioms processed in circles
                     goodInference = false;
                     break;
                 }
@@ -330,7 +335,7 @@ public class Calc {
                     System.out.print(indent(rec));
                     System.out.println();
                     circles.get(prevInf).remove(root);
-                    cache.put(root,res);
+                    cache.put(root, res);
                     return res;
                 }
             }
@@ -339,7 +344,7 @@ public class Calc {
             Set<OWLClassExpression> pUnion = new HashSet<>();
             for (OWLAxiom premise : inf.getPremises()) {
                 OWLClassExpression res;
-                res = handle(premise, proof, delta, circles,cache,inf, ont, rec + 1);
+                res = handle(premise, proof, delta, circles, cache, inf, ont, rec + 1);
                 System.out.print(indent(rec));
                 System.out.println("adding to punion: " + res);
                 pUnion.add(res);
@@ -429,7 +434,7 @@ public class Calc {
         System.out.print(indent(rec));
         System.out.println("return " + ret.toString().replaceAll(url, ""));
         circles.get(prevInf).remove(root);
-        cache.put(root,ret);
+        cache.put(root, ret);
         return ret;
     }
 }

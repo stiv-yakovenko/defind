@@ -74,9 +74,14 @@ public class ConsoleTest {
     public static void main(String[] args) throws OWLOntologyCreationException, FileNotFoundException {
         List<OWLClassExpression> rss= new ArrayList();
         OWLClassExpression res;
-        res = loadAndSolve("./test/pizza_simplified.owl", new String[]{"Pizza","SpicyPizza"}, "C");
+        res = loadAndSolve("./test/SpicyPizzaEquivalent-RoleDomainsConverted2Ax.owl", new String[]{"SpicyPizzaEquivalent"}, "SpicyPizza");
         testEq(res,"ObjectUnionOf(<416#SpicyPizza> ObjectIntersectionOf(<416#Pizza> <416#SpicyPizza>))",rss);
         System.exit(0);
+        res = loadAndSolve("./test/pizza3.owl", new String[]{"Pizza","SpicyPizza"}, "C");
+        testEq(res,"ObjectUnionOf(<416#SpicyPizza> ObjectIntersectionOf(<416#Pizza> <416#SpicyPizza>))",rss);
+        res = loadAndSolve("./test/pizza_simplified.owl", new String[]{"Pizza","SpicyPizza"}, "C");
+        testEq(res,"ObjectUnionOf(<416#SpicyPizza> ObjectIntersectionOf(<416#Pizza> <416#SpicyPizza>))",rss);
+
 
         res = loadAndSolve("./test/SpicyPizzaEquivalent.owl", new String[]{"SpicyPizza","SpicyPizzaEquivalent"}, "hasTopping some SpicyTopping");
         testEq(res,"<416#SpicyPizza>",rss);

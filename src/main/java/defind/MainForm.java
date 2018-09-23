@@ -170,10 +170,10 @@ public class MainForm extends JFrame {
                 updateList(deltaList, delta);
             }
         });
-        JButton calcButton = new JButton("compute");
+        JButton calcButton = new JButton("Compute definitions");
         calcButton.setPreferredSize(new Dimension(100, 40));
         JPanel res = new JPanel();
-        JCheckBox invert = new JCheckBox("don't include symbols");
+        JCheckBox invert = new JCheckBox("doesn't include symbols");
         calcButton.addActionListener(e -> {
             try {
                 if (!owlDescriptionEditor.isWellFormed()) {
