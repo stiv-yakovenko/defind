@@ -75,14 +75,7 @@ public class ConsoleTest {
         List<OWLClassExpression> rss= new ArrayList();
         OWLClassExpression res;
         res = loadAndSolve("./test/SpicyPizzaEquivalent-RoleDomainsConverted2Ax.owl", new String[]{"SpicyPizzaEquivalent"}, "SpicyPizza");
-        testEq(res,"ObjectUnionOf(<416#SpicyPizza> ObjectIntersectionOf(<416#Pizza> <416#SpicyPizza>))",rss);
-        System.exit(0);
-        res = loadAndSolve("./test/pizza3.owl", new String[]{"Pizza","SpicyPizza"}, "C");
-        testEq(res,"ObjectUnionOf(<416#SpicyPizza> ObjectIntersectionOf(<416#Pizza> <416#SpicyPizza>))",rss);
-        res = loadAndSolve("./test/pizza_simplified.owl", new String[]{"Pizza","SpicyPizza"}, "C");
-        testEq(res,"ObjectUnionOf(<416#SpicyPizza> ObjectIntersectionOf(<416#Pizza> <416#SpicyPizza>))",rss);
-
-
+        testEq(res,"<416#SpicyPizzaEquivalent>",rss);
         res = loadAndSolve("./test/SpicyPizzaEquivalent.owl", new String[]{"SpicyPizza","SpicyPizzaEquivalent"}, "hasTopping some SpicyTopping");
         testEq(res,"<416#SpicyPizza>",rss);
         res = loadAndSolve("./test/EquivalentClassesDecompositionTest.owl", new String[]{"B","C"}, "A");
@@ -126,5 +119,9 @@ public class ConsoleTest {
         res = loadAndSolve("./test/combofDeltaconcepts.owl", new String[]{"D1","D2"}, "A");
         testEq(res,"ObjectUnionOf(<260#D1> <260#D2> ObjectIntersectionOf(<260#D1> <260#D2>))",rss);
         System.out.println("SUCCESS");
+        res = loadAndSolve("./test/pizza3.owl", new String[]{"Pizza","SpicyPizza"}, "C");
+        testEq(res,"ObjectUnionOf(<416#SpicyPizza> ObjectIntersectionOf(<416#Pizza> <416#SpicyPizza>))",rss);
+        res = loadAndSolve("./test/pizza_simplified.owl", new String[]{"Pizza","SpicyPizza"}, "C");
+        testEq(res,"ObjectUnionOf(<416#SpicyPizza> ObjectIntersectionOf(<416#Pizza> <416#SpicyPizza>))",rss);
     }
 }

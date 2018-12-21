@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#"
-         xml:base="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416"
+<rdf:RDF xmlns="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#"
+         xml:base="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416"
          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:owl="http://www.w3.org/2002/07/owl#"
          xmlns:xml="http://www.w3.org/XML/1998/namespace"
          xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416"/>
+    <owl:Ontology rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416"/>
 
 
 
@@ -21,15 +21,15 @@
 
 
 
-    <!-- http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasSpiciness -->
+    <!-- http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasSpiciness"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness"/>
 
 
 
-    <!-- http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasTopping -->
+    <!-- http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasTopping"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping"/>
 
 
 
@@ -44,47 +44,47 @@
 
 
 
-    <!-- http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#C -->
+    <!-- http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#C">
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#C">
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasTopping"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#SpicyTopping"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping"/>
             </owl:Restriction>
         </owl:equivalentClass>
     </owl:Class>
 
 
 
-    <!-- http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#Hot -->
+    <!-- http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#Hot"/>
-
-
-
-    <!-- http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#Pizza -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#Pizza"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot"/>
 
 
 
-    <!-- http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#PizzaTopping -->
+    <!-- http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#PizzaTopping"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza"/>
 
 
 
-    <!-- http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#SpicyPizza -->
+    <!-- http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#SpicyPizza">
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping"/>
+
+
+
+    <!-- http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizza">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#Pizza"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasTopping"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#SpicyTopping"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -93,19 +93,19 @@
 
 
 
-    <!-- http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#SpicyPizzaEquivalent -->
+    <!-- http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#SpicyPizzaEquivalent">
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyPizzaEquivalent">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#Pizza"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasTopping"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping"/>
                         <owl:someValuesFrom>
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasSpiciness"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#Hot"/>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot"/>
                             </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
@@ -116,16 +116,16 @@
 
 
 
-    <!-- http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#SpicyTopping -->
+    <!-- http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#SpicyTopping">
+    <owl:Class rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#SpicyTopping">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#PizzaTopping"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasSpiciness"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#Hot"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Hot"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -143,14 +143,14 @@
      -->
 
     <owl:Restriction>
-        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasSpiciness"/>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasSpiciness"/>
         <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#PizzaTopping"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#PizzaTopping"/>
     </owl:Restriction>
     <owl:Restriction>
-        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#hasTopping"/>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#hasTopping"/>
         <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2018/6/untitled-ontology-416#Pizza"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/denis/ontologies/2017/10/untitled-ontology-416#Pizza"/>
     </owl:Restriction>
 </rdf:RDF>
 

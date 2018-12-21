@@ -257,13 +257,13 @@ public class Calc {
     }
 
     static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta,
-                                     Map<Inference<OWLAxiom>, Set<OWLAxiom>> circles, Map<OWLAxiom, OWLClassExpression> cache,
+                                     Set<OWLAxiom> circles, Map<OWLAxiom, OWLClassExpression> cache,
                                      Inference<OWLAxiom> prevInf,
                                      OWLOntology ont, int rec) {
         String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();
         String rootStr = root.toString().replaceAll(url, "");
         if (circles == null) {
-            circles = new HashMap<>();
+            circles = new HashSet<>();
             return handle(root, proof, delta, circles, new HashMap<>(), prevInf, ont, 0);
         }
         if (cache.containsKey(root)) {
@@ -274,11 +274,7 @@ public class Calc {
         }
         System.out.print(indent(rec));
         System.out.println("ENTER " + rootStr);
-        circles.computeIfAbsent(prevInf, k -> new HashSet<>());
-//        if (circles.get(prevInf).contains(root)) {
-//            return new OWLObjectUnionOfImpl(new HashSet<>());
-//        }
-        circles.get(prevInf).add(root);
+        circles.add(root);
         Collection<? extends Inference<OWLAxiom>> inferences = proof.getInferences(root);
         Set<OWLClassExpression> union = new HashSet();
         if (inferences.size() == 0) {
@@ -307,8 +303,7 @@ public class Calc {
         for (Inference<OWLAxiom> inf : inferences) {
             boolean goodInference = true;
             for (OWLAxiom premise : inf.getPremises()) {
-                Set<OWLAxiom> infAx = circles.get(inf);
-                if (infAx != null && circles.get(inf).contains(premise)) { // all axioms processed in circles
+                if (circles.contains(premise)) { // all axioms processed in circles
                     goodInference = false;
                     break;
                 }
@@ -334,7 +329,7 @@ public class Calc {
                     System.out.println("return " + res.toString().replaceAll(url, ""));
                     System.out.print(indent(rec));
                     System.out.println();
-                    circles.get(prevInf).remove(root);
+                    circles.remove(root);
                     cache.put(root, res);
                     return res;
                 }
@@ -353,12 +348,13 @@ public class Calc {
             System.out.println("SWITCH: " + inf.getName());
             switch (inf.getName()) {
                 case "Equivalent Classes Decomposition": {
-                    OWLClassExpression superClass = ((OWLSubClassOfAxiom) root).getSuperClass();
-                    Set<OWLEntity> signature = superClass.getSignature();
-                    if (allSymbolsInDelta(delta, signature)) {
-                        union.add(superClass);
-                    } else {
-                        union.add(new OWLObjectUnionOfImpl(new HashSet<>()));
+                    assert inf.getPremises().size()==1;
+                    OWLNaryClassAxiom eq = (OWLNaryClassAxiom) inf.getPremises().get(0);
+                    for (OWLClassExpression el : eq.getClassExpressionsAsList()) {
+                        Set<OWLEntity> signature = el.getSignature();
+                        if (allSymbolsInDelta(delta, signature)) {
+                            union.add(el);
+                        }
                     }
                 }
                 break;
@@ -433,7 +429,7 @@ public class Calc {
         }
         System.out.print(indent(rec));
         System.out.println("return " + ret.toString().replaceAll(url, ""));
-        circles.get(prevInf).remove(root);
+        circles.remove(root);
         cache.put(root, ret);
         return ret;
     }
