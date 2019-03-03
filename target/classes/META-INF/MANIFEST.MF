@@ -1,0 +1,44 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1551612756840
+Build-Jdk: 1.8.0_181
+Built-By: steve
+Bundle-Description: DeFind plugin
+Bundle-DocURL: https://github.com/stiv-yakovenko/defind
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DeFind
+Bundle-SymbolicName: org.stivyakovenko.defind;singleton:=true
+Bundle-Vendor: Some Organisation
+Bundle-Version: 0.2.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: defind;uses:="javax.swing,org.protege.editor.owl,org.pro
+ tege.editor.owl.model,org.protege.editor.owl.ui.view,org.semanticweb.ow
+ lapi.model";version="0.2.0",net.miginfocom.layout;version="0.2.0",net.m
+ iginfocom.swing;uses:="net.miginfocom.layout";version="0.2.0",org.liveo
+ ntologies.protege.explanation.proof;uses:="org.liveontologies.protege.e
+ xplanation.proof.service,org.protege.editor.core,org.protege.editor.owl
+ ";version="0.2.0",org.liveontologies.protege.explanation.proof.service;
+ uses:="org.eclipse.core.runtime,org.liveontologies.puli,org.protege.edi
+ tor.core.plugin,org.protege.editor.owl,org.semanticweb.owlapi.model,org
+ .semanticweb.owlapi.reasoner";version="0.2.0"
+Import-Package: com.google.common.base;version="[18.0,19)",javax.swing,j
+ avax.swing.border,javax.swing.event,javax.swing.text,javax.swing.text.h
+ tml,net.miginfocom.layout,net.miginfocom.swing,org.eclipse.core.runtime
+ ;version="[3.4,4)";common=split,org.liveontologies.protege.explanation.
+ proof,org.liveontologies.protege.explanation.proof.service,org.liveonto
+ logies.puli;version="[0.1,1)",org.protege.editor.core;version="[5.0,6)"
+ ,org.protege.editor.core.plugin;version="[5.0,6)",org.protege.editor.co
+ re.ui.workspace;version="[5.0,6)",org.protege.editor.owl;version="[5.0,
+ 6)",org.protege.editor.owl.model;version="[5.0,6)",org.protege.editor.o
+ wl.model.inference;version="[5.0,6)",org.protege.editor.owl.model.selec
+ tion;version="[5.0,6)",org.protege.editor.owl.ui.clsdescriptioneditor;v
+ ersion="[5.0,6)",org.protege.editor.owl.ui.explanation;version="[5.0,6)
+ ",org.protege.editor.owl.ui.view;version="[5.0,6)",org.semanticweb.owla
+ pi.apibinding;version="[4.2,5)",org.semanticweb.owlapi.model;version="[
+ 4.2,5)",org.semanticweb.owlapi.model.parameters;version="[4.2,5)",org.s
+ emanticweb.owlapi.reasoner;version="[4.2,5)",org.semanticweb.owlapi.uti
+ l;version="[4.2,5)",org.slf4j;version="[1.7,2)",uk.ac.manchester.cs.owl
+ .owlapi;version="[4.2,5)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-3.0.0.201509101326
+Update-Url: ${update.url}/p5.update.properties
