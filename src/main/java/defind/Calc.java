@@ -135,7 +135,7 @@ public class Calc {
         Proof inferences = (Proof) invoke(modelManager, owlEditorKit, cIsLessC_);
         if (inferences == null) return null;
         System.out.println("inferences = " + inferences.getInferences(cIsLessC_).size());
-        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null, null, null, srcOnt, 0);
+        OWLClassExpression res = handle(cIsLessC_, inferences, delta, null, null, null,null, srcOnt, 0);
         OWLClassExpression res1 = DNFConverter.toDNF(res);
         manager.removeAxioms(srcOnt, ont.getAxioms());
         manager.addAxioms(srcOnt, srcAxioms);
@@ -257,16 +257,24 @@ public class Calc {
     }
 
     static OWLClassExpression handle(OWLAxiom root, Proof proof, Set<OWLNamedObject> delta,
-                                     Set<OWLAxiom> circles, Map<OWLAxiom, OWLClassExpression> cache,
+                                     Set<OWLAxiom> parents, Set<OWLAxiom> cyclic, Map<OWLAxiom, OWLClassExpression> cache,
                                      Inference<OWLAxiom> prevInf,
                                      OWLOntology ont, int rec) {
         String url = ont.getOntologyID().getDefaultDocumentIRI().get().toString();
         String rootStr = root.toString().replaceAll(url, "");
-        if (circles == null) {
-            circles = new HashSet<>();
-            return handle(root, proof, delta, circles, new HashMap<>(), prevInf, ont, 0);
+        if (parents == null) {
+            parents = new HashSet<>();
+            HashMap<OWLAxiom, OWLClassExpression> cch = new HashMap<>();
+            cyclic = new HashSet<>();
+            OWLClassExpression handle = handle(root, proof, delta, parents,cyclic, cch, prevInf, ont, 0);
+            System.out.println(cch.size());
+            return handle;
         }
-        if (cache.containsKey(root)) {
+        if (parents.contains(root)) {
+            cyclic.addAll(parents);
+            return new OWLObjectUnionOfImpl(new HashSet<>());
+        }
+        if (cache.containsKey(root)&&!cyclic.contains(root)) {
             System.out.print(indent(rec));
             OWLClassExpression val = cache.get(root);
             System.out.println("CUT " + rootStr + " " + val);
@@ -274,7 +282,7 @@ public class Calc {
         }
         System.out.print(indent(rec));
         System.out.println("ENTER " + rootStr);
-        circles.add(root);
+        parents.add(root);
         Collection<? extends Inference<OWLAxiom>> inferences = proof.getInferences(root);
         Set<OWLClassExpression> union = new HashSet();
         if (inferences.size() == 0) {
@@ -301,14 +309,14 @@ public class Calc {
             }
         }
         for (Inference<OWLAxiom> inf : inferences) {
-            boolean goodInference = true;
-            for (OWLAxiom premise : inf.getPremises()) {
-                if (circles.contains(premise)) { // all axioms processed in circles
-                    goodInference = false;
-                    break;
-                }
-            }
-            if (!goodInference) continue;
+//            boolean goodInference = true;
+//            for (OWLAxiom premise : inf.getPremises()) {
+//                if (parents.contains(premise)) { // all axioms processed in parents
+//                    goodInference = false;
+//                    break;
+//                }
+//            }
+//            if (!goodInference) continue;
             if (inf.getPremises().size() == 0) {
                 if (root instanceof OWLSubClassOfAxiomImpl) {
                     OWLClassExpression superClass = ((OWLSubClassOfAxiomImpl) root).getSuperClass();
@@ -329,7 +337,7 @@ public class Calc {
                     System.out.println("return " + res.toString().replaceAll(url, ""));
                     System.out.print(indent(rec));
                     System.out.println();
-                    circles.remove(root);
+                    parents.remove(root);
                     cache.put(root, res);
                     return res;
                 }
@@ -338,8 +346,9 @@ public class Calc {
             System.out.println("reset punion");
             Set<OWLClassExpression> pUnion = new HashSet<>();
             for (OWLAxiom premise : inf.getPremises()) {
+//                if (parents.contains(premise)) continue;
                 OWLClassExpression res;
-                res = handle(premise, proof, delta, circles, cache, inf, ont, rec + 1);
+                res = handle(premise, proof, delta, parents,cyclic, cache, inf, ont, rec + 1);
                 System.out.print(indent(rec));
                 System.out.println("adding to punion: " + res);
                 pUnion.add(res);
@@ -429,7 +438,7 @@ public class Calc {
         }
         System.out.print(indent(rec));
         System.out.println("return " + ret.toString().replaceAll(url, ""));
-        circles.remove(root);
+        parents.remove(root);
         cache.put(root, ret);
         return ret;
     }
