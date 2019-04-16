@@ -1,9 +1,17 @@
-<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plugin>
     <extension id="ExampleViewComponent" point="org.protege.editor.core.application.ViewComponent">
         <label value="DeFind"/>
         <class value="defind.DefindComponent"/>
         <headerColor value="@org.protege.ontologycolor"/>
         <category value="@org.protege.ontologycategory"/>
+    </extension>
+
+    <extension id="DefindTab" point="org.protege.editor.core.application.WorkspaceTab">
+        <label value="DeFind"/>
+        <class value="org.protege.editor.owl.ui.OWLWorkspaceViewsTab"/>
+        <index value="D"/>
+        <editorKitId value="OWLEditorKit"/>
+        <defaultViewConfigFileName value="viewconfig-defind.xml"/>
     </extension>
 </plugin>

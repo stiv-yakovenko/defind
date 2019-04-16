@@ -120,6 +120,7 @@
                 <directory>${basedir}/src/main/resources</directory>
                 <includes>
                     <include>plugin.xml</include>
+                    <include>viewconfig-defind.xml</include>
                 </includes>
                 <filtering>true</filtering>
             </resource>
@@ -233,6 +234,7 @@
                                             <directory>src/main/resources</directory>
                                             <includes>
                                                 <include>plugin.xml</include>
+                                                <include>viewconfig-defind.xml</include>
                                             </includes>
                                             <filtering>true</filtering>
                                         </resource>

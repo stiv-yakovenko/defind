@@ -82,15 +82,19 @@ public class MainForm extends JFrame {
         panel.add(Box.createVerticalStrut(400));
     }
 
-    static OWLNamedObject transToClass(Transferable transferable) {
+    static OWLNamedObject[] transToClasses(Transferable transferable) {
         DataFlavor[] transferDataFlavors = transferable.getTransferDataFlavors();
         for (DataFlavor df : transferDataFlavors) {
             Object transferData;
             try {
                 transferData = transferable.getTransferData(df);
                 if (transferData instanceof List) {
-                    OWLNamedObject cls = (OWLNamedObject) ((List) transferData).get(0);
-                    return cls;
+                    List transferDataList = (List) transferData;
+                    OWLNamedObject[] classes = new OWLNamedObject[transferDataList.size()];
+                    for (int classPos = 0; classPos < transferDataList.size(); ++classPos) {
+                        classes[classPos] = (OWLNamedObject) transferDataList.get(classPos);
+                    }
+                    return classes;
                 }
             } catch (UnsupportedFlavorException e) {
                 e.printStackTrace();
@@ -101,12 +105,13 @@ public class MainForm extends JFrame {
         return null;
     }
 
-    static void removeElem(int[] idx, Set<OWLNamedObject> delta, JList deltaList) {
+    static void removeElem(int[] idx, Set<OWLNamedObject> delta, Set<OWLNamedObject> autoAddedDelta, JList deltaList) {
         for (int i : idx) {
             Object dlt = deltaList.getModel().getElementAt(i);
             for (OWLNamedObject cls : delta) {
                 if (cls.getIRI().getShortForm() != dlt) continue;
                 delta.remove(cls);
+                autoAddedDelta.remove(cls);
                 break;
             }
         }
@@ -121,6 +126,7 @@ public class MainForm extends JFrame {
         allClasses.addAll(ont.getClassesInSignature());
         allClasses.addAll(ont.getObjectPropertiesInSignature());
         Set<OWLNamedObject> delta = new LinkedHashSet<>();
+        Set<OWLNamedObject> autoAddedProperties = new HashSet<>();
         Map<Integer, OWLNamedObject> idxToObject = new HashMap<>();
         JList deltaList = new JList(new String[]{});
         deltaList.addKeyListener(new KeyListener() {
@@ -133,7 +139,7 @@ public class MainForm extends JFrame {
                 if (e.getKeyCode() == 127) {
                     JList list = (JList) e.getSource();
                     int[] idxes = list.getSelectedIndices();
-                    removeElem(idxes, delta, deltaList);
+                    removeElem(idxes, delta, autoAddedProperties, deltaList);
                 }
             }
 
@@ -147,7 +153,7 @@ public class MainForm extends JFrame {
                 JList list = (JList) evt.getSource();
                 if (evt.getClickCount() == 2) {
                     int[] idxes = list.getSelectedIndices();
-                    removeElem(idxes, delta, deltaList);
+                    removeElem(idxes, delta, autoAddedProperties, deltaList);
                 }
             }
         });
@@ -166,7 +172,11 @@ public class MainForm extends JFrame {
             @Override
             public synchronized void drop(DropTargetDropEvent dtde) {
                 Transferable transferable = dtde.getTransferable();
-                delta.add(transToClass(transferable));
+                OWLNamedObject[] objectsToAdd = transToClasses(transferable);
+                for (OWLNamedObject obj : objectsToAdd) {
+                    delta.add(obj);
+                    autoAddedProperties.remove(obj);
+                }
                 updateList(deltaList, delta);
             }
         });
@@ -174,6 +184,28 @@ public class MainForm extends JFrame {
         calcButton.setPreferredSize(new Dimension(100, 40));
         JPanel res = new JPanel();
         JCheckBox invert = new JCheckBox("doesn't include symbols");
+        JCheckBox addAllObjectProperties = new JCheckBox("add all object properties");
+
+        addAllObjectProperties.addActionListener(e -> {
+            aoc.getOWLEditorKit().getModelManager();
+            OWLModelManager manager = aoc.getOWLModelManager();
+            OWLOntology ontology = manager.getActiveOntology();
+            if (addAllObjectProperties.isSelected()) {
+                for (OWLObjectProperty oop: ontology.getObjectPropertiesInSignature()) {
+                    if (!delta.contains(oop)) {
+                        delta.add(oop);
+                        autoAddedProperties.add(oop);
+                    }
+                }
+            } else {
+                for (OWLNamedObject oop: autoAddedProperties) {
+                    delta.remove(oop);
+                }
+                autoAddedProperties.clear();
+            }
+            updateList(deltaList, delta);
+        });
+
         calcButton.addActionListener(e -> {
             try {
                 if (!owlDescriptionEditor.isWellFormed()) {
@@ -224,18 +256,10 @@ public class MainForm extends JFrame {
         mainPanel.add(new JLabel("Class expression"), "wrap");
         mainPanel.add(owlDescriptionEditor, "growx,span 3");
         mainPanel.add(calcButton, "wrap");
-        JButton addAllObjectProperties = new JButton("Add all Object Properties");
-        mainPanel.add(addAllObjectProperties,"span 2,wrap");
-        addAllObjectProperties.addActionListener(e -> {
-            aoc.getOWLEditorKit().getModelManager();
-            OWLModelManager manager = aoc.getOWLModelManager();
-            OWLOntology ontology = manager.getActiveOntology();
-            delta.addAll(ontology.getObjectPropertiesInSignature());
-            updateList(deltaList, delta);
-        });
-        mainPanel.add(new JLabel("Target signature"), "");
         mainPanel.add(invert, "");
-        mainPanel.add(new JLabel("Definitions found"), "span 2,wrap");
+        mainPanel.add(addAllObjectProperties,"wrap");
+        mainPanel.add(new JLabel("Target signature"), "span 2");
+        mainPanel.add(new JLabel("Definitions found"), "wrap");
         JScrollPane jsp = new JScrollPane(resPanel);
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         mainPanel.add(new JScrollPane(deltaList), "growx,growy,span 2");
