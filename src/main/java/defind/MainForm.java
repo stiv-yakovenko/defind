@@ -13,6 +13,8 @@ import org.semanticweb.owlapi.model.*;
 import javax.swing.*;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -120,7 +122,7 @@ public class MainForm extends JFrame {
 
     static public JPanel addComponentsToPane(AbstractOWLViewComponent aoc) {
         JPanel mainPanel = new JPanel();
-        JPanel resPanel = new JPanel();
+        JPanel resField = new JPanel();
         OWLOntology ont = aoc.getOWLModelManager().getActiveOntology();
         Set<OWLNamedObject> allClasses = new HashSet<>();
         allClasses.addAll(ont.getClassesInSignature());
@@ -154,6 +156,25 @@ public class MainForm extends JFrame {
                 if (evt.getClickCount() == 2) {
                     int[] idxes = list.getSelectedIndices();
                     removeElem(idxes, delta, autoAddedProperties, deltaList);
+                }
+            }
+        });
+
+        JButton eraseFromTargetButton = new JButton("Remove selected");
+        eraseFromTargetButton.addActionListener(e -> {
+            int[] idxes = deltaList.getSelectedIndices();
+            removeElem(idxes, delta, autoAddedProperties, deltaList);
+        });
+        eraseFromTargetButton.setEnabled(false);
+
+        deltaList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent evt) {
+                JList list = (JList) evt.getSource();
+                if (list.getSelectedIndices().length == 0) {
+                    eraseFromTargetButton.setEnabled(false);
+                } else {
+                    eraseFromTargetButton.setEnabled(true);
                 }
             }
         });
@@ -240,7 +261,7 @@ public class MainForm extends JFrame {
                 } else {
                     rs.add(sol);
                 }
-                updateList(resPanel, rs, aoc, cls);
+                updateList(resField, rs, aoc, cls);
                 if (rs.size() == 0) {
                     JOptionPane.showMessageDialog(mainPanel, "No definitions found in the target signature");
                 }
@@ -250,20 +271,34 @@ public class MainForm extends JFrame {
         });
         List<String> strs = Arrays.asList(new String[]{});
         updateList(res, strs);
-        resPanel.setLayout(new BoxLayout(resPanel, BoxLayout.Y_AXIS));
-        resPanel.setBackground(Color.WHITE);
-        mainPanel.setLayout(new MigLayout("", "[][][grow][]", "[][][][][grow]"));
-        mainPanel.add(new JLabel("Class expression"), "wrap");
-        mainPanel.add(owlDescriptionEditor, "growx,span 3");
+
+        mainPanel.setLayout(new MigLayout("", "0[grow]0[]0", "0[]0[][grow]0"));
+        mainPanel.add(new JLabel("Class expression"), "span 2,wrap");
+        mainPanel.add(owlDescriptionEditor, "growx");
         mainPanel.add(calcButton, "wrap");
-        mainPanel.add(invert, "");
-        mainPanel.add(addAllObjectProperties,"wrap");
-        mainPanel.add(new JLabel("Target signature"), "span 2");
-        mainPanel.add(new JLabel("Definitions found"), "wrap");
-        JScrollPane jsp = new JScrollPane(resPanel);
-        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        mainPanel.add(new JScrollPane(deltaList), "growx,growy,span 2");
-        mainPanel.add(jsp, "growy, growx, span 2");
+
+        JPanel targetPanelWithOptions = new JPanel();
+        targetPanelWithOptions.setLayout(new MigLayout("", "0[grow]0", "0[][]0[]0[]0[grow]0"));
+        targetPanelWithOptions.add(new JLabel("Target signature"), "wrap");
+        targetPanelWithOptions.add(invert, "wrap");
+        targetPanelWithOptions.add(addAllObjectProperties,"wrap");
+        targetPanelWithOptions.add(eraseFromTargetButton, "growx, wrap");
+        targetPanelWithOptions.add(new JScrollPane(deltaList), "growy, growx");
+
+        resField.setLayout(new BoxLayout(resField, BoxLayout.Y_AXIS));
+        resField.setBackground(Color.WHITE);
+        JScrollPane scrolledResPanel = new JScrollPane(resField);
+        scrolledResPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        JPanel resPanel = new JPanel();
+        resPanel.setLayout(new MigLayout("", "0[grow]0", "0[]0[grow]0"));
+        resPanel.add(new JLabel("Definitions found"), "wrap");
+        resPanel.add(scrolledResPanel, "growy, growx");
+
+        JSplitPane targetAndDefinitionsPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        targetAndDefinitionsPanel.add(targetPanelWithOptions);
+        targetAndDefinitionsPanel.add(resPanel);
+
+        mainPanel.add(targetAndDefinitionsPanel, "growy, growx, span 2");
         return mainPanel;
     }
 
