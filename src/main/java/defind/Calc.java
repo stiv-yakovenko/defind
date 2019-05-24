@@ -277,7 +277,7 @@ public class Calc {
         if (cache.containsKey(root)&&!cyclic.contains(root)) {
             System.out.print(indent(rec));
             OWLClassExpression val = cache.get(root);
-            System.out.println("CUT " + rootStr + " " + val);
+            System.out.println("CUT " + rootStr + " " + val.toString().replaceAll(url, ""));
             return val;
         }
         System.out.print(indent(rec));
@@ -308,6 +308,7 @@ public class Calc {
                 }
             }
         }
+
         for (Inference<OWLAxiom> inf : inferences) {
 //            boolean goodInference = true;
 //            for (OWLAxiom premise : inf.getPremises()) {
@@ -345,12 +346,14 @@ public class Calc {
             System.out.print(indent(rec));
             System.out.println("reset punion");
             Set<OWLClassExpression> pUnion = new HashSet<>();
+
+
             for (OWLAxiom premise : inf.getPremises()) {
 //                if (parents.contains(premise)) continue;
                 OWLClassExpression res;
                 res = handle(premise, proof, delta, parents,cyclic, cache, inf, ont, rec + 1);
                 System.out.print(indent(rec));
-                System.out.println("adding to punion: " + res);
+                System.out.println("adding to punion: " + res.toString().replaceAll(url, ""));
                 pUnion.add(res);
             }
             System.out.print(indent(rec));
