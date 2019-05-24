@@ -67,7 +67,7 @@ public class DNFConverter {
                 boolean toremove = false;
                 int c2 = 0;
                 for (Set<OWLClassExpression> other : kids) {
-                    if (inside(other, kid) && c1 != c2) {
+                    if (inside(kid, other) && c1 != c2) {
                         toremove |= true;
                     }
                     c2++;
@@ -160,7 +160,7 @@ public class DNFConverter {
         if (cache.containsKey(exp0)) {
             return cache.get(exp0);
         }
-        OWLClassExpression exp = expandSimple(exp0);
+        OWLClassExpression exp = expandSimple(exp0); // preoptimization of DNF: cuts unneccesary recursion branches
         OWLClassExpression res = exp;
         Set<OWLClassExpression> parts = new HashSet<>();
         //System.out.println("handleRecursively " + exp.toString().replace(Calc.url,""));
@@ -177,7 +177,7 @@ public class DNFConverter {
                 }
             });
             newOps.forEach(op -> {
-                ops2.add(expandSimple(handleRecursively(op, cache)));
+                ops2.add(handleRecursively(op, cache));
             });
             parts.addAll(ops2);
             if (ops2.size() == 0) {
@@ -211,6 +211,7 @@ public class DNFConverter {
                 res = new OWLObjectUnionOfImpl(newOps);
             }
         }
+        res = expandSimple(res); // postoptimization of DNF: cuts unneccesary DNF clauses
         cache.put(exp0, res);
 
         System.out.println("\nConverting " + toStr(exp0) + " => ");
