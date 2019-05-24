@@ -117,7 +117,7 @@ public class ConsoleTest {
         res = loadAndSolve("./test/ExpLongExpManSimplified.owl", new String[]{"r1","s1"}, "A");
         testEq(res,"ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))) ObjectSomeValuesFrom(<287#s1> ObjectIntersectionOf(ObjectSomeValuesFrom(<287#r1> owl:Thing) ObjectSomeValuesFrom(<287#s1> owl:Thing))))",rss);
         res = loadAndSolve("./test/combofDeltaconcepts.owl", new String[]{"D1","D2"}, "A");
-        testEq(res,"ObjectUnionOf(<260#D1> <260#D2> ObjectIntersectionOf(<260#D1> <260#D2>))",rss);
+        testEq(res,"ObjectUnionOf(<260#D1> <260#D2>)",rss);
         res = loadAndSolve("./test/pizza_simplified.owl", new String[]{"Pizza","SpicyPizza"}, "C");
         testEq(res,"<416#SpicyPizza>",rss);
         System.out.println("SUCCESS");
